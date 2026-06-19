@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo4ktjqlrfpul"]
+
+[ext_resource type="Script" uid="uid://cnvfjvc18eix4" path="res://Scripts/mana_ui.gd" id="1_qlswa"]
+
+[node name="ManaUI" type="ProgressBar"]
+modulate = Color(0.203922, 0.407843, 1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -847.0
+offset_bottom = -673.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+show_percentage = false
+script = ExtResource("1_qlswa")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

@@ -1,0 +1,49 @@
+@tool
+class_name ItemSlot extends Control
+
+@export var item : Item :
+	set(value):
+		item = value
+		update_display()
+		
+var selected : bool = false
+@export var sprite : Sprite2D
+@export var selected_sprite : Sprite2D
+
+func _ready() -> void:
+	z_index = 1
+	
+func update_display() -> void:
+	if item:
+		sprite.texture = item.texture
+	else:
+		sprite.texture = null
+	if selected:
+		selected_sprite.visible = true
+	else:
+		selected_sprite.visible = false
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+	if item:
+		var preview_container : Control = Control.new()
+		var preview : TextureRect = TextureRect.new()
+		preview.texture = item.texture
+		preview.position = Vector2(-8, -8)
+		#z_index = 1
+		#preview_container.z_index = 1
+		#preview.z_index = 1
+		preview_container.add_child(preview)
+		set_drag_preview(preview_container)
+		print(z_index)
+	return self
+	
+func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	if data.item:
+		return true
+	return false
+	
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	var temp_item : Item = item
+	item = data.item
+	data.item = temp_item
+	

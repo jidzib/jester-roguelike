@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Sword" load_steps=3 format=3 uid="uid://d3ru8alwc0xq4"]
+
+[ext_resource type="Script" uid="uid://cpjujfq6auxdt" path="res://Scripts/items/sword.gd" id="1_ngbdt"]
+[ext_resource type="Texture2D" uid="uid://b2t7g6s67rnvl" path="res://assets/items/sword.png" id="2_pk6ra"]
+
+[resource]
+script = ExtResource("1_ngbdt")
+damage = 1
+texture = ExtResource("2_pk6ra")
+ID = 0
+name = "Sword"
+description = "Click on enemies to attack them!"
+metadata/_custom_type_script = "uid://bn877kfiutafu"

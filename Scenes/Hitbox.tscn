@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://tlitsmdbuqop"]
+
+[ext_resource type="Script" uid="uid://brx5wdcga4olv" path="res://Scripts/entities/hitbox.gd" id="1_ynlij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynlij"]
+
+[node name="Hitbox" type="Area2D"]
+script = ExtResource("1_ynlij")
+metadata/_custom_type_script = "uid://brx5wdcga4olv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ynlij")
+debug_color = Color(0.476866, 0.43924, 0.999371, 0.42)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://gbuhkq5sfnya"]
+
+[ext_resource type="Script" uid="uid://cfrbiuspyci4r" path="res://Scripts/entities/entity.gd" id="1_rnyw1"]
+[ext_resource type="Script" uid="uid://h2givxqewg3a" path="res://Scripts/state_machine.gd" id="2_4n0f1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnyw1"]
+size = Vector2(9, 16)
+
+[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player", "state_machine")]
+script = ExtResource("1_rnyw1")
+sprites = NodePath("Sprites")
+animation_player = NodePath("AnimationPlayer")
+state_machine = NodePath("StateMachine")
+metadata/_custom_type_script = "uid://cfrbiuspyci4r"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rnyw1")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_4n0f1")
+metadata/_custom_type_script = "uid://h2givxqewg3a"
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

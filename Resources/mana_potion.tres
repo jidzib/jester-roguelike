@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yqmj5n8bqsw1"]
+
+[ext_resource type="Script" uid="uid://if8iyrxybm7t" path="res://Scripts/items/mana_potion.gd" id="1_m6mdv"]
+[ext_resource type="Texture2D" uid="uid://c8rqgjbucgrms" path="res://assets/items/mana_potion.png" id="2_cn1i8"]
+
+[resource]
+script = ExtResource("1_m6mdv")
+restore_amount = 20
+texture = ExtResource("2_cn1i8")
+ID = 4
+name = "Mana Potion"
+description = "Use to restore mana"
+metadata/_custom_type_script = "uid://d4ne3pwdw70wg"

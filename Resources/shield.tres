@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Shield" load_steps=3 format=3 uid="uid://2bigvwyq8532"]
+
+[ext_resource type="Script" uid="uid://c2oydjj6qxhuc" path="res://Scripts/items/shield.gd" id="1_x6u6w"]
+[ext_resource type="Texture2D" uid="uid://cdngek2vdgj4q" path="res://assets/items/shield.png" id="2_ron5c"]
+
+[resource]
+script = ExtResource("1_x6u6w")
+texture = ExtResource("2_ron5c")
+ID = 1
+name = "Shield"
+description = "Use to block enemy melee attacks"
+metadata/_custom_type_script = "uid://c2oydjj6qxhuc"
