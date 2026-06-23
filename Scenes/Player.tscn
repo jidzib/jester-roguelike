@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d1ckpr4xv2ggp"]
+[gd_scene load_steps=26 format=3 uid="uid://d1ckpr4xv2ggp"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_cgsek"]
 [ext_resource type="Script" uid="uid://csoim7dyw4o7f" path="res://Scripts/entities/player/player.gd" id="2_0pi4m"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cwugmqbycg0ev" path="res://Scenes/HealthUI.tscn" id="15_m7dl7"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entities/spellcasting.gd" id="15_sg6sq"]
 [ext_resource type="PackedScene" uid="uid://bo4ktjqlrfpul" path="res://Scenes/ManaUI.tscn" id="16_48og4"]
+[ext_resource type="Script" uid="uid://dshs26qengjqh" path="res://camera.gd" id="17_qidb7"]
 [ext_resource type="PackedScene" uid="uid://drsygg8of0wxa" path="res://Scenes/Hotbar.tscn" id="17_xmpta"]
 [ext_resource type="PackedScene" uid="uid://2t62ne0qtqjw" path="res://Scenes/HeldItem.tscn" id="18_mrbh7"]
 [ext_resource type="Texture2D" uid="uid://ch8jvlnsygm3u" path="res://assets/ui/direction_indictator.png" id="19_lrhq4"]
@@ -57,6 +58,7 @@ position = Vector2(0, -16)
 
 [node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
 z_index = 1
+use_parent_material = true
 texture = ExtResource("3_sg6sq")
 hframes = 8
 vframes = 12
@@ -64,6 +66,7 @@ frame = 66
 
 [node name="Body" type="Sprite2D" parent="Sprites" index="1"]
 z_index = 1
+use_parent_material = true
 texture = ExtResource("4_h84ma")
 hframes = 8
 vframes = 12
@@ -71,6 +74,7 @@ frame = 66
 
 [node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
 z_index = 1
+use_parent_material = true
 texture = ExtResource("5_47wu6")
 hframes = 8
 vframes = 12
@@ -78,6 +82,7 @@ frame = 66
 
 [node name="Head" type="Sprite2D" parent="Sprites" index="3"]
 z_index = 1
+use_parent_material = true
 texture = ExtResource("6_2n1s8")
 hframes = 8
 vframes = 12
@@ -94,16 +99,16 @@ frame = 66
 [node name="Item" type="Sprite2D" parent="Sprites" index="5"]
 visible = false
 z_index = 1
+use_parent_material = true
 texture = ExtResource("8_yt0h1")
 hframes = 8
 vframes = 12
 frame = 66
 
-[node name="Hitbox" parent="Sprites" index="6" node_paths=PackedStringArray("parent") instance=ExtResource("9_vd78s")]
+[node name="Hitbox" parent="Sprites" index="6" instance=ExtResource("9_vd78s")]
 visible = false
 z_index = 1
 position = Vector2(0, 4)
-parent = NodePath("../..")
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
@@ -138,14 +143,13 @@ script = ExtResource("15_sg6sq")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("parent") instance=ExtResource("14_p01ps")]
+[node name="Hurtbox" parent="." index="4" instance=ExtResource("14_p01ps")]
 position = Vector2(24, -12)
-parent = NodePath("..")
-disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="." index="5"]
 position = Vector2(-7, -8)
 zoom = Vector2(3, 3)
+script = ExtResource("17_qidb7")
 
 [node name="HeldItem" parent="." index="6" instance=ExtResource("18_mrbh7")]
 visible = false
@@ -188,3 +192,8 @@ parent = NodePath("../..")
 
 [node name="Hotbar" parent="UI" index="2" instance=ExtResource("17_xmpta")]
 position = Vector2(218, 218.667)
+
+[node name="Stats" parent="." index="11"]
+max_hp = 5
+max_mana = 100
+attack = 1.0

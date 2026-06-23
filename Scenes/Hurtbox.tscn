@@ -1,16 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://nnl6l8kc4bwq"]
+[gd_scene load_steps=5 format=3 uid="uid://nnl6l8kc4bwq"]
 
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="1_epkia"]
+[ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/fx/circle.png" id="2_0ofy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epkia"]
 resource_local_to_scene = true
 
-[node name="Hurtbox" type="Area2D" node_paths=PackedStringArray("collision_shape")]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pgoq"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 86.78
+initial_velocity_max = 207.47
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.4
+color = Color(1, 1, 1, 0.780392)
+
+[node name="Hurtbox" type="Area2D"]
 script = ExtResource("1_epkia")
-collision_shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_epkia")
 disabled = true
 debug_color = Color(0.961891, 0, 0.507744, 0.42)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("2_0ofy1")
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.25
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2pgoq")

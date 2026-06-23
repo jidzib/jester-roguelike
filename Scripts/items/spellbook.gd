@@ -5,9 +5,10 @@ var mana_cost : int = 20
 var cast_duration : float = 0.5
 
 func use(entity: Entity) -> void:
-	if not has_enough_mana(entity):
+	if not entity.stats.has_enough_mana(mana_cost):
 		return
-	entity.lose_mana.emit(mana_cost)
+	#entity.lose_mana.emit(mana_cost)
+	entity.stats.use_mana(mana_cost)
 	var new_projectile : Projectile = projectile.instantiate()
 	new_projectile.hurtbox.parent = entity
 	new_projectile.hurtbox.attack_type = "projectile"

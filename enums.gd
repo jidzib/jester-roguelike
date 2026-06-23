@@ -7,3 +7,7 @@ enum Items {
 	SPELLBOOK,
 	MANA_POTION
 }
+
+enum Shaders {
+	HIT_FLASH
+}

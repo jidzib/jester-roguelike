@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cek561y3ub7kl"]
+[gd_scene load_steps=30 format=3 uid="uid://cek561y3ub7kl"]
 
 [ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="1_f4tcm"]
+[ext_resource type="Script" uid="uid://cc1jxux0wmew6" path="res://sprite_group.gd" id="2_kjbd8"]
 [ext_resource type="Texture2D" uid="uid://usbli8p2hmlu" path="res://assets/entities/knight/knight_legs.png" id="3_omj3b"]
 [ext_resource type="Texture2D" uid="uid://d3hsocfgsrxea" path="res://assets/entities/knight/knight_body.png" id="4_timcb"]
 [ext_resource type="Texture2D" uid="uid://bjukvaph0qvvq" path="res://assets/entities/knight/knight_arms.png" id="6_04rgk"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_kjbd8"]
 [ext_resource type="Script" uid="uid://bmctoi66314qb" path="res://Scripts/entities/knight/in_combat.gd" id="11_j6i3u"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entities/player/attacking.gd" id="12_04rgk"]
+[ext_resource type="Script" uid="uid://cwog6wu1xadc0" path="res://stats.gd" id="15_0ld3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04rgk"]
 size = Vector2(9, 20)
@@ -743,11 +745,12 @@ size = Vector2(240, 240)
 resource_local_to_scene = true
 size = Vector2(10, 10)
 
-[node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("center", "raycast", "label", "sprites", "animation_player", "hurtbox", "state_machine", "state_nodes")]
+[node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("center", "raycast", "label", "stats", "sprites", "animation_player", "hurtbox", "state_machine", "state_nodes")]
 script = ExtResource("1_f4tcm")
 center = NodePath("Center")
 raycast = NodePath("RayCast2D")
 label = NodePath("Label")
+stats = NodePath("Stats")
 max_hp = 20
 speed = 25.0
 sprites = NodePath("Sprites")
@@ -770,18 +773,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_kjbd8")
 }
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="CanvasGroup" parent="."]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -16)
+script = ExtResource("2_kjbd8")
 
 [node name="Legs" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
 texture = ExtResource("3_omj3b")
 hframes = 8
 vframes = 9
 frame = 4
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
 texture = ExtResource("4_timcb")
 hframes = 8
 vframes = 9
@@ -789,20 +795,21 @@ frame = 64
 
 [node name="Arms" type="Sprite2D" parent="Sprites"]
 z_index = 1
+use_parent_material = true
 texture = ExtResource("6_04rgk")
 hframes = 8
 vframes = 9
 frame = 16
 
 [node name="Head" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
 texture = ExtResource("6_j6i3u")
 hframes = 8
 vframes = 9
 frame = 48
 
-[node name="Hitbox" parent="Sprites" node_paths=PackedStringArray("parent") instance=ExtResource("8_omj3b")]
+[node name="Hitbox" parent="Sprites" instance=ExtResource("8_omj3b")]
 position = Vector2(-6, 5)
-parent = NodePath("../..")
 
 [node name="FX" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("7_i42vn")
@@ -812,6 +819,7 @@ frame = 48
 
 [node name="Item" type="Sprite2D" parent="Sprites"]
 visible = false
+use_parent_material = true
 texture = ExtResource("8_04rgk")
 hframes = 8
 vframes = 12
@@ -856,14 +864,17 @@ offset_bottom = 23.0
 [node name="Center" type="Marker2D" parent="."]
 position = Vector2(0, -11)
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("10_04rgk")]
+[node name="Hurtbox" parent="." instance=ExtResource("10_04rgk")]
 position = Vector2(24, -19)
-parent = NodePath("..")
-damage = 1
-disabled = true
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_i42vn")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("15_0ld3f")
+max_hp = 5
+attack = 1.0
+metadata/_custom_type_script = "uid://cwog6wu1xadc0"
 
 [connection signal="body_entered" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_entered"]
 [connection signal="body_exited" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_exited"]

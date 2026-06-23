@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://gbuhkq5sfnya"]
+[gd_scene load_steps=6 format=3 uid="uid://gbuhkq5sfnya"]
 
 [ext_resource type="Script" uid="uid://cfrbiuspyci4r" path="res://Scripts/entities/entity.gd" id="1_rnyw1"]
 [ext_resource type="Script" uid="uid://h2givxqewg3a" path="res://Scripts/state_machine.gd" id="2_4n0f1"]
+[ext_resource type="Script" uid="uid://cc1jxux0wmew6" path="res://sprite_group.gd" id="2_p2pde"]
+[ext_resource type="Script" uid="uid://cwog6wu1xadc0" path="res://stats.gd" id="4_wtxqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnyw1"]
 size = Vector2(9, 16)
 
-[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player", "state_machine")]
+[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("stats", "sprites", "animation_player", "state_machine")]
 script = ExtResource("1_rnyw1")
+stats = NodePath("Stats")
 sprites = NodePath("Sprites")
 animation_player = NodePath("AnimationPlayer")
 state_machine = NodePath("StateMachine")
@@ -16,13 +19,18 @@ metadata/_custom_type_script = "uid://cfrbiuspyci4r"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rnyw1")
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="CanvasGroup" parent="."]
+script = ExtResource("2_p2pde")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_4n0f1")
 metadata/_custom_type_script = "uid://h2givxqewg3a"
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_wtxqo")
+metadata/_custom_type_script = "uid://cwog6wu1xadc0"
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

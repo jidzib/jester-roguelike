@@ -1,0 +1,44 @@
+class_name Stats extends Node
+
+signal lose_hp
+signal gain_hp
+
+signal update_hp(new_amount : int)
+signal update_mana(new_amount : int)
+
+@export var max_hp : int
+var current_hp : int
+
+@export var max_mana : int
+var current_mana : int
+
+@export var attack : float
+@export var defense : float
+
+func _ready() -> void:
+	current_hp = max_hp
+	current_mana = max_mana
+
+func heal(amount : int) -> void:
+	current_hp = min(current_hp+amount, max_hp)
+	#gain_hp.emit()
+	update_hp.emit(current_hp)
+	print(current_hp)
+func take_damage(damage : int) -> void:
+	current_hp -= damage
+	if current_hp <= 0:
+		pass # DIE
+	update_hp.emit(current_hp)
+	print(current_hp)
+	#lose_hp.emit()
+
+func has_enough_mana(cost : int) -> bool:
+	if cost > current_mana:
+		return false
+	return true
+func restore_mana(amount : int) -> void:
+	current_mana = min(current_mana + amount, max_mana)
+	update_mana.emit(current_mana)
+func use_mana(cost : int) -> void:
+	current_mana -= cost
+	update_mana.emit(current_mana)

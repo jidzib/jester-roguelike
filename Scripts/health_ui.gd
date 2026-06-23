@@ -36,6 +36,24 @@ func update_max_hearts(new_amount : int) -> void:
 		add_child(sprite)
 		HEARTS.set(i, sprite)
 
+func update(new_amount: int) -> void:
+	if new_amount > current_hearts:
+		gain_hearts(new_amount - current_hearts)
+		#for i in range(new_amount - current_hearts):
+			#if current_hearts >= max_hearts:
+				#return
+			#HEARTS[current_hearts].frame = 0
+			#current_hearts += 1
+	elif new_amount < current_hearts:
+		lose_hearts(current_hearts - new_amount)
+		#if new_amount < 0:
+			#return
+		#for i in range(current_hearts - new_amount):
+			#HEARTS[current_hearts-1].frame = 1
+			#current_hearts -= 1
+			#if current_hearts <= 0:
+				#return
+
 func gain_hearts(amount : int) -> void:
 	if amount < 0:
 		return
@@ -51,13 +69,17 @@ func lose_hearts(amount : int) -> void:
 	for i in range(amount):
 		HEARTS[current_hearts-1].frame = 1
 		current_hearts -= 1
-		if current_hearts < 1:
+		if current_hearts <= 0:
 			return
 		
 func _on_tree_entered() -> void:
-	parent.lose_hp.connect(lose_hearts)
-	parent.gain_hp.connect(gain_hearts)
+	#parent.lose_hp.connect(lose_hearts)
+	#parent.gain_hp.connect(gain_hearts)
+	
+	parent.stats.update_hp.connect(update)
 	
 func _on_tree_exited() -> void:
-	parent.lose_hp.disconnect(lose_hearts)
-	parent.gain_hp.disconnect(gain_hearts)
+	#parent.lose_hp.disconnect(lose_hearts)
+	#parent.gain_hp.disconnect(gain_hearts)
+	
+	parent.stats.update_hp.disconnect(update)

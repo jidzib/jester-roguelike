@@ -102,7 +102,6 @@ libraries = {
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("2_k1cl8")
-damage = 1
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -112,5 +111,3 @@ debug_color = Color(0.99718, 0, 0.171554, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(8, 8)
-
-[connection signal="landed_hit" from="Hurtbox" to="." method="_on_hurtbox_landed_hit"]

@@ -6,6 +6,8 @@ signal gain_hp(amount : int)
 signal lose_mana(amount : int)
 signal gain_mana(amount : int)
 
+@export var stats : Stats
+
 # STATS
 @export var max_hp : int
 var current_hp : int
@@ -23,7 +25,7 @@ var knockback_duration : float = 0.4
 var knockback_progress : float = 0.0
 
 # NODES
-@export var sprites : Node2D
+@export var sprites : SpriteGroup
 @export var animation_player : AnimationPlayer
 @export var animation_path : String = ""
 @export var hurtbox : Hurtbox
@@ -60,23 +62,10 @@ func get_hit(damage: int, hit_location : Vector2) -> void:
 	lose_hp.emit(damage)
 	knockback_direction = -(global_position.direction_to(hit_location))
 	knocking_back = true
-	sprites.modulate = Color.RED
+	sprites.change_shader(Enums.Shaders.HIT_FLASH)
 	
 	if current_hp <= 0:
 		die()
-
-func increment_hp(amount : int) -> void:
-	current_hp += amount
-	if current_hp > max_hp:
-		current_hp = max_hp
-func decrement_hp(amount : int) -> void:
-	current_hp -= amount
-func increment_mana(amount : int) -> void:
-	current_mana += amount
-	if current_mana > max_mana:
-		current_mana = max_mana
-func decrement_mana(amount : int) -> void:
-	current_mana -= amount
 	
 func _physics_process(delta: float) -> void:
 	if knocking_back:
@@ -87,7 +76,7 @@ func _physics_process(delta: float) -> void:
 			knockback_progress = 0.0
 			knockback_direction = Vector2.ZERO
 			knocking_back = false
-			sprites.modulate = Color.WHITE
+			sprites.remove_shader()
 			velocity = Vector2.ZERO
 
 func die() -> void:
@@ -140,14 +129,14 @@ func is_parried(source: Entity, attack_type: String, damage: int) -> bool:
 	return false
 
 
-func _on_tree_entered() -> void:
-	gain_hp.connect(increment_hp)
-	lose_hp.connect(decrement_hp)
-	gain_mana.connect(increment_mana)
-	lose_mana.connect(decrement_mana)
-	
-func _on_tree_exited() -> void:
-	gain_hp.disconnect(increment_hp)
-	lose_hp.disconnect(decrement_hp)
-	gain_mana.disconnect(increment_mana)
-	lose_mana.disconnect(decrement_mana)
+#func _on_tree_entered() -> void:
+	#gain_hp.connect(increment_hp)
+	#lose_hp.connect(decrement_hp)
+	#gain_mana.connect(increment_mana)
+	#lose_mana.connect(decrement_mana)
+	#
+#func _on_tree_exited() -> void:
+	#gain_hp.disconnect(increment_hp)
+	#lose_hp.disconnect(decrement_hp)
+	#gain_mana.disconnect(increment_mana)
+	#lose_mana.disconnect(decrement_mana)
