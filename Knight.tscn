@@ -1,0 +1,137 @@
+[gd_scene load_steps=16 format=3 uid="uid://bxcss1foc7uq8"]
+
+[ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_jjefk"]
+[ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="2_fpytc"]
+[ext_resource type="Texture2D" uid="uid://bv03allpgloxb" path="res://assets/entities/player/blockout_legs.png" id="3_1cc6w"]
+[ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/entities/player/blockout_body.png" id="4_wqosg"]
+[ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/entities/player/blockout_arms.png" id="5_mfjpr"]
+[ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/entities/player/blockout_head.png" id="6_xf7i1"]
+[ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/entities/player/blockout_fx.png" id="7_skfry"]
+[ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/entities/player/blockout_item.png" id="8_ikt6d"]
+[ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="9_cicbl"]
+[ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_wqosg"]
+[ext_resource type="Script" uid="uid://bmctoi66314qb" path="res://Scripts/entities/knight/in_combat.gd" id="11_mfjpr"]
+[ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entities/player/attacking.gd" id="12_xf7i1"]
+[ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="13_mfjpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7i1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfjpr"]
+size = Vector2(240, 240)
+
+[node name="Knight" node_paths=PackedStringArray("center", "raycast", "label", "state_nodes") instance=ExtResource("1_jjefk")]
+script = ExtResource("2_fpytc")
+center = NodePath("Marker2D")
+raycast = NodePath("RayCast2D")
+label = NodePath("Label")
+max_hp = 5
+speed = 25.0
+animation_path = "PlayerAnimations/"
+state_nodes = {
+0: NodePath("StateMachine/Idle"),
+1: NodePath("StateMachine/Attacking"),
+5: NodePath("StateMachine/InCombat")
+}
+
+[node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
+z_index = 1
+use_parent_material = true
+texture = ExtResource("3_1cc6w")
+hframes = 8
+vframes = 12
+frame = 64
+
+[node name="Body" type="Sprite2D" parent="Sprites" index="1"]
+z_index = 1
+use_parent_material = true
+texture = ExtResource("4_wqosg")
+hframes = 8
+vframes = 12
+frame = 64
+
+[node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
+z_index = 1
+use_parent_material = true
+texture = ExtResource("5_mfjpr")
+hframes = 8
+vframes = 12
+frame = 64
+
+[node name="Head" type="Sprite2D" parent="Sprites" index="3"]
+z_index = 1
+use_parent_material = true
+texture = ExtResource("6_xf7i1")
+hframes = 8
+vframes = 12
+frame = 64
+
+[node name="FX" type="Sprite2D" parent="Sprites" index="4"]
+visible = false
+z_index = 1
+texture = ExtResource("7_skfry")
+hframes = 8
+vframes = 12
+frame = 64
+
+[node name="Item" type="Sprite2D" parent="Sprites" index="5"]
+z_index = 1
+use_parent_material = true
+texture = ExtResource("8_ikt6d")
+hframes = 8
+vframes = 12
+frame = 64
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+&"PlayerAnimations": ExtResource("9_cicbl")
+}
+
+[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("10_wqosg")
+metadata/_custom_type_script = "uid://bvqwjex4rkub2"
+
+[node name="InCombat" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("attacking_state")]
+script = ExtResource("11_mfjpr")
+attacking_state = NodePath("../Attacking")
+metadata/_custom_type_script = "uid://bvqwjex4rkub2"
+
+[node name="Attacking" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("transition_state")]
+script = ExtResource("12_xf7i1")
+transition_state = NodePath("../InCombat")
+duration = 0.85
+metadata/_custom_type_script = "uid://bvqwjex4rkub2"
+
+[node name="Stats" parent="." index="4"]
+max_hp = 5
+team = 1
+
+[node name="Marker2D" type="Marker2D" parent="." index="5"]
+
+[node name="Hurtbox" type="Area2D" parent="." index="6"]
+script = ExtResource("13_mfjpr")
+metadata/_custom_type_script = "uid://q56ve612ckre"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_xf7i1")
+
+[node name="CombatDetectionArea" type="Area2D" parent="." index="7"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatDetectionArea" index="0"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_mfjpr")
+debug_color = Color(0.619063, 0.355632, 1, 0.0745098)
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="8"]
+collide_with_bodies = false
+
+[node name="Label" type="Label" parent="." index="9"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_entered"]
+[connection signal="body_exited" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_exited"]

@@ -34,7 +34,6 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		#preview.z_index = 1
 		preview_container.add_child(preview)
 		set_drag_preview(preview_container)
-		print(z_index)
 	return self
 	
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:

@@ -1,10 +1,6 @@
 class_name Entity extends CharacterBody2D
 
 # SIGNALS 
-signal lose_hp(amount : int)
-signal gain_hp(amount : int)
-signal lose_mana(amount : int)
-signal gain_mana(amount : int)
 
 @export var stats : Stats
 
@@ -32,6 +28,7 @@ var knockback_progress : float = 0.0
 
 var facing : String = "front"
 var direction : Vector2 = Vector2.ZERO
+var weapon_dir : Vector2
 var action_locked : bool = false
 enum CardinalDirections {
 	NORTH, EAST, SOUTH, WEST
@@ -58,14 +55,14 @@ func _ready() -> void:
 	current_hp = max_hp
 	current_mana = max_mana
 
-func get_hit(damage: int, hit_location : Vector2) -> void:
-	lose_hp.emit(damage)
-	knockback_direction = -(global_position.direction_to(hit_location))
-	knocking_back = true
-	sprites.change_shader(Enums.Shaders.HIT_FLASH)
-	
-	if current_hp <= 0:
-		die()
+#func get_hit(damage: int, hit_location : Vector2) -> void:
+	#lose_hp.emit(damage)
+	#knockback_direction = -(global_position.direction_to(hit_location))
+	#knocking_back = true
+	#sprites.change_shader(Enums.Shaders.HIT_FLASH)
+	#
+	#if current_hp <= 0:
+		#die()
 	
 func _physics_process(delta: float) -> void:
 	if knocking_back:
@@ -79,6 +76,10 @@ func _physics_process(delta: float) -> void:
 			sprites.remove_shader()
 			velocity = Vector2.ZERO
 
+func check_alive(hp: int) -> void:
+	if hp <= 0:
+		die()
+	
 func die() -> void:
 	queue_free()
 
@@ -129,14 +130,8 @@ func is_parried(source: Entity, attack_type: String, damage: int) -> bool:
 	return false
 
 
-#func _on_tree_entered() -> void:
-	#gain_hp.connect(increment_hp)
-	#lose_hp.connect(decrement_hp)
-	#gain_mana.connect(increment_mana)
-	#lose_mana.connect(decrement_mana)
-	#
-#func _on_tree_exited() -> void:
-	#gain_hp.disconnect(increment_hp)
-	#lose_hp.disconnect(decrement_hp)
-	#gain_mana.disconnect(increment_mana)
-	#lose_mana.disconnect(decrement_mana)
+func _on_tree_entered() -> void:
+	stats.update_hp.connect(check_alive)
+	
+func _on_tree_exited() -> void:
+	stats.update_hp.disconnect(check_alive)

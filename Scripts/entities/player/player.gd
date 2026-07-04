@@ -12,7 +12,6 @@ class_name Player extends Entity
 func _ready() -> void:
 	super()
 	state_machine.initialize(self)
-	print("UI LAYER: ", ui.layer)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
@@ -51,11 +50,12 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("item_use"):
 				if held_item.item:
 					state_nodes[States.ATTACKING].target = get_global_mouse_position()
-					held_item.item.use(self)
+					held_item.item.use(self, weapon_dir)
+					
 			
 func update_weapon_direction() -> void:
 	if action_locked:
 		return
-	var weapon_dir : Vector2 = center.global_position.direction_to(get_global_mouse_position())
+	weapon_dir = center.global_position.direction_to(get_global_mouse_position())
 	direction_indicator.rotation = atan2(weapon_dir.y, weapon_dir.x)
-	hurtbox.position = weapon_dir * 20.0 + center.position
+	#hurtbox.position = weapon_dir * 20.0 + center.position

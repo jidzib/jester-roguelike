@@ -15,22 +15,22 @@ var current_mana : int
 @export var attack : float
 @export var defense : float
 
+@export var team : Enums.Teams
+
 func _ready() -> void:
 	current_hp = max_hp
 	current_mana = max_mana
 
 func heal(amount : int) -> void:
 	current_hp = min(current_hp+amount, max_hp)
-	#gain_hp.emit()
 	update_hp.emit(current_hp)
-	print(current_hp)
+	print("HEALED, HP IS NOW ", current_hp)
 func take_damage(damage : int) -> void:
 	current_hp -= damage
 	if current_hp <= 0:
 		pass # DIE
 	update_hp.emit(current_hp)
-	print(current_hp)
-	#lose_hp.emit()
+	print("GOT HIT, HP IS NOW ", current_hp)
 
 func has_enough_mana(cost : int) -> bool:
 	if cost > current_mana:

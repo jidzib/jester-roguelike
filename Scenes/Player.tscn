@@ -8,13 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/entities/player/blockout_head.png" id="6_2n1s8"]
 [ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/entities/player/blockout_fx.png" id="7_3vjad"]
 [ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/entities/player/blockout_item.png" id="8_yt0h1"]
-[ext_resource type="PackedScene" uid="uid://tlitsmdbuqop" path="res://Scenes/Hitbox.tscn" id="9_vd78s"]
 [ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="10_ictha"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="11_1jgrc"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entities/player/attacking.gd" id="12_7wy67"]
 [ext_resource type="Script" uid="uid://cph3depeqbxqd" path="res://Scripts/entities/player/blocking.gd" id="13_q26ax"]
 [ext_resource type="Script" uid="uid://duuc6xobpcyo" path="res://Scripts/entities/drinking_potion.gd" id="14_0pi4m"]
-[ext_resource type="PackedScene" uid="uid://nnl6l8kc4bwq" path="res://Scenes/Hurtbox.tscn" id="14_p01ps"]
 [ext_resource type="PackedScene" uid="uid://cwugmqbycg0ev" path="res://Scenes/HealthUI.tscn" id="15_m7dl7"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entities/spellcasting.gd" id="15_sg6sq"]
 [ext_resource type="PackedScene" uid="uid://bo4ktjqlrfpul" path="res://Scenes/ManaUI.tscn" id="16_48og4"]
@@ -24,10 +22,14 @@
 [ext_resource type="Texture2D" uid="uid://ch8jvlnsygm3u" path="res://assets/ui/direction_indictator.png" id="19_lrhq4"]
 [ext_resource type="AudioStream" uid="uid://dmfwakpfokgd0" path="res://assets/sfx/parry.mp3" id="20_ibubc"]
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://ui.gd" id="21_i2e8t"]
+[ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="23_i2e8t"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gueye"]
 
-[node name="Player" node_paths=PackedStringArray("hotbar", "held_item", "center", "direction_indicator", "camera", "ui", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qidb7"]
+size = Vector2(11, 16)
+
+[node name="Player" node_paths=PackedStringArray("hotbar", "held_item", "center", "direction_indicator", "camera", "ui", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
 script = ExtResource("2_0pi4m")
 hotbar = NodePath("UI/Hotbar")
 held_item = NodePath("HeldItem")
@@ -39,7 +41,6 @@ max_hp = 5
 speed = 100.0
 max_mana = 100
 animation_path = "PlayerAnimations/"
-hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 1: NodePath("StateMachine/Attacking"),
@@ -105,11 +106,6 @@ hframes = 8
 vframes = 12
 frame = 66
 
-[node name="Hitbox" parent="Sprites" index="6" instance=ExtResource("9_vd78s")]
-visible = false
-z_index = 1
-position = Vector2(0, 4)
-
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 &"": SubResource("AnimationLibrary_gueye"),
@@ -143,20 +139,17 @@ script = ExtResource("15_sg6sq")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Hurtbox" parent="." index="4" instance=ExtResource("14_p01ps")]
-position = Vector2(24, -12)
-
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
 position = Vector2(-7, -8)
 zoom = Vector2(3, 3)
 script = ExtResource("17_qidb7")
 
-[node name="HeldItem" parent="." index="6" instance=ExtResource("18_mrbh7")]
+[node name="HeldItem" parent="." index="5" instance=ExtResource("18_mrbh7")]
 visible = false
 z_index = 2
 position = Vector2(9, -5)
 
-[node name="DirectionIndicator" type="Sprite2D" parent="." index="7"]
+[node name="DirectionIndicator" type="Sprite2D" parent="." index="6"]
 modulate = Color(1, 1, 1, 0.509804)
 z_index = 1
 z_as_relative = false
@@ -164,13 +157,13 @@ position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_lrhq4")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("20_ibubc")
 
-[node name="Center" type="Marker2D" parent="." index="9"]
+[node name="Center" type="Marker2D" parent="." index="8"]
 position = Vector2(0, -9)
 
-[node name="UI" type="CanvasLayer" parent="." index="10"]
+[node name="UI" type="CanvasLayer" parent="." index="9"]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("21_i2e8t")
@@ -193,7 +186,15 @@ parent = NodePath("../..")
 [node name="Hotbar" parent="UI" index="2" instance=ExtResource("17_xmpta")]
 position = Vector2(218, 218.667)
 
-[node name="Stats" parent="." index="11"]
+[node name="Stats" parent="." index="10"]
 max_hp = 5
 max_mana = 100
 attack = 1.0
+
+[node name="Hurtbox" type="Area2D" parent="." index="11"]
+script = ExtResource("23_i2e8t")
+metadata/_custom_type_script = "uid://q56ve612ckre"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(-0.5, -8)
+shape = SubResource("RectangleShape2D_qidb7")

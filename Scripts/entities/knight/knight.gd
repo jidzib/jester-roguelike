@@ -42,13 +42,13 @@ func play_animation() -> void:
 	if action_locked:
 		return
 	elif velocity == Vector2.ZERO:
-		animation_player.play(facing+"_idle")
+		animation_player.play(animation_path+facing+"_idle")
 	else:
-		animation_player.play(facing+"_walk")
+		animation_player.play(animation_path+facing+"_walk")
 
 func update_weapon_direction(target: Vector2) -> void:
 	var weapon_dir : Vector2 = center.global_position.direction_to(target)
-	hurtbox.position = target * 20.0 + center.position
+	#hurtbox.position = target * 20.0 + center.position
 	
 func _on_combat_detection_area_body_entered(body: Node2D) -> void:
 	if body is Player:

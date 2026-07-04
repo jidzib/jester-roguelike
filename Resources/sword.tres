@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("1_ngbdt")
 damage = 1
+range = 20.0
+attack_lifetime = 0.2
 texture = ExtResource("2_pk6ra")
 ID = 0
 name = "Sword"

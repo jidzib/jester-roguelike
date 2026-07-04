@@ -6,5 +6,5 @@ class_name Item extends Resource
 @export var name : String
 @export_multiline var description : String
 
-func use(entity: Entity) -> void:
+func use(entity: Entity, target_dir: Vector2) -> void:
 	pass

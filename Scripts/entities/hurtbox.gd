@@ -8,9 +8,14 @@ func _ready() -> void:
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
 	# SET LAYER DEPENDING ON TEAM
+	set_collision_layer_value(parent_stats.team, true)
 	
 func receive_hit(damage : int) -> void:
 	parent_stats.take_damage(damage)
+	parent_stats.owner.sprites.change_shader(Enums.Shaders.HIT_FLASH)
+	await get_tree().create_timer(0.25).timeout
+	parent_stats.owner.sprites.remove_shader()
+	# hitflash
 	# knockback
 	
 #signal landed_hit

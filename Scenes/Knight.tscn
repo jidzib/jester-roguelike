@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cek561y3ub7kl"]
+[gd_scene load_steps=32 format=3 uid="uid://cek561y3ub7kl"]
 
 [ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="1_f4tcm"]
 [ext_resource type="Script" uid="uid://cc1jxux0wmew6" path="res://sprite_group.gd" id="2_kjbd8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/entities/player/blockout_item.png" id="8_04rgk"]
 [ext_resource type="PackedScene" uid="uid://tlitsmdbuqop" path="res://Scenes/Hitbox.tscn" id="8_omj3b"]
 [ext_resource type="Script" uid="uid://h2givxqewg3a" path="res://Scripts/state_machine.gd" id="9_timcb"]
+[ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="10_4jv4l"]
 [ext_resource type="PackedScene" uid="uid://nnl6l8kc4bwq" path="res://Scenes/Hurtbox.tscn" id="10_04rgk"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_kjbd8"]
 [ext_resource type="Script" uid="uid://bmctoi66314qb" path="res://Scripts/entities/knight/in_combat.gd" id="11_j6i3u"]
@@ -738,6 +739,9 @@ _data = {
 &"side_walk": SubResource("Animation_dsq8q")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jv4l"]
+size = Vector2(19, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6i3u"]
 size = Vector2(240, 240)
 
@@ -825,6 +829,14 @@ hframes = 8
 vframes = 12
 frame = 48
 
+[node name="Hurtbox" type="Area2D" parent="Sprites"]
+script = ExtResource("10_4jv4l")
+metadata/_custom_type_script = "uid://q56ve612ckre"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/Hurtbox"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_4jv4l")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("9_timcb")
 starting_state = NodePath("Idle")
@@ -874,6 +886,7 @@ shape = SubResource("RectangleShape2D_i42vn")
 script = ExtResource("15_0ld3f")
 max_hp = 5
 attack = 1.0
+team = 1
 metadata/_custom_type_script = "uid://cwog6wu1xadc0"
 
 [connection signal="body_entered" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_entered"]

@@ -11,3 +11,8 @@ enum Items {
 enum Shaders {
 	HIT_FLASH
 }
+
+enum Teams {
+	PLAYER,
+	ENEMY
+}

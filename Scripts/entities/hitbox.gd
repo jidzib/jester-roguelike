@@ -11,11 +11,12 @@ func _init(_parent_stats : Stats, _lifetime : float, _shape : Shape2D) -> void:
 	
 func _ready() -> void:
 	monitorable = false
-	#area_entered.connect()
+	area_entered.connect(_area_entered)
 	if lifetime > 0:
 		var timer = Timer.new()
 		add_child(timer)
 		timer.timeout.connect(queue_free)
+		timer.start(lifetime)
 		timer.call_deferred("start", lifetime)
 		
 	if shape:
@@ -23,13 +24,15 @@ func _ready() -> void:
 		collision_shape.shape = shape
 		add_child(collision_shape)
 	
-	set_collision_layer_value(1, false)
-	set_collision_mask_value(1, false)
+	#set_collision_layer_value(1, false)
+	#set_collision_mask_value(1, false)
 	# SET MASK DEPENDING ON TEAM
+	set_collision_mask_value(parent_stats.team, true)
 
 func _area_entered(area: Area2D) -> void:
 	if area is not Hurtbox:
 		return
+	# spawn particles, or send signal of successful attack
 	area.receive_hit(parent_stats.attack)
 	
 #@export var parent : Entity
