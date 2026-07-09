@@ -24,7 +24,8 @@ func process_physics(delta: float) -> void:
 		if attack_timer > attack_cooldown:
 			parent.state_nodes[parent.States.ATTACKING].target = parent.target.global_position
 			parent.update_weapon_direction(parent.center.global_position.direction_to(parent.target.center.global_position))
-			parent.state_machine.change_state(attacking_state)
+			parent.held_item.item.use(parent, parent.center.global_position.direction_to(parent.target.center.global_position))
+			#parent.state_machine.change_state(attacking_state)
 		else:	
 			parent.label.text = "CIRCLING"
 			parent.raycast.modulate = Color.GREEN
@@ -37,5 +38,5 @@ func process_physics(delta: float) -> void:
 		parent.raycast.target_position = parent.target.global_position - parent.raycast.global_position
 		parent.velocity = lerp(parent.velocity, parent.direction * parent.speed, parent.acceleration * delta)
 	
-	parent.move_and_slide()
+	#parent.move_and_slide()
 	

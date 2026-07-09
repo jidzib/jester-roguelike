@@ -19,23 +19,15 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	super(delta)
-	state_machine.process_physics(delta)
-	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	direction = direction.normalized()
-	velocity = lerp(velocity, direction * speed, acceleration * delta)
-	move_and_slide()
-
-	if action_locked:
-		return
-	cardinal_direction = get_cardinal_direction(direction)
-	set_facing(cardinal_direction)
-	#update_direction("movement")
-	
-	if direction != Vector2.ZERO:
-		animation_player.play(animation_path+facing+"_walk")
-	else:
-		animation_player.play(animation_path+facing+"_idle")
+	#state_machine.process_physics(delta)
+	## HANDLE MOVEMENT
+	#if not movement_locked:
+		#handle_movement(delta)
+	## HANDLE USE DIRECTION
+	#if not action_locked:
+		#handle_movement_direction()
+		#handle_movement_animation()
+	#move_and_slide()
 	
 func _input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -52,7 +44,22 @@ func _input(event: InputEvent) -> void:
 					state_nodes[States.ATTACKING].target = get_global_mouse_position()
 					held_item.item.use(self, weapon_dir)
 					
-			
+func handle_movement(delta: float) -> void:
+	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	direction = direction.normalized()
+	velocity = lerp(velocity, direction * speed, acceleration * delta)
+
+#func handle_movement_direction() -> void:
+	#cardinal_direction = get_cardinal_direction(direction)
+	#set_facing(cardinal_direction)
+#
+#func handle_movement_animation() -> void:
+	#if direction != Vector2.ZERO:
+		#animation_player.play(animation_path+facing+"_walk")
+	#else:
+		#animation_player.play(animation_path+facing+"_idle")
+		
 func update_weapon_direction() -> void:
 	if action_locked:
 		return

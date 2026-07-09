@@ -13,6 +13,19 @@ enum Shaders {
 }
 
 enum Teams {
+	NONE,
 	PLAYER,
 	ENEMY
+}
+
+enum HitEffects {
+	SWORD_HIT,
+	PARRY_HIT,
+	FIREBALL_HIT
+}
+
+enum Particles {
+	NONE,
+	SWORD_HIT,
+	FIREBALL_HIT
 }

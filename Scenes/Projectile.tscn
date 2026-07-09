@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://2wrydx5a7n4o"]
+[gd_scene load_steps=9 format=3 uid="uid://2wrydx5a7n4o"]
 
 [ext_resource type="Script" uid="uid://b1uj58wkk48o3" path="res://Scripts/projectile.gd" id="1_lal66"]
-[ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="2_k1cl8"]
+[ext_resource type="AudioStream" uid="uid://b10ori3v8riky" path="res://assets/sfx/fireball_woosh.mp3" id="2_0tri7"]
 [ext_resource type="Texture2D" uid="uid://bwgxws6osqno8" path="res://assets/fx/fireball.png" id="2_y0kec"]
 
 [sub_resource type="Animation" id="Animation_ds7j7"]
@@ -75,19 +75,16 @@ _data = {
 &"fly": SubResource("Animation_5i1ty")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0kec"]
-size = Vector2(7, 6)
-
-[node name="Projectile" type="Node2D" node_paths=PackedStringArray("sprite", "animation_player", "hurtbox")]
+[node name="Projectile" type="Node2D" node_paths=PackedStringArray("sprite", "animation_player")]
 top_level = true
 z_index = 2
 script = ExtResource("1_lal66")
 sprite = NodePath("Sprite")
 animation_player = NodePath("AnimationPlayer")
-hurtbox = NodePath("Hurtbox")
 base_damage = 1
-max_range = 150.0
+lifetime = 0.5
 speed = 200.0
+cast_sound = ExtResource("2_0tri7")
 metadata/_custom_type_script = "uid://b1uj58wkk48o3"
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -99,15 +96,3 @@ vframes = 3
 libraries = {
 &"": SubResource("AnimationLibrary_4tued")
 }
-
-[node name="Hurtbox" type="Area2D" parent="."]
-script = ExtResource("2_k1cl8")
-metadata/_custom_type_script = "uid://q56ve612ckre"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1.5, 0)
-shape = SubResource("RectangleShape2D_y0kec")
-debug_color = Color(0.99718, 0, 0.171554, 0.42)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(8, 8)

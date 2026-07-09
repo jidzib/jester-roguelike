@@ -1,17 +1,26 @@
 class_name Hitbox extends Area2D
 
+signal landed_hit(target: Stats)
+var hitlog : Dictionary[Stats, bool]
+
+
 var parent_stats : Stats
 var lifetime : float
 var shape : Shape2D
 
-func _init(_parent_stats : Stats, _lifetime : float, _shape : Shape2D) -> void:
+var hit_effect : HitEffect
+
+func _init(_parent_stats : Stats, _lifetime : float, _shape : Shape2D, _hit_effect : HitEffect) -> void:
 	parent_stats = _parent_stats
 	lifetime = _lifetime
 	shape = _shape
+	hit_effect = _hit_effect
 	
 func _ready() -> void:
 	monitorable = false
 	area_entered.connect(_area_entered)
+	landed_hit.connect(update_hitlog)
+	
 	if lifetime > 0:
 		var timer = Timer.new()
 		add_child(timer)
@@ -24,33 +33,34 @@ func _ready() -> void:
 		collision_shape.shape = shape
 		add_child(collision_shape)
 	
-	#set_collision_layer_value(1, false)
-	#set_collision_mask_value(1, false)
-	# SET MASK DEPENDING ON TEAM
-	set_collision_mask_value(parent_stats.team, true)
+	# DISABLE THIS NODE FROM BEING DETECTED
+	set_collision_layer_value(1, false)
+	
+	# SET NODE TO HIT EVERY TEAM, THEN DISABLE HITTING OWN TEAM
+	set_collision_mask_value(1, true)
+	set_collision_mask_value(2, true)
+	set_collision_mask_value(parent_stats.team, false)
 
+func is_new_hit(entry: Stats) -> bool:
+	if entry in hitlog:
+		return false
+	return true
+
+func update_hitlog(entry: Stats) -> void:
+	hitlog.set(entry, true)
+
+func emit_effects() -> void:
+	hit_effect.emit(global_position) 
+	
 func _area_entered(area: Area2D) -> void:
 	if area is not Hurtbox:
 		return
-	# spawn particles, or send signal of successful attack
-	area.receive_hit(parent_stats.attack)
-	
-#@export var parent : Entity
-#
-#func hitbox() -> void:
-	#pass
-#
-#func _on_area_entered(area: Area2D) -> void:
-	#if area.has_method("hurtbox"):
-		#if area.parent:
-			#if area.parent == parent:
-				#return
-			#if parent.is_parried(area.parent, "attack", area.damage):
-				#return
-		#area.landed_hit.emit() # <- this signal should connect to the player and call their gethit function
-		##parent.get_hit(area.damage, area.global_position)
-		#parent.stats.take_damage(area.damage)
-		#area.particles.emitting = true
-		#if area.parent is Player:
-			#var hit_strength : float = 1
-			#area.parent.camera.camera_shake(hit_strength)
+	if not is_new_hit(area.parent_stats):
+		return
+	emit_effects()
+	if area.is_blocking():
+		area.parry_hit_effect.emit(global_position)
+		return
+	# spawn particles, and/or send signal of successful attack
+	landed_hit.emit(area.parent_stats)
+	area.receive_hit(parent_stats.attack, global_position.direction_to(area.global_position))

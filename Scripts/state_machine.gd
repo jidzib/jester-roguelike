@@ -8,7 +8,7 @@ func initialize(parent: Entity) -> void:
 	current_state = starting_state
 	for child in children:
 		child.parent = parent
-		change_state(child)
+		#change_state(child)
 	change_state(starting_state)
 
 func change_state(new_state : State) -> void:

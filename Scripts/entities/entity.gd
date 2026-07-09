@@ -15,11 +15,6 @@ var current_hp : int
 var current_mana : int
 var acceleration : float = 50.0
 
-var knockback_direction : Vector2 = Vector2.ZERO
-var knocking_back : bool = false
-var knockback_duration : float = 0.4
-var knockback_progress : float = 0.0
-
 # NODES
 @export var sprites : SpriteGroup
 @export var animation_player : AnimationPlayer
@@ -30,6 +25,8 @@ var facing : String = "front"
 var direction : Vector2 = Vector2.ZERO
 var weapon_dir : Vector2
 var action_locked : bool = false
+var movement_locked : bool = false
+
 enum CardinalDirections {
 	NORTH, EAST, SOUTH, WEST
 }
@@ -43,7 +40,8 @@ enum States {
 	BLOCKING,
 	DRINKING_POTION,
 	SPELLCASTING,
-	IN_COMBAT
+	IN_COMBAT,
+	HURT
 }
 
 @export var state_nodes : Dictionary[States, State]
@@ -65,16 +63,16 @@ func _ready() -> void:
 		#die()
 	
 func _physics_process(delta: float) -> void:
-	if knocking_back:
-		velocity = lerp(velocity, knockback_direction * speed, acceleration * delta)
-		move_and_slide()
-		knockback_progress += delta
-		if knockback_progress > knockback_duration:
-			knockback_progress = 0.0
-			knockback_direction = Vector2.ZERO
-			knocking_back = false
-			sprites.remove_shader()
-			velocity = Vector2.ZERO
+	state_machine.process_physics(delta)
+	# HANDLE MOVEMENT
+	if not movement_locked:
+		handle_movement(delta)
+		
+	# HANDLE USE DIRECTION
+	if not action_locked:
+		handle_movement_direction()
+		handle_movement_animation()
+	move_and_slide()
 
 func check_alive(hp: int) -> void:
 	if hp <= 0:
@@ -129,7 +127,23 @@ func is_parried(source: Entity, attack_type: String, damage: int) -> bool:
 			
 	return false
 
+func hit_flash() -> void:
+	sprites.change_shader(Enums.Shaders.HIT_FLASH)
+	await get_tree().create_timer(0.25).timeout
+	sprites.remove_shader()
 
+func handle_movement(delta: float) -> void:
+	pass
+func handle_movement_direction() -> void:
+	cardinal_direction = get_cardinal_direction(direction)
+	set_facing(cardinal_direction)
+
+func handle_movement_animation() -> void:
+	if direction != Vector2.ZERO:
+		animation_player.play(animation_path+facing+"_walk")
+	else:
+		animation_player.play(animation_path+facing+"_idle")
+	
 func _on_tree_entered() -> void:
 	stats.update_hp.connect(check_alive)
 	

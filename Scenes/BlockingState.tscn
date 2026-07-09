@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b30pboje1oh5p"]
 
-[ext_resource type="Script" uid="uid://cph3depeqbxqd" path="res://Scripts/entities/player/blocking.gd" id="1_47x2x"]
+[ext_resource type="Script" uid="uid://cph3depeqbxqd" path="res://Scripts/blocking.gd" id="1_47x2x"]
 
 [node name="BlockingState" type="Node"]
 script = ExtResource("1_47x2x")

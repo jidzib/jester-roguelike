@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://tlitsmdbuqop"]
+[gd_scene load_steps=5 format=3 uid="uid://tlitsmdbuqop"]
 
 [ext_resource type="Script" uid="uid://brx5wdcga4olv" path="res://Scripts/entities/hitbox.gd" id="1_ynlij"]
+[ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/fx/circle.png" id="2_6bbss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynlij"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ast3"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+spread = 180.0
+initial_velocity_min = 86.78
+initial_velocity_max = 207.47
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.4
+color = Color(1, 1, 1, 0.780392)
 
 [node name="Hitbox" type="Area2D"]
 script = ExtResource("1_ynlij")
@@ -11,5 +24,15 @@ metadata/_custom_type_script = "uid://brx5wdcga4olv"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ynlij")
 debug_color = Color(0.476866, 0.43924, 0.999371, 0.42)
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 16
+texture = ExtResource("2_6bbss")
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.25
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_0ast3")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h1urf3ntfase"]
 
-[ext_resource type="Script" uid="uid://b4icgoodyjf82" path="res://loot_screen.gd" id="1_am07x"]
+[ext_resource type="Script" uid="uid://b4icgoodyjf82" path="res://Scripts/loot_screen.gd" id="1_am07x"]
 
 [node name="LootScreen" type="CanvasLayer" node_paths=PackedStringArray("items_container", "color_rect")]
 scale = Vector2(3, 3)

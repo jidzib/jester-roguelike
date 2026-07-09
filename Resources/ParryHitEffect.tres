@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="HitEffect" load_steps=3 format=3 uid="uid://nibp8vnkg3a4"]
+
+[ext_resource type="AudioStream" uid="uid://dmfwakpfokgd0" path="res://assets/sfx/parry.mp3" id="1_21dv3"]
+[ext_resource type="Script" uid="uid://cqg7hi7j3qb0c" path="res://Scripts/hit_effect.gd" id="1_iv3bc"]
+
+[resource]
+script = ExtResource("1_iv3bc")
+audio = ExtResource("1_21dv3")
+particles_id = 0
+metadata/_custom_type_script = "uid://cqg7hi7j3qb0c"

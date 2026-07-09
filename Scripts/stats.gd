@@ -7,8 +7,11 @@ signal update_hp(new_amount : int)
 signal update_mana(new_amount : int)
 
 @export var max_hp : int
-var current_hp : int
-
+var current_hp : int :
+	set(hp):
+		current_hp = hp
+		update_hp.emit(hp)
+		
 @export var max_mana : int
 var current_mana : int
 
@@ -23,15 +26,11 @@ func _ready() -> void:
 
 func heal(amount : int) -> void:
 	current_hp = min(current_hp+amount, max_hp)
-	update_hp.emit(current_hp)
-	print("HEALED, HP IS NOW ", current_hp)
 func take_damage(damage : int) -> void:
 	current_hp -= damage
 	if current_hp <= 0:
 		pass # DIE
-	update_hp.emit(current_hp)
-	print("GOT HIT, HP IS NOW ", current_hp)
-
+	
 func has_enough_mana(cost : int) -> bool:
 	if cost > current_mana:
 		return false

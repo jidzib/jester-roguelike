@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cesjacpgcskw6"]
 
-[ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://ui.gd" id="1_853f1"]
+[ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="1_853f1"]
 [ext_resource type="Script" uid="uid://bwgd7t8folub" path="res://Scripts/play_button.gd" id="1_tt5f1"]
 
 [node name="MainMenu" type="CanvasLayer"]

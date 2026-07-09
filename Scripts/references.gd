@@ -11,3 +11,14 @@ static var ITEMS : Dictionary[Enums.Items, Item] = {
 static var SHADERS : Dictionary[Enums.Shaders, ShaderMaterial] = {
 	Enums.Shaders.HIT_FLASH : load("uid://71q2ybnathvi")
 }
+
+static var HIT_EFFECTS : Dictionary[Enums.HitEffects, HitEffect] = {
+	Enums.HitEffects.SWORD_HIT : load("uid://bqldixtkqm6mc"),
+	Enums.HitEffects.PARRY_HIT : load("uid://nibp8vnkg3a4"),
+	Enums.HitEffects.FIREBALL_HIT : load("uid://c76mpr6qcesih")
+}
+
+static var PARTICLES : Dictionary[Enums.Particles, PackedScene] = {
+	Enums.Particles.SWORD_HIT : load("uid://c7bwdxi6ra7ah"),
+	Enums.Particles.FIREBALL_HIT : load("uid://d2i6fc0p8dsto")
+}

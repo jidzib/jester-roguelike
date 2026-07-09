@@ -13,6 +13,8 @@ func enter() -> void:
 	original_speed = parent.speed
 	parent.speed /= 2
 	
+	parent.hurtbox.blocking = true
+	
 	parent.cardinal_direction = parent.get_cardinal_direction(parent.center.global_position.direction_to(parent.get_global_mouse_position()))
 	parent.set_facing(parent.cardinal_direction)
 	#parent.update_direction("direction", parent.center.global_position.direction_to(parent.get_global_mouse_position()))
@@ -26,3 +28,4 @@ func process_frame(delta: float) -> void:
 func exit() -> void:
 	parent.speed = original_speed
 	parent.action_locked = false
+	parent.hurtbox.blocking = false

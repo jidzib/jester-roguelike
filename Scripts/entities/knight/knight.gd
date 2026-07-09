@@ -5,6 +5,7 @@ class_name Knight extends Entity
 var animation_locked : bool = false
 
 var target : Player
+@export var held_item : HeldItem
 
 # DEBUGGING
 @export var raycast : RayCast2D
@@ -28,20 +29,20 @@ func _physics_process(delta: float) -> void:
 		#sprite_container.scale.x = 1.0
 	#elif velocity.y < 0:
 		#sprite_container.scale.x = -1.0
-	if velocity.is_zero_approx():
-		velocity = Vector2.ZERO
-	state_machine.process_physics(delta)
-	if action_locked:
-		return
-	cardinal_direction = get_cardinal_direction(velocity)
-	set_facing(cardinal_direction)
+	#if velocity.is_zero_approx():
+		#velocity = Vector2.ZERO
+	#state_machine.process_physics(delta)
+	#if action_locked:
+		#return
+	#cardinal_direction = get_cardinal_direction(velocity)
+	#set_facing(cardinal_direction)
 	#update_direction("movement")
-	play_animation()
-
-func play_animation() -> void:
-	if action_locked:
-		return
-	elif velocity == Vector2.ZERO:
+	#play_animation()
+func handle_movement(delta: float) -> void:
+	pass
+	
+func handle_movement_animation() -> void:
+	if velocity == Vector2.ZERO:
 		animation_player.play(animation_path+facing+"_idle")
 	else:
 		animation_player.play(animation_path+facing+"_walk")

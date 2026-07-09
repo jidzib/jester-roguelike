@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jvhbrpdhcuwa"]
 
-[ext_resource type="Script" uid="uid://nfi5e830v0mh" path="res://loot.gd" id="1_ckycu"]
+[ext_resource type="Script" uid="uid://nfi5e830v0mh" path="res://Scripts/loot.gd" id="1_ckycu"]
 [ext_resource type="Texture2D" uid="uid://d4jqory2bblqo" path="res://assets/tiles/loot_bag.png" id="1_tdn7b"]
 
 [node name="Loot" type="TextureButton"]

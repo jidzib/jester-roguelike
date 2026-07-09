@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b0u7tw2anve45" path="res://Scenes/Tiles.tscn" id="2_gl6un"]
 [ext_resource type="PackedScene" uid="uid://d1ckpr4xv2ggp" path="res://Scenes/Player.tscn" id="3_kldst"]
-[ext_resource type="PackedScene" uid="uid://jvhbrpdhcuwa" path="res://Loot.tscn" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://bxcss1foc7uq8" path="res://Knight.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://jvhbrpdhcuwa" path="res://Scenes/Loot.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://cek561y3ub7kl" path="res://Scenes/Knight.tscn" id="5_b2bpf"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -18,7 +18,8 @@ state_nodes = {
 1: NodePath("StateMachine/Attacking"),
 2: NodePath("StateMachine/Blocking"),
 3: NodePath("StateMachine/DrinkingPotion"),
-4: NodePath("StateMachine/Spellcasting")
+4: NodePath("StateMachine/Spellcasting"),
+6: NodePath("StateMachine/Hurt")
 }
 
 [node name="Loot" parent="." instance=ExtResource("4_kldst")]
@@ -31,5 +32,6 @@ offset_bottom = -32.0
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 1: NodePath("StateMachine/Attacking"),
-5: NodePath("StateMachine/InCombat")
+5: NodePath("StateMachine/InCombat"),
+6: NodePath("StateMachine/Hurt")
 }

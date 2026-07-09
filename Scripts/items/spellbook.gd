@@ -7,11 +7,10 @@ var cast_duration : float = 0.5
 func use(entity: Entity, target_dir: Vector2) -> void:
 	if not entity.stats.has_enough_mana(mana_cost):
 		return
-	#entity.lose_mana.emit(mana_cost)
 	entity.stats.use_mana(mana_cost)
 	var new_projectile : Projectile = projectile.instantiate()
-	new_projectile.hurtbox.parent = entity
-	new_projectile.hurtbox.attack_type = "projectile"
+	new_projectile.initialize(entity.stats)
+	
 	new_projectile.global_position = entity.global_position
 	new_projectile.direction = entity.center.global_position.direction_to(entity.get_global_mouse_position())
 	entity.cardinal_direction = entity.get_cardinal_direction(entity.center.global_position.direction_to(entity.get_global_mouse_position()))

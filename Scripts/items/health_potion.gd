@@ -3,6 +3,7 @@ extends PotionItem
 @export var heal_amount : int = 1
 
 func use(entity: Entity, target_dir: Vector2) -> void:
+	super(entity, target_dir)
 	#entity.gain_hp.emit(heal_amount)
 	entity.stats.heal(heal_amount)
 	entity.change_state(entity.state_nodes[entity.States.DRINKING_POTION])

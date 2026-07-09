@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/parry.mp3-3351384bd1db0e91a354306b7325a7ff.mp
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
