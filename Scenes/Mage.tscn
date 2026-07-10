@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://rqrdh44d37if"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_unyy7"]
-[ext_resource type="Script" uid="uid://bb3efy6b8oiae" path="res://mage.gd" id="2_j6mq2"]
+[ext_resource type="Script" uid="uid://bb3efy6b8oiae" path="res://Scripts/mage.gd" id="2_j6mq2"]
 [ext_resource type="Texture2D" uid="uid://bv03allpgloxb" path="res://assets/entities/player/blockout_legs.png" id="2_pay2o"]
 [ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/entities/player/blockout_body.png" id="3_iyoo4"]
 [ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/entities/player/blockout_arms.png" id="4_7i3ca"]
@@ -13,8 +13,8 @@
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_pukvw"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entities/spellcasting.gd" id="11_vjf4w"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="12_crkg3"]
-[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://chasing_target.gd" id="13_vjf4w"]
-[ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://circling_target.gd" id="14_crkg3"]
+[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/chasing_target.gd" id="13_vjf4w"]
+[ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/circling_target.gd" id="14_crkg3"]
 [ext_resource type="Script" uid="uid://cca4li63facwh" path="res://Scripts/entities/held_item.gd" id="16_8pcpf"]
 [ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/spellbook.tres" id="17_i4hpe"]
 

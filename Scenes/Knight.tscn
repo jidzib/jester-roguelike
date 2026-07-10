@@ -11,7 +11,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="9_cicbl"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_wqosg"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/attacking.gd" id="12_xf7i1"]
-[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://chasing_target.gd" id="13_4jv4l"]
+[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/chasing_target.gd" id="13_4jv4l"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="13_ikt6d"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="13_mfjpr"]
 [ext_resource type="PackedScene" uid="uid://2t62ne0qtqjw" path="res://Scenes/HeldItem.tscn" id="14_skfry"]
