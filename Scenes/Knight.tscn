@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxcss1foc7uq8"]
+[gd_scene load_steps=18 format=3 uid="uid://cek561y3ub7kl"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_jjefk"]
 [ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="2_fpytc"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/entities/player/blockout_item.png" id="8_ikt6d"]
 [ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="9_cicbl"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_wqosg"]
-[ext_resource type="Script" uid="uid://bmctoi66314qb" path="res://Scripts/entities/knight/in_combat.gd" id="11_mfjpr"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/attacking.gd" id="12_xf7i1"]
+[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://chasing_target.gd" id="13_4jv4l"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="13_ikt6d"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="13_mfjpr"]
 [ext_resource type="PackedScene" uid="uid://2t62ne0qtqjw" path="res://Scenes/HeldItem.tscn" id="14_skfry"]
@@ -19,23 +19,21 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7i1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfjpr"]
-size = Vector2(240, 240)
-
-[node name="Knight" node_paths=PackedStringArray("center", "held_item", "raycast", "label", "state_nodes") instance=ExtResource("1_jjefk")]
+[node name="Knight" node_paths=PackedStringArray("held_item", "raycast", "label", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
+platform_floor_layers = 4294967040
 script = ExtResource("2_fpytc")
-center = NodePath("Marker2D")
 held_item = NodePath("HeldItem")
 raycast = NodePath("RayCast2D")
 label = NodePath("Label")
-max_hp = 5
 speed = 25.0
 animation_path = "PlayerAnimations/"
+hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 1: NodePath("StateMachine/Attacking"),
-5: NodePath("StateMachine/InCombat"),
-6: NodePath("StateMachine/Hurt")
+6: NodePath("StateMachine/Hurt"),
+7: NodePath("StateMachine/CirclingTarget"),
+8: NodePath("StateMachine/ChasingTarget")
 }
 
 [node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
@@ -52,7 +50,7 @@ use_parent_material = true
 texture = ExtResource("4_wqosg")
 hframes = 8
 vframes = 12
-frame = 64
+frame = 56
 
 [node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
 z_index = 1
@@ -68,7 +66,7 @@ use_parent_material = true
 texture = ExtResource("6_xf7i1")
 hframes = 8
 vframes = 12
-frame = 64
+frame = 56
 
 [node name="FX" type="Sprite2D" parent="Sprites" index="4"]
 visible = false
@@ -76,7 +74,7 @@ z_index = 1
 texture = ExtResource("7_skfry")
 hframes = 8
 vframes = 12
-frame = 64
+frame = 56
 
 [node name="Item" type="Sprite2D" parent="Sprites" index="5"]
 visible = false
@@ -99,20 +97,23 @@ starting_state = NodePath("Idle")
 script = ExtResource("10_wqosg")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="InCombat" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("attacking_state")]
-script = ExtResource("11_mfjpr")
-attacking_state = NodePath("../Attacking")
-metadata/_custom_type_script = "uid://bvqwjex4rkub2"
-
-[node name="Attacking" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("transition_state")]
+[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("transition_state")]
 script = ExtResource("12_xf7i1")
-transition_state = NodePath("../InCombat")
+transition_state = NodePath("../Idle")
 duration = 0.85
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Hurt" type="Node" parent="StateMachine" index="3" node_paths=PackedStringArray("idle_state")]
+[node name="Hurt" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("13_ikt6d")
-idle_state = NodePath("../InCombat")
+idle_state = NodePath("../Idle")
+metadata/_custom_type_script = "uid://bvqwjex4rkub2"
+
+[node name="CirclingTarget" type="Node" parent="StateMachine" index="3"]
+script = ExtResource("13_4jv4l")
+metadata/_custom_type_script = "uid://bvqwjex4rkub2"
+
+[node name="ChasingTarget" type="Node" parent="StateMachine" index="4"]
+script = ExtResource("13_4jv4l")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Stats" parent="." index="4"]
@@ -120,9 +121,7 @@ max_hp = 5
 attack = 1.0
 team = 2
 
-[node name="Marker2D" type="Marker2D" parent="." index="5"]
-
-[node name="Hurtbox" type="Area2D" parent="." index="6"]
+[node name="Hurtbox" type="Area2D" parent="." index="5"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("13_mfjpr")
@@ -131,27 +130,19 @@ metadata/_custom_type_script = "uid://q56ve612ckre"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_xf7i1")
 
-[node name="CombatDetectionArea" type="Area2D" parent="." index="7"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatDetectionArea" index="0"]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_mfjpr")
-debug_color = Color(0.619063, 0.355632, 1, 0.0745098)
-
-[node name="RayCast2D" type="RayCast2D" parent="." index="8"]
+[node name="RayCast2D" type="RayCast2D" parent="." index="6"]
 collide_with_bodies = false
 
-[node name="Label" type="Label" parent="." index="9"]
+[node name="Label" type="Label" parent="." index="7"]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="HeldItem" parent="." index="10" instance=ExtResource("14_skfry")]
+[node name="HeldItem" parent="." index="8" instance=ExtResource("14_skfry")]
 visible = false
 z_index = 2
 position = Vector2(9, -5)
 item = ExtResource("15_ikt6d")
 
-[connection signal="body_entered" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_entered"]
-[connection signal="body_exited" from="CombatDetectionArea" to="." method="_on_combat_detection_area_body_exited"]
+[node name="Center" parent="." index="9"]
+position = Vector2(0, -8)

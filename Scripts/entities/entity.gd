@@ -5,14 +5,7 @@ class_name Entity extends CharacterBody2D
 @export var stats : Stats
 
 # STATS
-@export var max_hp : int
-var current_hp : int
-@export var attack : float
-@export var defense : float
-@export var magic : float
 @export var speed : float
-@export var max_mana : int
-var current_mana : int
 var acceleration : float = 50.0
 
 # NODES
@@ -20,6 +13,7 @@ var acceleration : float = 50.0
 @export var animation_player : AnimationPlayer
 @export var animation_path : String = ""
 @export var hurtbox : Hurtbox
+@export var center : Marker2D
 
 var facing : String = "front"
 var direction : Vector2 = Vector2.ZERO
@@ -41,7 +35,9 @@ enum States {
 	DRINKING_POTION,
 	SPELLCASTING,
 	IN_COMBAT,
-	HURT
+	HURT,
+	CIRCLING_TARGET,
+	CHASING_TARGET
 }
 
 @export var state_nodes : Dictionary[States, State]
@@ -50,8 +46,7 @@ var current_state : States = States.IDLE
 @export var sound : AudioStreamPlayer2D
 
 func _ready() -> void:
-	current_hp = max_hp
-	current_mana = max_mana
+	state_machine.initialize(self)
 
 #func get_hit(damage: int, hit_location : Vector2) -> void:
 	#lose_hp.emit(damage)
@@ -61,7 +56,7 @@ func _ready() -> void:
 	#
 	#if current_hp <= 0:
 		#die()
-	
+
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
 	# HANDLE MOVEMENT
@@ -73,6 +68,9 @@ func _physics_process(delta: float) -> void:
 		handle_movement_direction()
 		handle_movement_animation()
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	state_machine.process_frame(delta)
 
 func check_alive(hp: int) -> void:
 	if hp <= 0:
@@ -124,7 +122,6 @@ func is_parried(source: Entity, attack_type: String, damage: int) -> bool:
 		if cardinal_direction == opposites[source.cardinal_direction]:
 			sound.play()
 			return true
-			
 	return false
 
 func hit_flash() -> void:

@@ -8,7 +8,7 @@ extends HBoxContainer
 	set(value):
 		max_hearts = value
 		update_max_hearts(value)
-		
+
 var current_hearts : int
 
 var HEARTS : Dictionary[int, Sprite2D] = {}
@@ -39,20 +39,9 @@ func update_max_hearts(new_amount : int) -> void:
 func update(new_amount: int) -> void:
 	if new_amount > current_hearts:
 		gain_hearts(new_amount - current_hearts)
-		#for i in range(new_amount - current_hearts):
-			#if current_hearts >= max_hearts:
-				#return
-			#HEARTS[current_hearts].frame = 0
-			#current_hearts += 1
 	elif new_amount < current_hearts:
 		lose_hearts(current_hearts - new_amount)
-		#if new_amount < 0:
-			#return
-		#for i in range(current_hearts - new_amount):
-			#HEARTS[current_hearts-1].frame = 1
-			#current_hearts -= 1
-			#if current_hearts <= 0:
-				#return
+
 
 func gain_hearts(amount : int) -> void:
 	if amount < 0:
@@ -67,19 +56,27 @@ func lose_hearts(amount : int) -> void:
 	if amount < 0:
 		return
 	for i in range(amount):
-		HEARTS[current_hearts-1].frame = 1
-		current_hearts -= 1
+		lose_heart(HEARTS[current_hearts-1])
 		if current_hearts <= 0:
 			return
-		
-func _on_tree_entered() -> void:
-	#parent.lose_hp.connect(lose_hearts)
-	#parent.gain_hp.connect(gain_hearts)
+
+func lose_heart(heart: Sprite2D) -> void:
+	current_hearts -= 1
+	var tween = create_tween()
+	var shake_strength : int = Util.RNG.randi_range(1, 4)
+	var duration : float = 0.05
+	tween.tween_property(heart, "offset", Vector2(-shake_strength, -shake_strength), duration)
+	tween.tween_property(heart, "offset", Vector2(shake_strength, shake_strength), duration)
+	tween.tween_property(heart, "offset", Vector2(), duration)
+	tween.tween_property(heart, "offset", Vector2(shake_strength, -shake_strength), duration)
+	tween.tween_property(heart, "offset", Vector2(-shake_strength, shake_strength), duration)
+	tween.tween_property(heart, "offset", Vector2(), duration)
+	var num_tweens : int = 6
+	await get_tree().create_timer(duration*num_tweens).timeout
+	heart.frame = 1
 	
+func _on_tree_entered() -> void:
 	parent.stats.update_hp.connect(update)
 	
 func _on_tree_exited() -> void:
-	#parent.lose_hp.disconnect(lose_hearts)
-	#parent.gain_hp.disconnect(gain_hearts)
-	
 	parent.stats.update_hp.disconnect(update)

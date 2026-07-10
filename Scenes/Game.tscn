@@ -28,10 +28,12 @@ offset_top = -64.0
 offset_right = 128.0
 offset_bottom = -32.0
 
-[node name="Knight2" parent="." node_paths=PackedStringArray("state_nodes") instance=ExtResource("5_b2bpf")]
+[node name="Knight" parent="." node_paths=PackedStringArray("state_nodes") instance=ExtResource("5_b2bpf")]
+position = Vector2(-106, 21)
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 1: NodePath("StateMachine/Attacking"),
-5: NodePath("StateMachine/InCombat"),
-6: NodePath("StateMachine/Hurt")
+6: NodePath("StateMachine/Hurt"),
+7: NodePath("StateMachine/CirclingTarget"),
+8: NodePath("StateMachine/ChasingTarget")
 }

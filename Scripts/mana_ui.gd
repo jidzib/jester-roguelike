@@ -3,8 +3,8 @@ extends ProgressBar
 @export var parent : Player
 
 func _ready() -> void:
-	max_value = parent.max_mana
-	value = parent.max_mana
+	max_value = parent.stats.max_mana
+	value = parent.stats.max_mana
 
 func update_mana(new_amount : int) -> void:
 	value = new_amount

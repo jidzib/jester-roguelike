@@ -28,4 +28,8 @@ func receive_hit(damage : int, coming_from: Vector2, knockback_strength : float 
 	hurt_state.knockback_strength = knockback_strength
 	hurt_state.knockback_direction = coming_from
 	parent.change_state(hurt_state)
-	
+
+func disable() -> void:
+	monitorable = false
+func enable() -> void:
+	monitorable = true

@@ -29,12 +29,12 @@ func enter() -> void:
 	#parent.update_direction("direction", parent.center.global_position.direction_to(target))
 	parent.animation_player.play(parent.animation_path+parent.facing+"_"+attack_name)
 
-	print("ATTACKING")
 func process_frame(delta: float) -> void:
 	progress += delta
 	if progress > duration:
 		parent.change_state(transition_state)
 
 func exit() -> void:
+	print("EXITING ATACK")
 	parent.action_locked = false
 	parent.speed = original_speed

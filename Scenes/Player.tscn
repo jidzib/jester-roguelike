@@ -28,19 +28,17 @@
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gueye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qidb7"]
-size = Vector2(11, 16)
+size = Vector2(10, 16)
 
-[node name="Player" node_paths=PackedStringArray("hotbar", "held_item", "center", "direction_indicator", "camera", "ui", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
+[node name="Player" node_paths=PackedStringArray("hotbar", "held_item", "direction_indicator", "camera", "ui", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
+platform_floor_layers = 4294967040
 script = ExtResource("2_0pi4m")
 hotbar = NodePath("UI/Hotbar")
 held_item = NodePath("HeldItem")
-center = NodePath("Center")
 direction_indicator = NodePath("DirectionIndicator")
 camera = NodePath("Camera2D")
 ui = NodePath("UI")
-max_hp = 5
 speed = 100.0
-max_mana = 100
 animation_path = "PlayerAnimations/"
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
@@ -168,10 +166,7 @@ texture = ExtResource("19_lrhq4")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("20_ibubc")
 
-[node name="Center" type="Marker2D" parent="." index="8"]
-position = Vector2(0, -9)
-
-[node name="UI" type="CanvasLayer" parent="." index="9"]
+[node name="UI" type="CanvasLayer" parent="." index="8"]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("21_i2e8t")
@@ -194,17 +189,20 @@ parent = NodePath("../..")
 [node name="Hotbar" parent="UI" index="2" instance=ExtResource("17_xmpta")]
 position = Vector2(218, 218.667)
 
-[node name="Stats" parent="." index="10"]
+[node name="Stats" parent="." index="9"]
 max_hp = 5
 max_mana = 100
 attack = 1.0
 team = 1
 
-[node name="Hurtbox" type="Area2D" parent="." index="11"]
+[node name="Hurtbox" type="Area2D" parent="." index="10"]
 collision_mask = 0
 script = ExtResource("23_i2e8t")
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(-0.5, -8)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_qidb7")
+
+[node name="Center" parent="." index="11"]
+position = Vector2(0, -8)

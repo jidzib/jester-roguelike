@@ -1,7 +1,7 @@
-class_name Knight extends Entity
+class_name Mage extends Entity
 
 var aggro_range : float = 320.0
-var attack_range : float = 32.0
+var attack_range : float = 100.0
 
 var attack_cooldown : float = 2.0
 var attack_ready : float = true
@@ -31,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	
 func _process(delta: float) -> void:
-	super(delta)
 	display_state()
 	raycast.target_position = (center.global_position.direction_to(Player.player.center.global_position) * 
 			center.global_position.distance_to(Player.player.center.global_position))
@@ -46,8 +45,9 @@ func _process(delta: float) -> void:
 			if attack_ready:
 				attack_ready = false
 				held_item.item.use(self, center.global_position.direction_to(Player.player.center.global_position))
+				stats.restore_mana(held_item.item.mana_cost)
 				attack_timer.start()
-				#change_state(state_nodes[Entity.States.ATTACKING])
+				change_state(state_nodes[Entity.States.SPELLCASTING]) # MAYBE DON'T NEED THIS, USE ALRDY DOES IT
 			else:
 				if current_state != States.CIRCLING_TARGET:
 					change_state(state_nodes[Entity.States.CIRCLING_TARGET])
@@ -64,3 +64,4 @@ func player_in_aggro_range() -> bool:
 	return center.global_position.distance_to(Player.player.center.global_position) <= aggro_range
 func player_in_attack_range() -> bool:
 	return center.global_position.distance_to(Player.player.center.global_position) <= attack_range
+	

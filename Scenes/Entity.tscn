@@ -8,11 +8,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnyw1"]
 size = Vector2(9, 16)
 
-[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("stats", "sprites", "animation_player", "state_machine")]
+[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("stats", "sprites", "animation_player", "center", "state_machine")]
 script = ExtResource("1_rnyw1")
 stats = NodePath("Stats")
 sprites = NodePath("Sprites")
 animation_player = NodePath("AnimationPlayer")
+center = NodePath("Center")
 state_machine = NodePath("StateMachine")
 metadata/_custom_type_script = "uid://cfrbiuspyci4r"
 
@@ -31,6 +32,8 @@ metadata/_custom_type_script = "uid://h2givxqewg3a"
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("4_wtxqo")
 metadata/_custom_type_script = "uid://cwog6wu1xadc0"
+
+[node name="Center" type="Marker2D" parent="."]
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

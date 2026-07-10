@@ -10,6 +10,7 @@ var knockback_direction : Vector2
 func enter() -> void:
 	parent.action_locked = true
 	parent.movement_locked = true
+	parent.hurtbox.disable()
 	
 func process_physics(delta: float) -> void:
 	knockback_strength -= delta * deceleration
@@ -25,4 +26,4 @@ func exit() -> void:
 	parent.action_locked = false
 	parent.movement_locked = false
 	set_knockback(0, Vector2.ZERO)
-	print("LEAVING")
+	parent.hurtbox.enable()

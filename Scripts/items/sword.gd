@@ -12,7 +12,7 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	# spawn hitbox in
 	var shape : Shape2D = RectangleShape2D.new()
 	var hitbox : Hitbox = Hitbox.new(entity.stats, attack_lifetime, shape, References.HIT_EFFECTS[hit_effect])
-	hitbox.position = target_dir * range
+	hitbox.position = target_dir * range + entity.center.position
 	entity.add_child(hitbox)
 	entity.change_state(entity.state_nodes[entity.States.ATTACKING])
 	

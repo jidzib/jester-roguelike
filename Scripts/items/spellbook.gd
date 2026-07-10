@@ -12,9 +12,9 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	new_projectile.initialize(entity.stats)
 	
 	new_projectile.global_position = entity.global_position
-	new_projectile.direction = entity.center.global_position.direction_to(entity.get_global_mouse_position())
-	entity.cardinal_direction = entity.get_cardinal_direction(entity.center.global_position.direction_to(entity.get_global_mouse_position()))
-	entity.set_facing(entity.cardinal_direction)	
+	new_projectile.direction = target_dir
+	entity.cardinal_direction = entity.get_cardinal_direction(target_dir)
+	entity.set_facing(entity.cardinal_direction)
 	entity.add_child(new_projectile)
 	
 	var spellcasting_state : State = entity.state_nodes[entity.States.SPELLCASTING]
