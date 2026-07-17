@@ -2,7 +2,6 @@ extends State
 
 func enter() -> void:
 	parent.current_state = parent.States.CHASING_TARGET
-	print("CHASING")
 
 func process_physics(delta: float) -> void:
 	parent.direction = parent.global_position.direction_to(parent.target.global_position)

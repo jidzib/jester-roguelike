@@ -14,5 +14,6 @@ use_sound = ExtResource("3_0bu56")
 texture = ExtResource("2_pk6ra")
 ID = 0
 name = "Sword"
+rarity = 1
 description = "Click on enemies to attack them!"
 metadata/_custom_type_script = "uid://bn877kfiutafu"

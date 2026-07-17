@@ -3,12 +3,14 @@ class_name Player extends Entity
 static var player : Player
 
 @export var hotbar : Hotbar
-@export var held_item : HeldItem
+#@export var held_item : HeldItem
 @export var direction_indicator : Sprite2D
 @export var camera : Camera2D
 
 @export var ui : UI
 # STATE MACHINE
+
+var held_item : ItemSlot = null
 
 func _ready() -> void:
 	super()
@@ -41,7 +43,7 @@ func _input(event: InputEvent) -> void:
 	if not action_locked:
 		if event is InputEventMouseButton and event.pressed:
 			if event.is_action_pressed("item_use"):
-				if held_item.item:
+				if held_item and held_item.item:
 					state_nodes[States.ATTACKING].target = get_global_mouse_position() # MAYBE HAVE A TARGET_DIR VARIABLE IN ENTITY CLASS
 					held_item.item.use(self, weapon_dir)
 					

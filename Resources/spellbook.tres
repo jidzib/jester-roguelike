@@ -8,5 +8,6 @@ script = ExtResource("1_whfmv")
 texture = ExtResource("2_3oqxw")
 ID = 3
 name = "Spellbook"
+rarity = 2
 description = "Use to shoot fireballs!"
 metadata/_custom_type_script = "uid://d371i8b12lp6q"

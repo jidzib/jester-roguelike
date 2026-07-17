@@ -22,3 +22,8 @@ static var PARTICLES : Dictionary[Enums.Particles, PackedScene] = {
 	Enums.Particles.SWORD_HIT : load("uid://c7bwdxi6ra7ah"),
 	Enums.Particles.FIREBALL_HIT : load("uid://d2i6fc0p8dsto")
 }
+
+static var ENEMIES : Dictionary[Enums.Enemies, PackedScene] = {
+	Enums.Enemies.KNIGHT : load("uid://cek561y3ub7kl"),
+	Enums.Enemies.MAGE : load("uid://rqrdh44d37if")
+}

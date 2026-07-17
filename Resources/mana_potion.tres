@@ -9,5 +9,6 @@ restore_amount = 20
 texture = ExtResource("2_cn1i8")
 ID = 4
 name = "Mana Potion"
+rarity = 1
 description = "Use to restore mana"
 metadata/_custom_type_script = "uid://d4ne3pwdw70wg"

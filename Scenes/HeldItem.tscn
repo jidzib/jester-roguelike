@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://2t62ne0qtqjw"]
+[gd_scene load_steps=3 format=3 uid="uid://2t62ne0qtqjw"]
 
 [ext_resource type="Script" uid="uid://cca4li63facwh" path="res://Scripts/entities/held_item.gd" id="1_vhxq4"]
+[ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="2_wn2ec"]
 
 [node name="HeldItem" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_vhxq4")
 sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://cca4li63facwh"
+
+[node name="ItemSlot" type="Control" parent="."]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_wn2ec")
+metadata/_custom_type_script = "uid://b2n0l7wm8dc5x"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

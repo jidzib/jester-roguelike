@@ -8,5 +8,6 @@ script = ExtResource("1_x6u6w")
 texture = ExtResource("2_ron5c")
 ID = 1
 name = "Shield"
+rarity = 2
 description = "Use to block enemy melee attacks"
 metadata/_custom_type_script = "uid://c2oydjj6qxhuc"

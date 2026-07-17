@@ -10,32 +10,31 @@
 [ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/entities/player/blockout_item.png" id="7_i0tpb"]
 [ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="8_pay2o"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="9_iyoo4"]
-[ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entities/player/idle.gd" id="10_pukvw"]
-[ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entities/spellcasting.gd" id="11_vjf4w"]
+[ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_pukvw"]
+[ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entity_states/spellcasting.gd" id="11_vjf4w"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="12_crkg3"]
-[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/chasing_target.gd" id="13_vjf4w"]
-[ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/circling_target.gd" id="14_crkg3"]
-[ext_resource type="Script" uid="uid://cca4li63facwh" path="res://Scripts/entities/held_item.gd" id="16_8pcpf"]
+[ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="13_vjf4w"]
+[ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="14_crkg3"]
+[ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="16_jwa5v"]
 [ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/spellbook.tres" id="17_i4hpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i3ca"]
 size = Vector2(10, 24)
 
-[node name="Mage" node_paths=PackedStringArray("held_item", "raycast", "label", "hurtbox", "state_nodes") instance=ExtResource("1_unyy7")]
+[node name="Mage" node_paths=PackedStringArray("held_item", "raycast", "hurtbox", "state_nodes") instance=ExtResource("1_unyy7")]
 platform_floor_layers = 4294967040
 script = ExtResource("2_j6mq2")
 held_item = NodePath("HeldItem")
 raycast = NodePath("RayCast2D")
-label = NodePath("Label")
 speed = 50.0
 animation_path = "PlayerAnimations/"
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 4: NodePath("StateMachine/Spellcasting"),
-6: NodePath("StateMachine/Hurt"),
-7: NodePath("StateMachine/CirclingTarget"),
-8: NodePath("StateMachine/ChasingTarget")
+5: NodePath("StateMachine/Hurt"),
+6: NodePath("StateMachine/CirclingTarget"),
+7: NodePath("StateMachine/ChasingTarget")
 }
 
 [node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
@@ -131,11 +130,14 @@ metadata/_custom_type_script = "uid://q56ve612ckre"
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_7i3ca")
 
-[node name="HeldItem" type="Node2D" parent="." index="7"]
+[node name="HeldItem" type="Control" parent="." index="7"]
 visible = false
-script = ExtResource("16_8pcpf")
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("16_jwa5v")
 item = ExtResource("17_i4hpe")
-metadata/_custom_type_script = "uid://cca4li63facwh"
+metadata/_custom_type_script = "uid://b2n0l7wm8dc5x"
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="8"]
 modulate = Color(1, 0.286275, 1, 1)

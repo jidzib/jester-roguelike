@@ -12,8 +12,14 @@ var selected : bool = false
 
 func _ready() -> void:
 	z_index = 1
+
+func remove_item() -> void:
+	item = null
+	update_display()
 	
 func update_display() -> void:
+	if not sprite:
+		return
 	if item:
 		sprite.texture = item.texture
 	else:
@@ -35,7 +41,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 		preview_container.add_child(preview)
 		set_drag_preview(preview_container)
 	return self
-	
+
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data.item:
 		return true

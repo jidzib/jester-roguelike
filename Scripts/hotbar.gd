@@ -7,7 +7,7 @@ class_name Hotbar extends Node2D
 @export var item_slot5 : ItemSlot
 
 var items : Dictionary[int, ItemSlot] = {}
-var selected_slot : int = 1
+var selected_slot : int = 0
 
 func _ready() -> void:
 	items = {
@@ -38,14 +38,16 @@ func remove(item: Item) -> void:
 
 func set_selected(slot: int, player: Player) -> void:
 	if slot != selected_slot:
-		items[selected_slot].selected = false
-		items[selected_slot].update_display()
+		if selected_slot:
+			items[selected_slot].selected = false
+			items[selected_slot].update_display()
 		items[slot].selected = true
 		items[slot].update_display()
 		selected_slot = slot
-	if not items[selected_slot].item:
-		player.held_item.item = null
-		player.held_item.update_display()
-	else:
-		player.held_item.item = items[selected_slot].item
-		player.held_item.update_display()
+		player.held_item = items[selected_slot]
+	#if not items[selected_slot].item:
+		#player.held_item.item = null
+		#player.held_item.update_display()
+	#else:
+		#player.held_item.item = items[selected_slot].item
+		#player.held_item.update_display()

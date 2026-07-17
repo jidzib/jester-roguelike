@@ -1,5 +1,6 @@
 @tool
 class_name HeldItem extends Node2D
+@export var item_slot : ItemSlot
 @export var item : Item :
 	set(value):
 		item = value

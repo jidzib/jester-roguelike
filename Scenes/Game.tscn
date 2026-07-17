@@ -1,16 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://cq336y4xds2th"]
+[gd_scene load_steps=5 format=3 uid="uid://cq336y4xds2th"]
 
-[ext_resource type="PackedScene" uid="uid://b0u7tw2anve45" path="res://Scenes/Tiles.tscn" id="2_gl6un"]
+[ext_resource type="Script" uid="uid://bv7fsjpbjppc2" path="res://Scenes/game.gd" id="1_kldst"]
 [ext_resource type="PackedScene" uid="uid://d1ckpr4xv2ggp" path="res://Scenes/Player.tscn" id="3_kldst"]
+[ext_resource type="PackedScene" uid="uid://cahb0g5s4q4kl" path="res://Level.tscn" id="4_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://jvhbrpdhcuwa" path="res://Scenes/Loot.tscn" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://cek561y3ub7kl" path="res://Scenes/Knight.tscn" id="5_b2bpf"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Tiles" parent="." instance=ExtResource("2_gl6un")]
-z_index = -1
-tile_map_data = PackedByteArray("AAD7//3/AAAAAAEAAAD7//7/AAAAAAEAAAD7////AAAAAAEAAAD7/wAAAAAAAAEAAAD7/wEAAAAAAAEAAAD7/wIAAAAAAAEAAAD8//3/AAAAAAEAAAD8//7/AAAAAAEAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAEAAAD8/wIAAAAAAAEAAAD9//3/AAAAAAEAAAD9//7/AAAAAAEAAAD9////AAAAAAEAAAD9/wAAAAAAAAEAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD+//3/AAAAAAEAAAD+//7/AAAAAAEAAAD+////AAAAAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wIAAAAAAAEAAAD///3/AAAAAAEAAAD///7/AAAAAAEAAAD/////AAAAAAEAAAD//wAAAAAAAAEAAAD//wEAAAAAAAEAAAD//wIAAAAAAAEAAAAAAP3/AAAAAAEAAAAAAP7/AAAAAAEAAAAAAP//AAAAAAEAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAABAP3/AAAAAAEAAAABAP7/AAAAAAEAAAABAP//AAAAAAEAAAABAAAAAAAAAAEAAAABAAEAAAAAAAEAAAABAAIAAAAAAAEAAAACAP3/AAAAAAEAAAACAP7/AAAAAAEAAAACAP//AAAAAAEAAAACAAAAAAAAAAEAAAACAAEAAAAAAAEAAAACAAIAAAAAAAEAAAADAP3/AAAAAAEAAAADAP7/AAAAAAEAAAADAP//AAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAAEAP3/AAAAAAEAAAAEAP7/AAAAAAEAAAAEAP//AAAAAAEAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAIAAAAAAAEAAAAFAP3/AAACAAAAAAAFAP7/AAACAAAAAAAFAP//AAACAAAAAAAFAAAAAAACAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAD6//3/AAACAAEAAAD6//7/AAACAAEAAAD6////AAACAAEAAAD6/wAAAAACAAEAAAD6/wEAAAACAAEAAAD6/wIAAAACAAEAAAD7//v/AAABAAAAAAD7//z/AAABAAEAAAD8//v/AAABAAAAAAD8//z/AAABAAEAAAD9//v/AAABAAAAAAD9//z/AAABAAEAAAD+//v/AAABAAAAAAD+//z/AAABAAEAAAD///v/AAABAAAAAAD///z/AAABAAEAAAAAAPv/AAABAAAAAAAAAPz/AAABAAEAAAABAPv/AAABAAAAAAABAPz/AAABAAEAAAACAPv/AAABAAAAAAACAPz/AAABAAEAAAADAPv/AAABAAAAAAADAPz/AAABAAEAAAAEAPv/AAABAAAAAAAEAPz/AAABAAEAAAD6//v/AAACAAEAAAD6//z/AAACAAEAAAAFAPv/AAACAAAAAAAFAPz/AAACAAAAAAA=")
+script = ExtResource("1_kldst")
 
 [node name="Player" parent="." node_paths=PackedStringArray("state_nodes") instance=ExtResource("3_kldst")]
 state_nodes = {
@@ -19,6 +16,7 @@ state_nodes = {
 2: NodePath("StateMachine/Blocking"),
 3: NodePath("StateMachine/DrinkingPotion"),
 4: NodePath("StateMachine/Spellcasting"),
+5: NodePath("StateMachine/Hurt"),
 6: NodePath("StateMachine/Hurt")
 }
 
@@ -28,12 +26,6 @@ offset_top = -64.0
 offset_right = 128.0
 offset_bottom = -32.0
 
-[node name="Knight" parent="." node_paths=PackedStringArray("state_nodes") instance=ExtResource("5_b2bpf")]
-position = Vector2(-106, 21)
-state_nodes = {
-0: NodePath("StateMachine/Idle"),
-1: NodePath("StateMachine/Attacking"),
-6: NodePath("StateMachine/Hurt"),
-7: NodePath("StateMachine/CirclingTarget"),
-8: NodePath("StateMachine/ChasingTarget")
-}
+[node name="Level" parent="." instance=ExtResource("4_b2bpf")]
+position = Vector2(0, -2)
+level_number = 10

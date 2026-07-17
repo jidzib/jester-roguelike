@@ -1,19 +1,40 @@
-extends TextureButton
+class_name Loot extends TextureButton
+
+@export var level : int = 1
 
 var items : Array[Item] = []
 
-var num_items : int = 5
-
 func _ready() -> void:
-	#var rng : RandomNumberGenerator = RandomNumberGenerator.new()
-	for i in range(num_items):
-		var rand : int = Util.RNG.randi_range(0, Enums.Items.size())
-		var item : Item
-		if rand == Enums.Items.size():
-			item = null
-		else:
-			item = References.ITEMS[rand]
-		items.append(item)
+	initialize_loot()
+
+func initialize_loot() -> void:
+	Items.build_rarity_pools() # LOWKEY INEFFICIENT CALLING THIS ON EACH LOOT BUT IS CHILL
+	
+	var selected_loot : Dictionary[Item, bool] = {}
+	for i in range(level):
+		var rand : float = Util.RNG.randf_range(0.0, 1.0)
+		var pool_id : Items.RARITY
+		print(rand)
+		if rand <= 0.5:
+			#COMMON
+			pool_id = Items.RARITY.COMMON
+		elif rand <= 0.85:
+			# UNCOMMON
+			pool_id = Items.RARITY.UNCOMMON
+			pass
+		else: # rand <= 1.0
+			# RARE
+			pool_id = Items.RARITY.RARE
+			pass
+		var item : Item = pick_from_pool(pool_id)
+		if item not in selected_loot:
+			items.append(item)
+			if item is not PotionItem:
+				selected_loot.set(item, true)
+
+func pick_from_pool(pool_id: Items.RARITY) -> Item:
+	var pool : Array = Items.rarity_pools[pool_id]
+	return References.ITEMS[pool.pick_random()]
 
 func _on_pressed() -> void:
 	if not player_in_range():

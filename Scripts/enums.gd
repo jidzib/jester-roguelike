@@ -29,3 +29,8 @@ enum Particles {
 	SWORD_HIT,
 	FIREBALL_HIT
 }
+
+enum Enemies {
+	KNIGHT,
+	MAGE
+}

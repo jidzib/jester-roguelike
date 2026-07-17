@@ -2,6 +2,8 @@ class_name Entity extends CharacterBody2D
 
 # SIGNALS 
 
+signal died
+
 @export var stats : Stats
 
 # STATS
@@ -34,7 +36,6 @@ enum States {
 	BLOCKING,
 	DRINKING_POTION,
 	SPELLCASTING,
-	IN_COMBAT,
 	HURT,
 	CIRCLING_TARGET,
 	CHASING_TARGET
@@ -47,15 +48,7 @@ var current_state : States = States.IDLE
 
 func _ready() -> void:
 	state_machine.initialize(self)
-
-#func get_hit(damage: int, hit_location : Vector2) -> void:
-	#lose_hp.emit(damage)
-	#knockback_direction = -(global_position.direction_to(hit_location))
-	#knocking_back = true
-	#sprites.change_shader(Enums.Shaders.HIT_FLASH)
-	#
-	#if current_hp <= 0:
-		#die()
+	died.connect(die)
 
 func _physics_process(delta: float) -> void:
 	state_machine.process_physics(delta)
@@ -74,7 +67,7 @@ func _process(delta: float) -> void:
 
 func check_alive(hp: int) -> void:
 	if hp <= 0:
-		die()
+		died.emit()
 	
 func die() -> void:
 	queue_free()

@@ -35,6 +35,5 @@ func process_frame(delta: float) -> void:
 		parent.change_state(transition_state)
 
 func exit() -> void:
-	print("EXITING ATACK")
 	parent.action_locked = false
 	parent.speed = original_speed
