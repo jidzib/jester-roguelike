@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="SettingsData" load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://c8icpvoygcu45" path="res://Scripts/settings_data.gd" id="1_453hs"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_453hs"]
+physical_keycode = 87
+
+[sub_resource type="InputEventKey" id="InputEventKey_k2dnp"]
+physical_keycode = 83
+
+[sub_resource type="InputEventKey" id="InputEventKey_ekbpw"]
+physical_keycode = 65
+
+[sub_resource type="InputEventKey" id="InputEventKey_7kvrt"]
+physical_keycode = 68
+
+[sub_resource type="InputEventKey" id="InputEventKey_im025"]
+physical_keycode = 4194325
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_m7gwq"]
+button_index = 1
+
+[resource]
+script = ExtResource("1_453hs")
+volume = 50
+keybinds = Dictionary[String, InputEvent]({
+"ITEM_USE": SubResource("InputEventMouseButton_m7gwq"),
+"MOVE_DOWN": SubResource("InputEventKey_k2dnp"),
+"MOVE_LEFT": SubResource("InputEventKey_ekbpw"),
+"MOVE_RIGHT": SubResource("InputEventKey_7kvrt"),
+"MOVE_UP": SubResource("InputEventKey_453hs"),
+"ROLL": SubResource("InputEventKey_im025")
+})

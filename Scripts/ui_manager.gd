@@ -2,12 +2,16 @@ class_name UIManager extends Node
 
 enum UIs {
 	MAIN_MENU,
-	LOOT_SCREEN
+	LOOT_SCREEN,
+	GAME_OVER,
+	SETTINGS
 }
 
 var UI_SCENES : Dictionary[UIs, PackedScene] = {
 	UIs.MAIN_MENU : load("uid://cesjacpgcskw6"),
-	UIs.LOOT_SCREEN : load("uid://h1urf3ntfase")
+	UIs.LOOT_SCREEN : load("uid://h1urf3ntfase"),
+	UIs.GAME_OVER : load("uid://1qfrflwr5ytv"),
+	UIs.SETTINGS : load("uid://bhepxlot6h21d")
 }
 
 var current_ui : UI
@@ -17,7 +21,7 @@ func _ready() -> void:
 	add_child(current_ui)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("close_menu"):
+	if Input.is_action_just_pressed("close_menu") and current_ui and current_ui.closable:
 		resume_game()
 		clear_ui()
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bwnn2tssevjew"]
+
+[ext_resource type="Script" uid="uid://dphumprohpcjp" path="res://Scripts/level_data.gd" id="1_5rkcv"]
+
+[resource]
+script = ExtResource("1_5rkcv")
+loot_size = 3
+enemies = Array[int]([0, 0, 1, 0, 0])
+metadata/_custom_type_script = "uid://dphumprohpcjp"

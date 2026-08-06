@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Sword" load_steps=4 format=3 uid="uid://d3ru8alwc0xq4"]
 
 [ext_resource type="Script" uid="uid://cpjujfq6auxdt" path="res://Scripts/items/sword.gd" id="1_ngbdt"]
-[ext_resource type="Texture2D" uid="uid://b2t7g6s67rnvl" path="res://assets/items/sword.png" id="2_pk6ra"]
+[ext_resource type="Texture2D" uid="uid://b2t7g6s67rnvl" path="res://assets/sprites/items/sword.png" id="2_pk6ra"]
 [ext_resource type="AudioStream" uid="uid://byiiu3ajioyex" path="res://assets/sfx/sword_swing.wav" id="3_0bu56"]
 
 [resource]

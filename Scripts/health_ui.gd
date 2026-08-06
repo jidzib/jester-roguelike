@@ -56,9 +56,9 @@ func lose_hearts(amount : int) -> void:
 	if amount < 0:
 		return
 	for i in range(amount):
-		lose_heart(HEARTS[current_hearts-1])
 		if current_hearts <= 0:
-			return
+			return	
+		lose_heart(HEARTS[current_hearts-1])
 
 func lose_heart(heart: Sprite2D) -> void:
 	current_hearts -= 1

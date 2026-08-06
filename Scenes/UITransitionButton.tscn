@@ -1,13 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://oqody87jg211"]
+[gd_scene load_steps=4 format=3 uid="uid://j6k3hfsbcnee"]
 
-[ext_resource type="Script" uid="uid://cuykulc83ajdg" path="res://Scripts/ui_transition_button.gd" id="1_xxpu4"]
+[ext_resource type="PackedScene" uid="uid://wxgn1e4u0o1u" path="res://Scenes/CustomButton.tscn" id="1_vb4ab"]
+[ext_resource type="Script" uid="uid://cuykulc83ajdg" path="res://Scripts/ui_transition_button.gd" id="2_seirq"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="3_tuu5u"]
 
-[node name="UITransitionButton" type="Button"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_xxpu4")
+[node name="UITransitionButton" node_paths=PackedStringArray("label") instance=ExtResource("1_vb4ab")]
+script = ExtResource("2_seirq")
+label = NodePath("Label")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="Label" type="Label" parent="." index="0"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 24.0
+offset_right = 449.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tuu5u")
+theme_override_font_sizes/font_size = 60
+horizontal_alignment = 1
+vertical_alignment = 1

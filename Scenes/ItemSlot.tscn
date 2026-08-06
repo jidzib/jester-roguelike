@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwetdj5om0tm"]
 
 [ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="1_4ef7o"]
-[ext_resource type="Texture2D" uid="uid://vyq7ntge4eqh" path="res://assets/ui/selected.png" id="2_i6rfv"]
+[ext_resource type="Texture2D" uid="uid://vyq7ntge4eqh" path="res://assets/sprites/ui/selected.png" id="2_i6rfv"]
 
 [node name="ItemSlot" type="Control" node_paths=PackedStringArray("sprite", "selected_sprite")]
 physics_interpolation_mode = 0

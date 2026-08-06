@@ -24,9 +24,15 @@ func _ready() -> void:
 	attack_timer.timeout.connect(set_attack_ready)
 	
 func _physics_process(delta: float) -> void:
+	if not target:
+		return
+		
 	super(delta)
 	
 func _process(delta: float) -> void:
+	if not target:
+		return
+		
 	raycast.target_position = (center.global_position.direction_to(Player.player.center.global_position) * 
 			center.global_position.distance_to(Player.player.center.global_position))
 	if action_locked:

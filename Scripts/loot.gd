@@ -14,7 +14,6 @@ func initialize_loot() -> void:
 	for i in range(level):
 		var rand : float = Util.RNG.randf_range(0.0, 1.0)
 		var pool_id : Items.RARITY
-		print(rand)
 		if rand <= 0.5:
 			#COMMON
 			pool_id = Items.RARITY.COMMON
@@ -37,6 +36,7 @@ func pick_from_pool(pool_id: Items.RARITY) -> Item:
 	return References.ITEMS[pool.pick_random()]
 
 func _on_pressed() -> void:
+	print("pressed bag")
 	if not player_in_range():
 		return
 	var ui : LootScreen = UiManager.UI_SCENES[UiManager.UIs.LOOT_SCREEN].instantiate()
@@ -44,6 +44,7 @@ func _on_pressed() -> void:
 	ui.initialize(items)
 	UiManager.switch_ui(ui)
 	UiManager.pause_game()
+	queue_free()
 	pass # OPEN INVENTORY UI FOR LOOT BAG AND PLAYER
 
 func player_in_range() -> bool:

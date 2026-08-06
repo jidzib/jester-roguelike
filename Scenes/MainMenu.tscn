@@ -1,22 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://cesjacpgcskw6"]
+[gd_scene load_steps=6 format=3 uid="uid://cesjacpgcskw6"]
 
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="1_853f1"]
-[ext_resource type="Script" uid="uid://bwgd7t8folub" path="res://Scripts/play_button.gd" id="1_tt5f1"]
+[ext_resource type="PackedScene" uid="uid://c4yoxcqp4gala" path="res://Scenes/PlayButton.tscn" id="2_8saeu"]
+[ext_resource type="Texture2D" uid="uid://cncpxvsayfxi3" path="res://assets/sprites/ui/background.png" id="2_ghw46"]
+[ext_resource type="PackedScene" uid="uid://cgxcadcgt4wgd" path="res://Scenes/QuitButton.tscn" id="3_8saeu"]
+[ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="4_df05h"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_853f1")
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 461.0
-offset_top = 250.0
-offset_right = 761.0
-offset_bottom = 531.0
-mouse_filter = 2
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_ghw46")
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "Play"
-script = ExtResource("1_tt5f1")
-metadata/_custom_type_script = "uid://bwgd7t8folub"
+[node name="PlayButton" parent="." instance=ExtResource("2_8saeu")]
+offset_left = 405.0
+offset_top = 204.0
+offset_right = -403.0
+offset_bottom = -394.0
+
+[node name="SettingsTransitionButton" parent="." instance=ExtResource("4_df05h")]
+offset_left = 405.0
+offset_top = 324.0
+offset_right = 877.0
+offset_bottom = 446.0
+transition_to = 3
+text = "Settings"
+
+[node name="QuitButton" parent="." instance=ExtResource("3_8saeu")]
+offset_left = 409.0
+offset_top = 443.0
+offset_right = 881.0
+offset_bottom = 565.0

@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhepxlot6h21d"]
+
+[ext_resource type="Script" uid="uid://crhu0hj4lda7s" path="res://Scripts/settings_menu.gd" id="1_svoao"]
+[ext_resource type="PackedScene" uid="uid://b8ccxy53kxmc" path="res://Scenes/VolumeSetting.tscn" id="2_flgte"]
+[ext_resource type="PackedScene" uid="uid://bw8lr5kiolgqi" path="res://Scenes/KeybindButton.tscn" id="2_jttlj"]
+[ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="3_im545"]
+[ext_resource type="PackedScene" uid="uid://wxgn1e4u0o1u" path="res://Scenes/CustomButton.tscn" id="4_40bx1"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="5_flgte"]
+
+[node name="Settings" type="CanvasLayer" node_paths=PackedStringArray("container", "save_button", "volume")]
+script = ExtResource("1_svoao")
+container = NodePath("ScrollContainer/VBoxContainer")
+save_button = NodePath("SaveButton")
+volume = NodePath("ScrollContainer/VBoxContainer/Volume")
+metadata/_custom_type_script = "uid://b7n15j53prl5i"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 199.0
+offset_top = 20.0
+offset_right = 1072.0
+offset_bottom = 574.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Volume" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_flgte")]
+layout_mode = 2
+
+[node name="KB_MOVE_UP" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+layout_mode = 2
+
+[node name="KB_MOVE_DOWN" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "MOVE_DOWN"
+action_id = 1
+
+[node name="KB_MOVE_LEFT" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "MOVE_LEFT"
+action_id = 2
+
+[node name="KB_MOVE_RIGHT" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "MOVE_RIGHT"
+action_id = 3
+
+[node name="KB_ROLL" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "ROLL"
+action_id = 4
+
+[node name="KB_ITEM_USE" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "ITEM_USE"
+action_id = 5
+
+[node name="UITransitionButton" parent="." instance=ExtResource("3_im545")]
+offset_left = 230.0
+offset_top = 586.0
+offset_right = 702.0
+offset_bottom = 708.0
+text = "Back"
+
+[node name="SaveButton" parent="." instance=ExtResource("4_40bx1")]
+offset_left = 689.0
+offset_top = 588.0
+offset_right = 1161.0
+offset_bottom = 710.0
+
+[node name="Label" type="Label" parent="SaveButton"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 449.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_flgte")
+theme_override_font_sizes/font_size = 60
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1

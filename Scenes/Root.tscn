@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://cf4pb6gtuifwn"]
+[gd_scene load_steps=3 format=3 uid="uid://cf4pb6gtuifwn"]
 
-[node name="Root" type="Node2D"]
+[ext_resource type="Script" uid="uid://ylyexxnqjp5n" path="res://Scenes/root.gd" id="1_a5hps"]
+[ext_resource type="PackedScene" uid="uid://bhepxlot6h21d" path="res://Scenes/SettingsMenu.tscn" id="2_kqog5"]
+
+[node name="Root" type="Node2D" node_paths=PackedStringArray("settings")]
+script = ExtResource("1_a5hps")
+settings = NodePath("Settings")
+
+[node name="Settings" parent="." instance=ExtResource("2_kqog5")]

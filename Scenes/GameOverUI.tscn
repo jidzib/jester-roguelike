@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://1qfrflwr5ytv"]
+
+[ext_resource type="Script" uid="uid://dn0rifikn7610" path="res://Scripts/game_over.gd" id="1_7w0tf"]
+[ext_resource type="PackedScene" uid="uid://c4yoxcqp4gala" path="res://Scenes/PlayButton.tscn" id="2_0h5je"]
+[ext_resource type="PackedScene" uid="uid://cgxcadcgt4wgd" path="res://Scenes/QuitButton.tscn" id="3_c73c7"]
+
+[node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_7w0tf")
+metadata/_custom_type_script = "uid://b7n15j53prl5i"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 415.0
+offset_top = 220.0
+offset_right = 863.0
+offset_bottom = 357.0
+theme_override_font_sizes/font_size = 100
+text = "You died!"
+
+[node name="PlayButton" parent="." instance=ExtResource("2_0h5je")]
+offset_left = 395.0
+offset_top = 345.0
+offset_right = -397.0
+offset_bottom = -253.0
+
+[node name="QuitButton" parent="." instance=ExtResource("3_c73c7")]
+offset_left = 426.0
+offset_top = 464.0
+offset_right = 832.0
+offset_bottom = 566.0

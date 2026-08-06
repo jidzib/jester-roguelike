@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7bwdxi6ra7ah"]
 
-[ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/fx/circle.png" id="1_372v6"]
+[ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/sprites/fx/circle.png" id="1_372v6"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_64i1g"]
 particle_flag_disable_z = true

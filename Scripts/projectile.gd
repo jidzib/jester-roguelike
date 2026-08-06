@@ -12,6 +12,7 @@ var hitbox : Hitbox
 		
 @export var knockback : float
 @export var lifetime : float
+var time_alive : float = 0.0
 
 @export var speed : float
 var real_speed : float
@@ -31,9 +32,15 @@ func _ready() -> void:
 	speed = real_speed
 	animation_player.play("fly")
 	add_child(hitbox)
-	await get_tree().create_timer(lifetime).timeout
-	queue_free()
 	
+func _process(delta: float) -> void:
+	time_alive += delta
+	if time_alive >= lifetime:
+		_despawn()
+
+func _despawn() -> void:
+	queue_free()
+
 func initialize(_parent_stats: Stats) -> void:
 	var shape : Shape2D = RectangleShape2D.new()
 	shape.size = Vector2(8, 8)

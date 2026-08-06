@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv7fsjpbjppc2" path="res://Scenes/game.gd" id="1_kldst"]
 [ext_resource type="PackedScene" uid="uid://d1ckpr4xv2ggp" path="res://Scenes/Player.tscn" id="3_kldst"]
-[ext_resource type="PackedScene" uid="uid://cahb0g5s4q4kl" path="res://Level.tscn" id="4_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://cahb0g5s4q4kl" path="res://Scenes/Level.tscn" id="4_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://jvhbrpdhcuwa" path="res://Scenes/Loot.tscn" id="4_kldst"]
 
 [node name="Game" type="Node2D"]
@@ -17,7 +17,8 @@ state_nodes = {
 3: NodePath("StateMachine/DrinkingPotion"),
 4: NodePath("StateMachine/Spellcasting"),
 5: NodePath("StateMachine/Hurt"),
-6: NodePath("StateMachine/Hurt")
+6: NodePath("StateMachine/Hurt"),
+8: NodePath("StateMachine/Roll")
 }
 
 [node name="Loot" parent="." instance=ExtResource("4_kldst")]
@@ -28,4 +29,12 @@ offset_bottom = -32.0
 
 [node name="Level" parent="." instance=ExtResource("4_b2bpf")]
 position = Vector2(0, -2)
-level_number = 10
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -704.0
+offset_top = -406.0
+offset_right = 830.0
+offset_bottom = 447.0
+mouse_filter = 2
+color = Color(0.118581, 0.118581, 0.118581, 1)

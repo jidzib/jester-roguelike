@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgxcadcgt4wgd"]
+
+[ext_resource type="Script" uid="uid://djpe5tk0ewo8u" path="res://Scripts/quit_button.gd" id="1_4pbko"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="1_baos0"]
+[ext_resource type="Texture2D" uid="uid://ca3ukd2cp3uet" path="res://assets/sprites/ui/button_normal.png" id="1_np1sr"]
+[ext_resource type="Texture2D" uid="uid://br3c3vx2ij3jy" path="res://assets/sprites/ui/button_pressed.png" id="2_wl45q"]
+[ext_resource type="Texture2D" uid="uid://bheaqvtywa0io" path="res://assets/sprites/ui/button_hover.png" id="3_rowu1"]
+
+[node name="QuitButton" type="TextureButton"]
+offset_right = 406.0
+offset_bottom = 102.0
+texture_normal = ExtResource("1_np1sr")
+texture_pressed = ExtResource("2_wl45q")
+texture_hover = ExtResource("3_rowu1")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("1_4pbko")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 388.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_baos0")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1

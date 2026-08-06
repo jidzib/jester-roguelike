@@ -8,6 +8,7 @@ transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("1_am07x")
 items_container = NodePath("HBoxContainer")
 color_rect = NodePath("ColorRect")
+closable = true
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
 [node name="ColorRect" type="ColorRect" parent="."]

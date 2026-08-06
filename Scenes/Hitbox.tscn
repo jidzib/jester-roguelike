@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://tlitsmdbuqop"]
 
 [ext_resource type="Script" uid="uid://brx5wdcga4olv" path="res://Scripts/entities/hitbox.gd" id="1_ynlij"]
-[ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/fx/circle.png" id="2_6bbss"]
+[ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/sprites/fx/circle.png" id="2_6bbss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynlij"]
 

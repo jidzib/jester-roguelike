@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://jvhbrpdhcuwa"]
 
 [ext_resource type="Script" uid="uid://nfi5e830v0mh" path="res://Scripts/loot.gd" id="1_ckycu"]
-[ext_resource type="Texture2D" uid="uid://d4jqory2bblqo" path="res://assets/tiles/loot_bag.png" id="1_tdn7b"]
+[ext_resource type="Texture2D" uid="uid://d4jqory2bblqo" path="res://assets/sprites/tiles/loot_bag.png" id="1_tdn7b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kg12p"]
 radius = 60.0

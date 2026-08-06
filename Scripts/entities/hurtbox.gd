@@ -22,7 +22,9 @@ func receive_hit(damage : int, coming_from: Vector2, knockback_strength : float 
 	parent_stats.take_damage(damage)
 	var parent : Entity = parent_stats.owner
 	parent.hit_flash()
-	Camera.camera.camera_shake(damage)
+	if parent_stats.owner is Player:
+		Camera.camera.camera_shake(damage)
+		Camera.camera.screen_flash(Color.RED)
 	# knockback
 	var hurt_state : State = parent.state_nodes[parent.States.HURT]
 	hurt_state.knockback_strength = knockback_strength

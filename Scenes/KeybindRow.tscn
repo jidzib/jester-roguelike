@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkbht50kb32rp"]
+
+[ext_resource type="PackedScene" uid="uid://bw8lr5kiolgqi" path="res://Scenes/KeybindButton.tscn" id="1_pkq88"]
+
+[node name="KeybindRow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KeybindButton" parent="." instance=ExtResource("1_pkq88")]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 0.0
+offset_right = 691.0
+offset_bottom = 122.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 53.0
+offset_right = 111.0
+offset_bottom = 76.0
+text = "LABEL TEST"

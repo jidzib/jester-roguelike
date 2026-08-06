@@ -38,7 +38,8 @@ enum States {
 	SPELLCASTING,
 	HURT,
 	CIRCLING_TARGET,
-	CHASING_TARGET
+	CHASING_TARGET,
+	ROLL
 }
 
 @export var state_nodes : Dictionary[States, State]

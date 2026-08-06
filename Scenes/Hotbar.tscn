@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://drsygg8of0wxa"]
 
 [ext_resource type="Script" uid="uid://c611q82qv1ksk" path="res://Scripts/hotbar.gd" id="1_1074w"]
-[ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/ui/hotbar.png" id="2_ry1on"]
+[ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/sprites/ui/hotbar.png" id="2_ry1on"]
 [ext_resource type="PackedScene" uid="uid://bwetdj5om0tm" path="res://Scenes/ItemSlot.tscn" id="3_i2kgl"]
 [ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/sword.tres" id="5_stvnf"]
 

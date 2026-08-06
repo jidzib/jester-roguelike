@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_unyy7"]
 [ext_resource type="Script" uid="uid://bb3efy6b8oiae" path="res://Scripts/mage.gd" id="2_j6mq2"]
-[ext_resource type="Texture2D" uid="uid://bv03allpgloxb" path="res://assets/entities/player/blockout_legs.png" id="2_pay2o"]
-[ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/entities/player/blockout_body.png" id="3_iyoo4"]
-[ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/entities/player/blockout_arms.png" id="4_7i3ca"]
-[ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/entities/player/blockout_head.png" id="5_j6mq2"]
-[ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/entities/player/blockout_fx.png" id="6_1mu64"]
-[ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/entities/player/blockout_item.png" id="7_i0tpb"]
+[ext_resource type="Texture2D" uid="uid://bv03allpgloxb" path="res://assets/sprites/entities/player/blockout_legs.png" id="2_pay2o"]
+[ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="3_iyoo4"]
+[ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="4_7i3ca"]
+[ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="5_j6mq2"]
+[ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/sprites/entities/player/blockout_fx.png" id="6_1mu64"]
+[ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/sprites/entities/player/blockout_item.png" id="7_i0tpb"]
 [ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="8_pay2o"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="9_iyoo4"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_pukvw"]
@@ -26,7 +26,7 @@ platform_floor_layers = 4294967040
 script = ExtResource("2_j6mq2")
 held_item = NodePath("HeldItem")
 raycast = NodePath("RayCast2D")
-speed = 50.0
+speed = 75.0
 animation_path = "PlayerAnimations/"
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
@@ -42,7 +42,7 @@ z_index = 1
 use_parent_material = true
 texture = ExtResource("2_pay2o")
 hframes = 8
-vframes = 12
+vframes = 13
 frame = 4
 
 [node name="Body" type="Sprite2D" parent="Sprites" index="1"]
@@ -50,7 +50,7 @@ z_index = 1
 use_parent_material = true
 texture = ExtResource("3_iyoo4")
 hframes = 8
-vframes = 12
+vframes = 13
 frame = 56
 
 [node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
@@ -58,7 +58,7 @@ z_index = 1
 use_parent_material = true
 texture = ExtResource("4_7i3ca")
 hframes = 8
-vframes = 12
+vframes = 13
 frame = 16
 
 [node name="Head" type="Sprite2D" parent="Sprites" index="3"]
@@ -66,7 +66,7 @@ z_index = 1
 use_parent_material = true
 texture = ExtResource("5_j6mq2")
 hframes = 8
-vframes = 12
+vframes = 13
 frame = 56
 
 [node name="FX" type="Sprite2D" parent="Sprites" index="4"]

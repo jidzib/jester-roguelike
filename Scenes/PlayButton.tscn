@@ -1,13 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4yoxcqp4gala"]
+[gd_scene load_steps=6 format=3 uid="uid://c4yoxcqp4gala"]
 
+[ext_resource type="Texture2D" uid="uid://ca3ukd2cp3uet" path="res://assets/sprites/ui/button_normal.png" id="1_400dv"]
 [ext_resource type="Script" uid="uid://bwgd7t8folub" path="res://Scripts/play_button.gd" id="1_iqp5p"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="1_xdsjw"]
+[ext_resource type="Texture2D" uid="uid://br3c3vx2ij3jy" path="res://assets/sprites/ui/button_pressed.png" id="2_j5f4t"]
+[ext_resource type="Texture2D" uid="uid://bheaqvtywa0io" path="res://assets/sprites/ui/button_hover.png" id="3_qbfcj"]
 
-[node name="PlayButton" type="Button"]
+[node name="PlayButton" type="TextureButton"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -808.0
+offset_bottom = -598.0
 grow_horizontal = 2
 grow_vertical = 2
+texture_normal = ExtResource("1_400dv")
+texture_pressed = ExtResource("2_j5f4t")
+texture_hover = ExtResource("3_qbfcj")
+ignore_texture_size = true
+stretch_mode = 4
 script = ExtResource("1_iqp5p")
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 14.0
+offset_right = 449.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xdsjw")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1

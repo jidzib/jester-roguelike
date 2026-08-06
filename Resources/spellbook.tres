@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpellbookItem" load_steps=3 format=3 uid="uid://bishitcpv23v7"]
 
 [ext_resource type="Script" uid="uid://d371i8b12lp6q" path="res://Scripts/items/spellbook.gd" id="1_whfmv"]
-[ext_resource type="Texture2D" uid="uid://dgtdopb7iknrb" path="res://assets/items/book.png" id="2_3oqxw"]
+[ext_resource type="Texture2D" uid="uid://dgtdopb7iknrb" path="res://assets/sprites/items/book.png" id="2_3oqxw"]
 
 [resource]
 script = ExtResource("1_whfmv")
