@@ -1,16 +1,19 @@
 extends State
 
+signal wind_up_finished
+
 @export var transition_state : State
 
 var progress : float
 @export var duration : float = 0.5
+@export var wind_up_duration : float = 0.0
 
 var original_speed : float
 var attack_name : String = "attack"
 var speed_multiplier : float = 0.5
 
-var target : Vector2
-
+var target_dir : Vector2
+	
 func initialize(_duration: float, _attack_name: String, _speed_multiplier: float) -> void:
 	duration = _duration
 	attack_name = _attack_name
@@ -23,7 +26,7 @@ func enter() -> void:
 	original_speed = parent.speed
 	parent.speed *= speed_multiplier
 	
-	parent.cardinal_direction = parent.get_cardinal_direction(parent.center.global_position.direction_to(target))
+	parent.cardinal_direction = parent.get_cardinal_direction(parent.center.global_position.direction_to(target_dir))
 	parent.set_facing(parent.cardinal_direction)
 	
 	#parent.update_direction("direction", parent.center.global_position.direction_to(target))
@@ -31,6 +34,8 @@ func enter() -> void:
 
 func process_frame(delta: float) -> void:
 	progress += delta
+	if progress > wind_up_duration:
+		wind_up_finished.emit()
 	if progress > duration:
 		parent.change_state(transition_state)
 

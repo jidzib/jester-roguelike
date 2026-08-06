@@ -1,7 +1,7 @@
 class_name SpellbookItem extends Item
 
 var projectile : PackedScene = load("res://Scenes/Projectile.tscn")
-var mana_cost : int = 20
+var mana_cost : int = 10
 var cast_duration : float = 0.5
 
 func use(entity: Entity, target_dir: Vector2) -> void:

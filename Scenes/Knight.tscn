@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="6_xf7i1"]
 [ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/sprites/entities/player/blockout_fx.png" id="7_skfry"]
 [ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/sprites/entities/player/blockout_item.png" id="8_ikt6d"]
-[ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="9_cicbl"]
+[ext_resource type="AnimationLibrary" uid="uid://08jcx1cy2mgp" path="res://Resources/EnemyAnimations.res" id="9_4jv4l"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_wqosg"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_xf7i1"]
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="13_4jv4l"]
@@ -25,7 +25,7 @@ script = ExtResource("2_fpytc")
 held_item = NodePath("HeldItem")
 raycast = NodePath("RayCast2D")
 speed = 50.0
-animation_path = "PlayerAnimations/"
+animation_path = "EnemyAnimations/"
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
@@ -41,7 +41,7 @@ use_parent_material = true
 texture = ExtResource("3_1cc6w")
 hframes = 8
 vframes = 13
-frame = 4
+frame = 49
 
 [node name="Body" type="Sprite2D" parent="Sprites" index="1"]
 z_index = 1
@@ -49,7 +49,7 @@ use_parent_material = true
 texture = ExtResource("4_wqosg")
 hframes = 8
 vframes = 13
-frame = 56
+frame = 49
 
 [node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
 z_index = 1
@@ -57,7 +57,7 @@ use_parent_material = true
 texture = ExtResource("5_mfjpr")
 hframes = 8
 vframes = 13
-frame = 16
+frame = 49
 
 [node name="Head" type="Sprite2D" parent="Sprites" index="3"]
 z_index = 1
@@ -65,7 +65,7 @@ use_parent_material = true
 texture = ExtResource("6_xf7i1")
 hframes = 8
 vframes = 13
-frame = 56
+frame = 49
 
 [node name="FX" type="Sprite2D" parent="Sprites" index="4"]
 visible = false
@@ -73,7 +73,7 @@ z_index = 1
 texture = ExtResource("7_skfry")
 hframes = 8
 vframes = 12
-frame = 56
+frame = 49
 
 [node name="Item" type="Sprite2D" parent="Sprites" index="5"]
 visible = false
@@ -82,11 +82,11 @@ use_parent_material = true
 texture = ExtResource("8_ikt6d")
 hframes = 8
 vframes = 12
-frame = 64
+frame = 49
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
-&"PlayerAnimations": ExtResource("9_cicbl")
+&"EnemyAnimations": ExtResource("9_4jv4l")
 }
 
 [node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]
@@ -99,7 +99,8 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 [node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("transition_state")]
 script = ExtResource("12_xf7i1")
 transition_state = NodePath("../Idle")
-duration = 0.85
+duration = 0.75
+wind_up_duration = 0.45
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Hurt" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_state")]

@@ -6,7 +6,9 @@
 
 [node name="UITransitionButton" node_paths=PackedStringArray("label") instance=ExtResource("1_vb4ab")]
 script = ExtResource("2_seirq")
+transition_to = 0
 label = NodePath("Label")
+text = ""
 
 [node name="Label" type="Label" parent="." index="0"]
 layout_mode = 0

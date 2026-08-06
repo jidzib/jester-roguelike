@@ -37,7 +37,7 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventKey or event is InputEventMouseButton and event.pressed:
 			if event.is_action_pressed("ITEM_USE"):
 				if held_item and held_item.item:
-					state_nodes[States.ATTACKING].target = get_global_mouse_position() # MAYBE HAVE A TARGET_DIR VARIABLE IN ENTITY CLASS
+					state_nodes[States.ATTACKING].target_dir = get_global_mouse_position() # MAYBE HAVE A TARGET_DIR VARIABLE IN ENTITY CLASS
 					held_item.item.use(self, weapon_dir)
 			elif event.is_action_pressed("ROLL"):
 				change_state(state_nodes[States.ROLL])

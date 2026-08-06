@@ -1,7 +1,7 @@
 @tool
 class_name KeybindButton extends Control
 
-@export var button : TextureButton
+@export var button : CustomButton
 
 @export var action_label : Label
 @export var keybind_label : Label

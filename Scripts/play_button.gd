@@ -1,6 +1,7 @@
-class_name PlayButton extends TextureButton
+class_name PlayButton extends CustomButton
 
 func _ready() -> void:
+	super()
 	pressed.connect(_on_pressed)
 	
 func _on_pressed() -> void:
