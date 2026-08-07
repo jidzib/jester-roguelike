@@ -15,6 +15,7 @@ static var player : Player
 var held_item : ItemSlot = null
 
 func _ready() -> void:
+	PlayerCursor.set_cursor(PlayerCursor.CURSOR_MODES.DEFAULT)
 	super()
 	player = self
 

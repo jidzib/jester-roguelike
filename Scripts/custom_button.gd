@@ -13,10 +13,16 @@ func initialize() -> void:
 	
 func connect_signals() -> void:
 	pressed.connect(play_sound)
+	mouse_entered.connect(PlayerCursor.increment_hover_count)
+	mouse_exited.connect(PlayerCursor.decrement_hover_count)
 func disconnect_signals() -> void:
 	pressed.disconnect(play_sound)
+	mouse_entered.disconnect(PlayerCursor.increment_hover_count)
+	mouse_exited.disconnect(PlayerCursor.decrement_hover_count)
 	
 func play_sound() -> void:
 	print("playing sound")
+	print("volume: ", AudioManager.volume)
+	print("db: ", AudioManager.db)
 	AudioManager.play_randomized_sound_id(click_sound)
 	
