@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cek561y3ub7kl"]
+[gd_scene load_steps=17 format=3 uid="uid://cek561y3ub7kl"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_jjefk"]
 [ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="2_fpytc"]
@@ -6,10 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="4_wqosg"]
 [ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="5_mfjpr"]
 [ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="6_xf7i1"]
-[ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/sprites/entities/player/blockout_fx.png" id="7_skfry"]
-[ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/sprites/entities/player/blockout_item.png" id="8_ikt6d"]
 [ext_resource type="AnimationLibrary" uid="uid://08jcx1cy2mgp" path="res://Resources/EnemyAnimations.res" id="9_4jv4l"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_wqosg"]
+[ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="11_0ld3f"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_xf7i1"]
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="13_4jv4l"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="13_ikt6d"]
@@ -34,6 +33,12 @@ state_nodes = {
 6: NodePath("StateMachine/CirclingTarget"),
 7: NodePath("StateMachine/ChasingTarget")
 }
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -16)
+
+[node name="Sprites" parent="." index="1"]
+position = Vector2(0, -16)
 
 [node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
 z_index = 1
@@ -67,23 +72,6 @@ hframes = 8
 vframes = 13
 frame = 49
 
-[node name="FX" type="Sprite2D" parent="Sprites" index="4"]
-visible = false
-z_index = 1
-texture = ExtResource("7_skfry")
-hframes = 8
-vframes = 12
-frame = 49
-
-[node name="Item" type="Sprite2D" parent="Sprites" index="5"]
-visible = false
-z_index = 1
-use_parent_material = true
-texture = ExtResource("8_ikt6d")
-hframes = 8
-vframes = 12
-frame = 49
-
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 &"EnemyAnimations": ExtResource("9_4jv4l")
@@ -100,7 +88,7 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 script = ExtResource("12_xf7i1")
 transition_state = NodePath("../Idle")
 duration = 0.75
-wind_up_duration = 0.45
+wind_up_duration = 0.5
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Hurt" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_state")]
@@ -109,7 +97,7 @@ idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="CirclingTarget" type="Node" parent="StateMachine" index="3"]
-script = ExtResource("13_4jv4l")
+script = ExtResource("11_0ld3f")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="ChasingTarget" type="Node" parent="StateMachine" index="4"]
@@ -122,6 +110,7 @@ attack = 1.0
 team = 2
 
 [node name="Hurtbox" type="Area2D" parent="." index="5"]
+position = Vector2(0, -16)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("13_mfjpr")
@@ -131,6 +120,7 @@ metadata/_custom_type_script = "uid://q56ve612ckre"
 shape = SubResource("RectangleShape2D_xf7i1")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="6"]
+position = Vector2(0, -16)
 collide_with_bodies = false
 
 [node name="Label" type="Label" parent="." index="7"]

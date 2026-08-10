@@ -16,7 +16,7 @@ func process_physics(delta: float) -> void:
 	knockback_strength -= delta * deceleration
 	if knockback_strength <= 0:
 		parent.change_state(idle_state)
-	parent.velocity = lerp(parent.velocity, knockback_direction * knockback_strength, knockback_strength * delta)
+	parent.velocity = lerp(parent.velocity, knockback_direction * knockback_strength, min(knockback_strength * delta, 1.0))
 	
 func set_knockback(_knockback_strength: float, _knockback_direction: Vector2) -> void:
 	knockback_strength = _knockback_strength

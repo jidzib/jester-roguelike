@@ -12,6 +12,7 @@ func screen_flash(color: Color) -> void:
 	screen_overlay.color.a = 0.2
 	screen_overlay.size = size
 	screen_overlay.position -= size/2
+	screen_overlay.z_index = 100
 	camera.add_child(screen_overlay)
 	await get_tree().create_timer(0.5).timeout
 	screen_overlay.queue_free()

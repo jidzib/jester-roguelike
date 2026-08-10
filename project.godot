@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 UiManager="*res://Scenes/UIManager.tscn"
 AudioManager="*res://Scripts/AudioManager.gd"
 ParticleManager="*res://Scripts/ParticleManager.gd"
+AnimationHelper="*res://Scripts/animation_helper.gd"
 
 [display]
 

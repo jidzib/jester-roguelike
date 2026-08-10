@@ -1,14 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://rqrdh44d37if"]
+[gd_scene load_steps=21 format=3 uid="uid://rqrdh44d37if"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_unyy7"]
 [ext_resource type="Script" uid="uid://bb3efy6b8oiae" path="res://Scripts/mage.gd" id="2_j6mq2"]
-[ext_resource type="Texture2D" uid="uid://bv03allpgloxb" path="res://assets/sprites/entities/player/blockout_legs.png" id="2_pay2o"]
-[ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="3_iyoo4"]
-[ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="4_7i3ca"]
-[ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="5_j6mq2"]
-[ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/sprites/entities/player/blockout_fx.png" id="6_1mu64"]
-[ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/sprites/entities/player/blockout_item.png" id="7_i0tpb"]
-[ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="8_pay2o"]
+[ext_resource type="Texture2D" uid="uid://c4us8yc6ovowy" path="res://assets/sprites/entities/mage/mage_spritesheet.png" id="3_tbcp4"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="9_iyoo4"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_pukvw"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entity_states/spellcasting.gd" id="11_vjf4w"]
@@ -17,6 +11,134 @@
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="14_crkg3"]
 [ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="16_jwa5v"]
 [ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/spellbook.tres" id="17_i4hpe"]
+
+[sub_resource type="Animation" id="Animation_bn2mj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_q23kb"]
+resource_name = "back_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_jwa5v"]
+resource_name = "back_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_6sp4a"]
+resource_name = "front_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_f8krw"]
+resource_name = "front_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_pvuf5"]
+resource_name = "side_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_4x5sc"]
+resource_name = "side_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahi3q"]
+_data = {
+&"RESET": SubResource("Animation_bn2mj"),
+&"back_idle": SubResource("Animation_q23kb"),
+&"back_walk": SubResource("Animation_jwa5v"),
+&"front_idle": SubResource("Animation_6sp4a"),
+&"front_walk": SubResource("Animation_f8krw"),
+&"side_idle": SubResource("Animation_pvuf5"),
+&"side_walk": SubResource("Animation_4x5sc")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i3ca"]
 size = Vector2(10, 24)
@@ -27,7 +149,6 @@ script = ExtResource("2_j6mq2")
 held_item = NodePath("HeldItem")
 raycast = NodePath("RayCast2D")
 speed = 75.0
-animation_path = "PlayerAnimations/"
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
@@ -37,58 +158,16 @@ state_nodes = {
 7: NodePath("StateMachine/ChasingTarget")
 }
 
-[node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
+[node name="Spritesheet" type="Sprite2D" parent="Sprites" index="0"]
 z_index = 1
 use_parent_material = true
-texture = ExtResource("2_pay2o")
-hframes = 8
-vframes = 13
-frame = 4
-
-[node name="Body" type="Sprite2D" parent="Sprites" index="1"]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("3_iyoo4")
-hframes = 8
-vframes = 13
-frame = 56
-
-[node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("4_7i3ca")
-hframes = 8
-vframes = 13
-frame = 16
-
-[node name="Head" type="Sprite2D" parent="Sprites" index="3"]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("5_j6mq2")
-hframes = 8
-vframes = 13
-frame = 56
-
-[node name="FX" type="Sprite2D" parent="Sprites" index="4"]
-visible = false
-z_index = 1
-texture = ExtResource("6_1mu64")
-hframes = 8
-vframes = 12
-frame = 56
-
-[node name="Item" type="Sprite2D" parent="Sprites" index="5"]
-visible = false
-z_index = 1
-use_parent_material = true
-texture = ExtResource("7_i0tpb")
-hframes = 8
-vframes = 12
-frame = 64
+texture = ExtResource("3_tbcp4")
+hframes = 4
+vframes = 9
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
-&"PlayerAnimations": ExtResource("8_pay2o")
+&"": SubResource("AnimationLibrary_ahi3q")
 }
 
 [node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d1ckpr4xv2ggp"]
+[gd_scene load_steps=27 format=3 uid="uid://d1ckpr4xv2ggp"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_cgsek"]
 [ext_resource type="Script" uid="uid://csoim7dyw4o7f" path="res://Scripts/entities/player/player.gd" id="2_0pi4m"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="4_h84ma"]
 [ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="5_47wu6"]
 [ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="6_2n1s8"]
-[ext_resource type="Texture2D" uid="uid://c73jj5o5awy21" path="res://assets/sprites/entities/player/blockout_fx.png" id="7_3vjad"]
-[ext_resource type="Texture2D" uid="uid://eoigf7id4t55" path="res://assets/sprites/entities/player/blockout_item.png" id="8_yt0h1"]
 [ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="10_ictha"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="11_1jgrc"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_7wy67"]
@@ -91,7 +89,7 @@ use_parent_material = true
 texture = ExtResource("4_h84ma")
 hframes = 8
 vframes = 13
-frame = 98
+frame = 8
 
 [node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
 z_index = 1
@@ -99,7 +97,7 @@ use_parent_material = true
 texture = ExtResource("5_47wu6")
 hframes = 8
 vframes = 13
-frame = 98
+frame = 8
 
 [node name="Head" type="Sprite2D" parent="Sprites" index="3"]
 z_index = 1
@@ -107,24 +105,7 @@ use_parent_material = true
 texture = ExtResource("6_2n1s8")
 hframes = 8
 vframes = 13
-frame = 98
-
-[node name="FX" type="Sprite2D" parent="Sprites" index="4"]
-visible = false
-z_index = 1
-texture = ExtResource("7_3vjad")
-hframes = 8
-vframes = 12
-frame = 48
-
-[node name="Item" type="Sprite2D" parent="Sprites" index="5"]
-visible = false
-z_index = 1
-use_parent_material = true
-texture = ExtResource("8_yt0h1")
-hframes = 8
-vframes = 12
-frame = 88
+frame = 8
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {

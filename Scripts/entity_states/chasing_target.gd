@@ -6,7 +6,7 @@ func enter() -> void:
 func process_physics(delta: float) -> void:
 	parent.direction = parent.global_position.direction_to(parent.target.global_position)
 	parent.direction = parent.direction.normalized()
-	parent.velocity = lerp(parent.velocity, parent.direction * parent.speed, parent.acceleration * delta)
+	parent.velocity = lerp(parent.velocity, parent.direction * parent.speed, min(parent.acceleration * delta, 1.0))
 	
 	#parent.label.text = "CHASING"
 		#parent.raycast.modulate = Color.BLUE

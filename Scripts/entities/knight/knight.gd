@@ -1,7 +1,7 @@
 class_name Knight extends Entity
 
 var aggro_range : float = 320.0
-var attack_range : float = 32.0
+var attack_range : float = 48.0
 
 var attack_cooldown : float = 2.0
 var attack_ready : float = true
@@ -17,6 +17,7 @@ var target : Player
 func _ready() -> void:
 	super()
 	target = Player.player
+	target.player_died.connect(die)
 	attack_timer = Timer.new()
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.one_shot = true
@@ -46,6 +47,7 @@ func _process(delta: float) -> void:
 		if player_in_attack_range():
 			if attack_ready:
 				attack_ready = false
+				state_nodes[States.ATTACKING].target_dir = raycast.target_position
 				held_item.item.use(self, center.global_position.direction_to(Player.player.center.global_position))
 				attack_timer.start()
 				#change_state(state_nodes[Entity.States.ATTACKING])

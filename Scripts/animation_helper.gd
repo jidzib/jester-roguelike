@@ -1,0 +1,19 @@
+extends Node
+
+func play(animation_player: AnimationPlayer,
+		  _animation_name: String, windup_point: float, _windup_duration: float = 0.0,
+		  animation_finished: Variant = null) -> void:
+	#animation.play(_direction)
+	#animation.animation_finished.connect(despawn)
+	animation_player.current_animation = _animation_name
+	var windup_time : float = animation_player.current_animation_length * windup_point
+	animation_player.play()
+	animation_player.seek(windup_time, true)
+	animation_player.pause()
+	await get_tree().create_timer(_windup_duration).timeout
+	if animation_player:
+		animation_player.play()
+		await animation_player.animation_finished
+		if animation_finished:
+			animation_finished.emit()
+	#queue_free()

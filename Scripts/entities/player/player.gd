@@ -1,13 +1,12 @@
 class_name Player extends Entity
 
 static var player : Player
+signal player_died
 
 @export var hotbar : Hotbar
 #@export var held_item : HeldItem
 @export var direction_indicator : Sprite2D
 @export var camera : Camera2D
-
-
 
 @export var ui : UI
 # STATE MACHINE
@@ -42,7 +41,7 @@ func _input(event: InputEvent) -> void:
 					held_item.item.use(self, weapon_dir)
 			elif event.is_action_pressed("ROLL"):
 				change_state(state_nodes[States.ROLL])
-				
+
 func die() -> void:
 	print("is this working")
 	set_physics_process(false)
@@ -54,7 +53,8 @@ func die() -> void:
 	animation_player.play(animation_path + "death")
 	await get_tree().create_timer(0.8).timeout
 	#get_tree().root.add_child(camera.duplicate())
-	queue_free()
+	super()
+	player_died.emit()
 	var ui : GameOverUI = UiManager.UI_SCENES[UiManager.UIs.GAME_OVER].instantiate()
 	UiManager.switch_ui(ui)
 	
@@ -62,7 +62,7 @@ func handle_movement(delta: float) -> void:
 	direction.x = Input.get_action_strength("MOVE_RIGHT") - Input.get_action_strength("MOVE_LEFT")
 	direction.y = Input.get_action_strength("MOVE_DOWN") - Input.get_action_strength("MOVE_UP")
 	direction = direction.normalized()
-	velocity = lerp(velocity, direction * speed, acceleration * delta)
+	velocity = lerp(velocity, direction * speed, min(acceleration * delta, 1.0))
 		
 func update_weapon_direction() -> void:
 	if action_locked:
