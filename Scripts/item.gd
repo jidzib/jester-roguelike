@@ -1,7 +1,7 @@
 class_name Item extends Resource
 
 @export var texture : Texture2D
-@export var ID : int
+@export var ID : Enums.Items
 @export var name : String
 @export var rarity : Items.RARITY
 @export_multiline var description : String

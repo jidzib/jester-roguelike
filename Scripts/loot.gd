@@ -17,14 +17,15 @@ func initialize_loot() -> void:
 		if rand <= 0.5:
 			#COMMON
 			pool_id = Items.RARITY.COMMON
-		elif rand <= 0.85:
+		elif rand <= 0.8:
 			# UNCOMMON
 			pool_id = Items.RARITY.UNCOMMON
-			pass
-		else: # rand <= 1.0
+		elif rand <= 0.95: # rand <= 1.0
 			# RARE
 			pool_id = Items.RARITY.RARE
-			pass
+		elif rand <= 1.0:
+			pool_id = Items.RARITY.EPIC
+			
 		var item : Item = pick_from_pool(pool_id)
 		if item not in selected_loot:
 			items.append(item)
@@ -43,7 +44,7 @@ func _on_pressed() -> void:
 	ui.save_inventory.connect(reassign_items)
 	ui.initialize(items)
 	UiManager.switch_ui(ui)
-	UiManager.pause_game()
+	#UiManager.pause_game()
 	queue_free()
 	pass # OPEN INVENTORY UI FOR LOOT BAG AND PLAYER
 

@@ -1,8 +1,8 @@
 class_name Sword extends WeaponItem
 
-@export var range : float
-@export var attack_lifetime : float
-@export var hit_effect : Enums.HitEffects
+@export var range : float = 20.0
+@export var attack_lifetime : float = 0.2
+@export var hit_effect : Enums.HitEffects = Enums.HitEffects.SWORD_HIT
 @export var use_sound : AudioStream
 # NEED TO PASS IN A TARGET TO DIFFERENTIATE 
 # BETWEEN PLAYER AND ENEMY ATTACKS
