@@ -44,7 +44,9 @@ func _despawn() -> void:
 func initialize(_parent_stats: Stats) -> void:
 	var shape : Shape2D = RectangleShape2D.new()
 	shape.size = Vector2(8, 8)
-	hitbox = Hitbox.new(_parent_stats, lifetime, shape, References.HIT_EFFECTS[Enums.HitEffects.FIREBALL_HIT])
+	hitbox = Hitbox.new(_parent_stats, lifetime, shape, 
+						References.HIT_EFFECTS[Enums.HitEffects.FIREBALL_HIT],
+	 					References.ITEMS[Enums.Items.SPELLBOOK])
 	
 func init_hitbox(_packed_hitbox: PackedScene) -> void:
 	hitbox = _packed_hitbox.instantiate()

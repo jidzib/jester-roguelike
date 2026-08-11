@@ -106,7 +106,6 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Stats" parent="." index="4"]
 max_hp = 5
-attack = 1.0
 team = 2
 
 [node name="Hurtbox" type="Area2D" parent="." index="5"]

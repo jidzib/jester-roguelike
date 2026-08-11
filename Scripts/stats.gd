@@ -15,8 +15,30 @@ var current_hp : int :
 @export var max_mana : int
 var current_mana : int
 
-@export var attack : float
-@export var defense : float
+# COMBAT
+enum COMBAT_STATS {
+	PHYSICAL_ATTACK,
+	DEFENSE,
+	MAGIC_POWER
+}
+@export var combat_stats : Dictionary[COMBAT_STATS, float] = {
+	COMBAT_STATS.PHYSICAL_ATTACK : 1.0,
+	COMBAT_STATS.DEFENSE : 1.0,
+	COMBAT_STATS.MAGIC_POWER : 1.0,
+}
+
+func get_physical_attack() -> float:
+	return combat_stats[COMBAT_STATS.PHYSICAL_ATTACK]
+func set_physical_attack(new_value: float) -> void:
+	combat_stats[COMBAT_STATS.PHYSICAL_ATTACK] = new_value
+func get_defense() -> float:
+	return combat_stats[COMBAT_STATS.DEFENSE]
+func set_defense(new_value: float) -> void:
+	combat_stats[COMBAT_STATS.DEFENSE] = new_value
+func get_magic_power() -> float:
+	return combat_stats[COMBAT_STATS.MAGIC_POWER]
+func set_magic_power(new_value: float) -> void:
+	combat_stats[COMBAT_STATS.MAGIC_POWER] = new_value
 
 @export var team : Enums.Teams
 

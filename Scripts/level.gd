@@ -19,7 +19,10 @@ func reset_level() -> void:
 	initialize_level()
 	
 func initialize_level() -> void:
+	var occupied_positions : Dictionary[Vector2, bool] = {}
 	for id in levels_data[current_level].enemies:
+		var random_pos : Vector2 = pick_random_unoccupied_position(occupied_positions)
+		occupied_positions.set(random_pos, true)
 		spawn_enemy(id, pick_random_position())
 		
 	#for i in range(current_level):
@@ -31,6 +34,13 @@ func spawn_enemy(enemy_id: Enums.Enemies, _position: Vector2) -> void:
 	add_child(enemy)
 	active_enemy_count += 1
 	enemy.died.connect(decrement_active_enemy_count)
+
+func pick_random_unoccupied_position(occupied_positions: Dictionary[Vector2, bool]) -> Vector2:
+	while true:
+		var random_pos: Vector2 = pick_random_position()
+		if random_pos not in occupied_positions:
+			return random_pos
+	return Vector2.ZERO
 	
 func pick_random_position() -> Vector2:
 	return Vector2(Util.RNG.randi_range(-level_size.x/2, level_size.x/2),

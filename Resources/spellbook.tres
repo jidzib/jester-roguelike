@@ -6,8 +6,9 @@
 
 [resource]
 script = ExtResource("1_whfmv")
-damage = 1
+power = 2
 animation = ExtResource("1_x4w2y")
+ATTACK_TYPE = 2
 texture = ExtResource("2_3oqxw")
 ID = 3
 name = "Spellbook"

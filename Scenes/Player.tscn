@@ -197,7 +197,6 @@ position = Vector2(218, 218.667)
 [node name="Stats" parent="." index="9"]
 max_hp = 5
 max_mana = 100
-attack = 1.0
 team = 1
 
 [node name="Hurtbox" type="Area2D" parent="." index="10"]

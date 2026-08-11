@@ -1,7 +1,8 @@
 class_name WeaponItem extends Item
 
-@export var damage : int
+@export var power : int = 1.0
 @export var animation : PackedScene
+@export var ATTACK_TYPE : Stats.COMBAT_STATS
 
 func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, _windup_duration: float = 0.0) -> void:
 	var new_animation : WeaponAnimation = animation.instantiate()

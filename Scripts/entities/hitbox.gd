@@ -9,12 +9,14 @@ var lifetime : float
 var shape : Shape2D
 
 var hit_effect : HitEffect
+var source_item : Item
 
-func _init(_parent_stats : Stats, _lifetime : float, _shape : Shape2D, _hit_effect : HitEffect) -> void:
+func _init(_parent_stats : Stats, _lifetime : float, _shape : Shape2D, _hit_effect : HitEffect, _source_item: Item) -> void:
 	parent_stats = _parent_stats
 	lifetime = _lifetime
 	shape = _shape
 	hit_effect = _hit_effect
+	source_item = _source_item
 	
 func _ready() -> void:
 	monitorable = false
@@ -63,4 +65,4 @@ func _area_entered(area: Area2D) -> void:
 		return
 	# spawn particles, and/or send signal of successful attack
 	landed_hit.emit(area.parent_stats)
-	area.receive_hit(parent_stats.attack, global_position.direction_to(area.global_position))
+	area.receive_hit(parent_stats, source_item, global_position.direction_to(area.global_position))

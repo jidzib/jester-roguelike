@@ -14,7 +14,7 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	var shape : Shape2D = RectangleShape2D.new()
 	var hitbox : Hitbox = Hitbox.new(entity.stats, entity_attack_state.duration - 
 									entity_attack_state.wind_up_duration,
-									shape, References.HIT_EFFECTS[hit_effect])
+									shape, References.HIT_EFFECTS[hit_effect], self)
 	hitbox.position = target_dir * range + entity.center.position
 	var new_animation : WeaponAnimation = animation.instantiate()
 	entity_attack_state.windup_point = new_animation.windup_point
