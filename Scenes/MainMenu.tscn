@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cesjacpgcskw6"]
 
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="1_853f1"]
-[ext_resource type="PackedScene" uid="uid://c4yoxcqp4gala" path="res://Scenes/PlayButton.tscn" id="2_8saeu"]
+[ext_resource type="PackedScene" uid="uid://7ent28d1ul5n" path="res://Scenes/PlayButton.tscn" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://cncpxvsayfxi3" path="res://assets/sprites/ui/background.png" id="2_ghw46"]
-[ext_resource type="PackedScene" uid="uid://cgxcadcgt4wgd" path="res://Scenes/QuitButton.tscn" id="3_8saeu"]
+[ext_resource type="PackedScene" uid="uid://cvq61acjpymsk" path="res://Scenes/QuitButton.tscn" id="3_8saeu"]
 [ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="4_df05h"]
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -17,20 +17,20 @@ texture = ExtResource("2_ghw46")
 
 [node name="PlayButton" parent="." instance=ExtResource("2_8saeu")]
 offset_left = 405.0
-offset_top = 204.0
-offset_right = -403.0
-offset_bottom = -394.0
+offset_top = 212.0
+offset_right = 876.0
+offset_bottom = 334.0
 
-[node name="SettingsTransitionButton" parent="." instance=ExtResource("4_df05h")]
+[node name="UITransitionButton" parent="." instance=ExtResource("4_df05h")]
 offset_left = 405.0
-offset_top = 324.0
-offset_right = 877.0
-offset_bottom = 446.0
+offset_top = 317.0
+offset_right = 876.0
+offset_bottom = 439.0
 transition_to = 3
 text = "Settings"
 
 [node name="QuitButton" parent="." instance=ExtResource("3_8saeu")]
-offset_left = 409.0
-offset_top = 443.0
-offset_right = 875.0
-offset_bottom = 565.0
+offset_left = 405.0
+offset_top = 422.0
+offset_right = 876.0
+offset_bottom = 544.0

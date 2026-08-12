@@ -1,8 +1,32 @@
+@tool
 class_name CustomButton extends TextureButton
+
+@export var label : Label
+
+@export var text : String :
+	set(value):
+		text = value
+		if label:
+			label.text = value
+
+@export var font_size : int = 50:
+	set(value):
+		font_size = value
+		label.add_theme_font_size_override("font_size", value)
+		
+@export var font_color : Color :
+	set(value):
+		font_color = value
+		label.add_theme_color_override("font_color", value)
+
 
 @export var click_sound : AudioManager.SOUNDS = AudioManager.SOUNDS.BUTTON_CLICK
 
 func _ready() -> void:
+	print("~~~~~~~~~~~~")
+	print(name)
+	if label:
+		print(label)
 	initialize()
 	
 #func _exit_tree() -> void:

@@ -18,37 +18,55 @@ const TILE_DATA : Dictionary[String, Dictionary] = {
 @export_tool_button("Clear All") var clear_tiles_button = clear
 var dirs : Array[Vector2i] = [Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(0, -1)]
 
-@export var max_steps : int = 20
+@export var max_steps : int = 32
 
 func clear() -> void:
 	tile_layer.clear()
 
 func generate_dungeon() -> void:
-	generate_walls()
-	carve_floors()
-
-func generate_walls() -> void:
-	for x in range(dungeon_size.x):
-		for y in range(dungeon_size.y):
-			tile_layer.set_cell(Vector2(x, y), TILE_DATA.wall.source_id, TILE_DATA.wall.atlas_coords)
-
-func carve_floors() -> void:
-	var current_position : Vector2i = Vector2i(
-		floor(dungeon_size.x / 2.0),
-		floor(dungeon_size.y / 2.0))
-	for i in range(max_steps):
-		tile_layer.set_cell(current_position, TILE_DATA.floor.source_id, TILE_DATA.floor.atlas_coords)
-		var move_dir : Vector2i = dirs.pick_random()
-		var new_pos : Vector2i = current_position + move_dir
-		if in_bounds(new_pos):
-			current_position = new_pos
-		else:
-			dirs.shuffle()
-			for d in dirs:
-				if in_bounds(current_position+d):
-					current_position += d
-					break
+	pass
 	
+
+var rooms : Array[Rect2] = []
+var max_attemps: int = 1000
+var min_room_size : int = 8
+var max_room_size : int = 16
+
+
+func generate_rooms(room_count: int) -> void:
+	var attemps : int = 0
+	
+	while rooms.size() < room_count and attemps < max_attemps:
+		attemps += 1
+		var room_size : Vector2i = Vector2i(randi_range(min_room_size, max_room_size),
+		 									randi_range(min_room_size, max_room_size))
+		var room_position : Vector2i = Vector2i(randi_range(0, dungeon_size.x),
+												randi_range(0, dungeon_size.y))
+		var room : Rect2 = Rect2(room_position, room_size)
+		
+		var overlaps : bool = false
+		for existing_room in rooms:
+			if room.intersects(existing_room):
+				overlaps = true
+				break
+		if not overlaps:
+			rooms.append(room)
+		
+func find_closest_room(room: Rect2) -> Rect2:
+	var closest_room : Rect2
+	var closest_distance : float = INF
+	for other_room in rooms:
+		if other_room == room:
+			continue
+		var distance : float = room.get_center().distance_to(other_room.get_center())
+		
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_room = other_room	
+	return closest_room
+
+func connect_rooms(room_a: Rect2, room_b: Rect2) -> void:
+	pass
 func in_bounds(tile: Vector2i) -> bool:
 	if tile.x < 0 or tile.x >= dungeon_size.x or tile.y < 0 or tile.y >= dungeon_size.y:
 		return false

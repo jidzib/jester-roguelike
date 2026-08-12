@@ -44,8 +44,7 @@ func _on_pressed() -> void:
 	ui.save_inventory.connect(reassign_items)
 	ui.initialize(items)
 	UiManager.switch_ui(ui)
-	#UiManager.pause_game()
-	queue_free()
+	ui.closed.connect(queue_free)
 	pass # OPEN INVENTORY UI FOR LOOT BAG AND PLAYER
 
 func player_in_range() -> bool:

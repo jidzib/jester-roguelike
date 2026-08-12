@@ -14,7 +14,11 @@ func _ready():
 	level_size = Vector2i(level_size.x-1, level_size.y-1)
 	initialize_level()
 
-func reset_level() -> void:
+
+
+func start_next_level() -> void:
+	await get_tree().create_timer(3.0).timeout
+	current_level += 1
 	active_enemy_count = 0
 	initialize_level()
 	
@@ -50,18 +54,19 @@ func spawn_loot(loot_level: int) -> void:
 	var loot : Loot = loot_scene.instantiate()
 	loot.global_position = Player.player.global_position
 	loot.level = loot_level
-	loot.tree_exited.connect(reset_level)
 	add_child(loot)
+	await loot.tree_exited
 	
 func decrement_active_enemy_count() -> void:
 	active_enemy_count -= 1
-	if no_enemies_remaining():
-		current_level += 1
-		print("current level", current_level)
-		if current_level < levels_data.size():
-			spawn_loot(levels_data[current_level].loot_size)
+	if no_enemies_remain():
+		if current_level < levels_data.size()-1:
+			await spawn_loot(levels_data[current_level].loot_size)
+			start_next_level()
 		else:
 			print("You beat the game")
+		
+
 			
-func no_enemies_remaining() -> bool:
+func no_enemies_remain() -> bool:
 	return active_enemy_count <= 0

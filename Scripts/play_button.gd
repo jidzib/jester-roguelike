@@ -1,3 +1,4 @@
+@tool
 class_name PlayButton extends CustomButton
 
 func _ready() -> void:

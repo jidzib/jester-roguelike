@@ -6,11 +6,14 @@ var item_slots : Array[ItemSlot] = []
 @export var items_container : HBoxContainer
 @export var color_rect : ColorRect
 
+
+
 func close() -> void:
 	var items : Array[Item] = []
 	for item_slot in item_slots:
 		items.append(item_slot.item)
 	save_inventory.emit(items)
+	closed.emit()
 	pass
 
 func initialize(_items: Array[Item]) -> void:

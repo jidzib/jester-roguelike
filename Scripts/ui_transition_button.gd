@@ -2,14 +2,6 @@
 class_name UITransitionButton extends CustomButton
 
 @export var transition_to : UIManager.UIs
-@export var label : Label
-@export var text : String :
-	set(value):
-		text = value
-		if not label:
-			label = Label.new()
-			add_child(label)
-		label.text = text
 
 func _ready() -> void:
 	super()
