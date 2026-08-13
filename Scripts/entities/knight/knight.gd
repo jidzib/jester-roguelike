@@ -17,7 +17,7 @@ var target : Player
 func _ready() -> void:
 	super()
 	target = Player.player
-	target.player_died.connect(die)
+	target.player_died.connect(queue_free)
 	attack_timer = Timer.new()
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.one_shot = true

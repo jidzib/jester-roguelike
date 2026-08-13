@@ -60,7 +60,7 @@ func die() -> void:
 	animation_player.play(animation_path + "death")
 	await get_tree().create_timer(0.8).timeout
 	process_mode = Node.PROCESS_MODE_DISABLED
-	visible = false
+	sprites.modulate.a = 0.0
 	update_high_score()
 	player_died.emit()
 	var ui : GameOverUI = UiManager.UI_SCENES[UiManager.UIs.GAME_OVER].instantiate()
