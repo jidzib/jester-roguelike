@@ -1,24 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://jvhbrpdhcuwa"]
+[gd_scene format=3 uid="uid://jvhbrpdhcuwa"]
 
 [ext_resource type="Script" uid="uid://nfi5e830v0mh" path="res://Scripts/loot.gd" id="1_ckycu"]
-[ext_resource type="Texture2D" uid="uid://d4jqory2bblqo" path="res://assets/sprites/tiles/loot_bag.png" id="1_tdn7b"]
+[ext_resource type="Texture2D" uid="uid://dbyskn6utedyd" path="res://assets/sprites/tiles/chest_spritesheet.png" id="1_kg12p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtrbo"]
+atlas = ExtResource("1_kg12p")
+region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kg12p"]
 radius = 60.0
 
-[node name="Loot" type="TextureButton"]
+[node name="Loot" type="TextureButton" unique_id=942754799]
 offset_left = -17.0
 offset_top = -17.0
 offset_right = 15.0
 offset_bottom = 15.0
 pivot_offset = Vector2(17, 17)
-texture_normal = ExtResource("1_tdn7b")
+texture_normal = SubResource("AtlasTexture_mtrbo")
 script = ExtResource("1_ckycu")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=987382169]
 position = Vector2(17, 17)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=486395877]
 shape = SubResource("CircleShape2D_kg12p")
 debug_color = Color(2.06962e-06, 0.531556, 0.446389, 0.133333)
 

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HighscoreData" format=3 uid="uid://2qk2p14ew61p"]
+
+[ext_resource type="Script" uid="uid://bwsocfh2851gb" path="res://Scripts/highscore_data.gd" id="1_kfd5l"]
+
+[resource]
+script = ExtResource("1_kfd5l")
+highscore = 23

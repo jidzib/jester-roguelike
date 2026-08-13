@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelTier" format=3 uid="uid://cm2brn5s2fx0c"]
+
+[ext_resource type="Script" uid="uid://bmqhum78qil71" path="res://Scripts/level_tier.gd" id="1_5pq7n"]
+
+[resource]
+script = ExtResource("1_5pq7n")
+enemy_count_range = Vector2i(1, 2)
+enemy_pool = Dictionary[int, bool]({
+0: false
+})
+metadata/_custom_type_script = "uid://bmqhum78qil71"

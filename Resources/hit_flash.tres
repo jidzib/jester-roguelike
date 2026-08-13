@@ -1,6 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://71q2ybnathvi"]
-
-[ext_resource type="Shader" uid="uid://b3qoswpw10qf1" path="res://Resources/hitflash.gdshader" id="1_qpxix"]
-
-[resource]
-shader = ExtResource("1_qpxix")

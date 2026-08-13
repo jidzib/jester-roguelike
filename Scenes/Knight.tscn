@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cek561y3ub7kl"]
+[gd_scene format=3 uid="uid://cek561y3ub7kl"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_jjefk"]
 [ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="2_fpytc"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="4_wqosg"]
 [ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="5_mfjpr"]
 [ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="6_xf7i1"]
-[ext_resource type="AnimationLibrary" uid="uid://08jcx1cy2mgp" path="res://Resources/EnemyAnimations.res" id="9_4jv4l"]
+[ext_resource type="AnimationLibrary" uid="uid://08jcx1cy2mgp" path="res://Resources/Animations/EnemyAnimations.res" id="9_4jv4l"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_wqosg"]
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="11_0ld3f"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_xf7i1"]
@@ -14,11 +14,11 @@
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="13_ikt6d"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="13_mfjpr"]
 [ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="15_4jv4l"]
-[ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/sword.tres" id="15_ikt6d"]
+[ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/Items/sword.tres" id="15_ikt6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7i1"]
 
-[node name="Knight" node_paths=PackedStringArray("held_item", "raycast", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
+[node name="Knight" unique_id=1645230401 node_paths=PackedStringArray("held_item", "raycast", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
 platform_floor_layers = 4294967040
 script = ExtResource("2_fpytc")
 held_item = NodePath("HeldItem")
@@ -40,7 +40,7 @@ position = Vector2(0, -16)
 [node name="Sprites" parent="." index="1"]
 position = Vector2(0, -16)
 
-[node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
+[node name="Legs" type="Sprite2D" parent="Sprites" index="0" unique_id=1876018213]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("3_1cc6w")
@@ -48,7 +48,7 @@ hframes = 8
 vframes = 13
 frame = 49
 
-[node name="Body" type="Sprite2D" parent="Sprites" index="1"]
+[node name="Body" type="Sprite2D" parent="Sprites" index="1" unique_id=1090630971]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("4_wqosg")
@@ -56,7 +56,7 @@ hframes = 8
 vframes = 13
 frame = 49
 
-[node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
+[node name="Arms" type="Sprite2D" parent="Sprites" index="2" unique_id=1898882933]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("5_mfjpr")
@@ -64,7 +64,7 @@ hframes = 8
 vframes = 13
 frame = 49
 
-[node name="Head" type="Sprite2D" parent="Sprites" index="3"]
+[node name="Head" type="Sprite2D" parent="Sprites" index="3" unique_id=16793908]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("6_xf7i1")
@@ -73,34 +73,32 @@ vframes = 13
 frame = 49
 
 [node name="AnimationPlayer" parent="." index="2"]
-libraries = {
-&"EnemyAnimations": ExtResource("9_4jv4l")
-}
+libraries/EnemyAnimations = ExtResource("9_4jv4l")
 
 [node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" index="0"]
+[node name="Idle" type="Node" parent="StateMachine" index="0" unique_id=887768005]
 script = ExtResource("10_wqosg")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("transition_state")]
+[node name="Attacking" type="Node" parent="StateMachine" index="1" unique_id=58407747 node_paths=PackedStringArray("transition_state")]
 script = ExtResource("12_xf7i1")
 transition_state = NodePath("../Idle")
 duration = 0.75
 wind_up_duration = 0.5
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Hurt" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_state")]
+[node name="Hurt" type="Node" parent="StateMachine" index="2" unique_id=1736198245 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("13_ikt6d")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="CirclingTarget" type="Node" parent="StateMachine" index="3"]
+[node name="CirclingTarget" type="Node" parent="StateMachine" index="3" unique_id=720332458]
 script = ExtResource("11_0ld3f")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="ChasingTarget" type="Node" parent="StateMachine" index="4"]
+[node name="ChasingTarget" type="Node" parent="StateMachine" index="4" unique_id=2105608154]
 script = ExtResource("13_4jv4l")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
@@ -108,21 +106,21 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 max_hp = 5
 team = 2
 
-[node name="Hurtbox" type="Area2D" parent="." index="5"]
+[node name="Hurtbox" type="Area2D" parent="." index="5" unique_id=765329538]
 position = Vector2(0, -16)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("13_mfjpr")
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1501561491]
 shape = SubResource("RectangleShape2D_xf7i1")
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="6"]
+[node name="RayCast2D" type="RayCast2D" parent="." index="6" unique_id=1107431483]
 position = Vector2(0, -16)
 collide_with_bodies = false
 
-[node name="Label" type="Label" parent="." index="7"]
+[node name="Label" type="Label" parent="." index="7" unique_id=1439276747]
 visible = false
 offset_right = 40.0
 offset_bottom = 23.0
@@ -130,7 +128,7 @@ offset_bottom = 23.0
 [node name="Center" parent="." index="8"]
 position = Vector2(0, -8)
 
-[node name="HeldItem" type="Control" parent="." index="9"]
+[node name="HeldItem" type="Control" parent="." index="9" unique_id=944962931]
 visible = false
 z_index = 1
 layout_mode = 3

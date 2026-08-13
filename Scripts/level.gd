@@ -1,10 +1,16 @@
 class_name Level extends Node2D
 
-@export var current_level : int = 0
+@export var current_level : int = 1
+
 @export var level_size : Vector2i = Vector2i(12, 12)
 var loot_scene : PackedScene = load("uid://jvhbrpdhcuwa")
 
-@export var levels_data : Array[LevelData]
+@export var level_tiers : Dictionary[LevelTier.LevelTiers, LevelTier] = {
+	LevelTier.LevelTiers.EASY : load("uid://cm2brn5s2fx0c"),
+	LevelTier.LevelTiers.MEDIUM : load("uid://dtwkvasgalb7r"),
+	LevelTier.LevelTiers.HARD : load("uid://bgthyhcto04kr"),
+	LevelTier.LevelTiers.EXTREME : load("uid://by8qc35yqgg8n")
+}
 
 var active_enemy_count : int = 0 :
 	set(value):
@@ -14,38 +20,60 @@ func _ready():
 	level_size = Vector2i(level_size.x-1, level_size.y-1)
 	initialize_level()
 
+@export_category("Level Thresholds")
+@export var easy_threshold : int = 3
+@export var medium_threshold : int = 6
+@export var hard_threshold : int = 9
+@export var extreme_threshold : int = 12
 
+func pick_level(_current_level: int) -> LevelTier:
+	if _current_level <= easy_threshold:
+		return level_tiers[LevelTier.LevelTiers.EASY]
+	elif _current_level <= medium_threshold:
+		return level_tiers[LevelTier.LevelTiers.MEDIUM]
+	elif _current_level <= hard_threshold:
+		return level_tiers[LevelTier.LevelTiers.HARD]
+	else:
+		return level_tiers[LevelTier.LevelTiers.EXTREME]
 
 func start_next_level() -> void:
+	if not get_tree():
+		return
 	await get_tree().create_timer(3.0).timeout
 	current_level += 1
 	active_enemy_count = 0
 	initialize_level()
 	
 func initialize_level() -> void:
+	var tier : LevelTier = pick_level(current_level)
+	var num_enemies : int = randi_range(tier.enemy_count_range.x, tier.enemy_count_range.y)
+	spawn_enemies(num_enemies, tier.enemy_pool)
+	
+
+func spawn_enemies(num_enemies: int, enemy_pool: Dictionary[Enums.Enemies, bool]) -> void:
 	var occupied_positions : Dictionary[Vector2, bool] = {}
-	for id in levels_data[current_level].enemies:
+	for i in range(num_enemies):
+		var enemy_id : Enums.Enemies = enemy_pool.keys().pick_random()
 		var random_pos : Vector2 = pick_random_unoccupied_position(occupied_positions)
+		spawn_enemy(enemy_id, random_pos)
 		occupied_positions.set(random_pos, true)
-		spawn_enemy(id, pick_random_position())
-		
-	#for i in range(current_level):
-		#spawn_enemy(Util.RNG.randi_range(0, Enums.Enemies.size()-1), pick_random_position())
 
 func spawn_enemy(enemy_id: Enums.Enemies, _position: Vector2) -> void:
-	var enemy : Entity = References.ENEMIES[enemy_id].instantiate()
+	var enemy : Enemy = References.ENEMIES[enemy_id].instantiate()
 	enemy.position = _position
 	add_child(enemy)
 	active_enemy_count += 1
 	enemy.died.connect(decrement_active_enemy_count)
-
+	if Player.player:
+		enemy.send_points_value.connect(Player.player.scoreboard.increase_score)
+		
 func pick_random_unoccupied_position(occupied_positions: Dictionary[Vector2, bool]) -> Vector2:
 	while true:
 		var random_pos: Vector2 = pick_random_position()
 		if random_pos not in occupied_positions:
 			return random_pos
 	return Vector2.ZERO
-	
+
 func pick_random_position() -> Vector2:
 	return Vector2(Util.RNG.randi_range(-level_size.x/2, level_size.x/2),
 	 Util.RNG.randi_range(-level_size.y/2, level_size.y/2)) * Util.TILE_SIZE
@@ -56,17 +84,14 @@ func spawn_loot(loot_level: int) -> void:
 	loot.level = loot_level
 	add_child(loot)
 	await loot.tree_exited
-	
+
 func decrement_active_enemy_count() -> void:
 	active_enemy_count -= 1
 	if no_enemies_remain():
-		if current_level < levels_data.size()-1:
-			await spawn_loot(levels_data[current_level].loot_size)
-			start_next_level()
-		else:
-			print("You beat the game")
-		
+		Player.player.scoreboard.increase_score(min(4, current_level))
+		await spawn_loot(pick_level(current_level).loot_tier)
+		start_next_level()
 
-			
+
 func no_enemies_remain() -> bool:
 	return active_enemy_count <= 0

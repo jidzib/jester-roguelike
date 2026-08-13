@@ -1,6 +1,6 @@
 class_name UI extends CanvasLayer
 
-@export var closable : bool = false
+@export var is_menu : bool = false
 
 signal closed
 

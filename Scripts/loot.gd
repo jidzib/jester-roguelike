@@ -4,7 +4,13 @@ class_name Loot extends TextureButton
 
 var items : Array[Item] = []
 
+var atlas_regions : Dictionary[String, Rect2] = {
+	"open" : Rect2(0.0, 0.0, 32.0, 32.0),
+	"closed" : Rect2(32.0, 0.0, 32.0, 32.0)
+}
+
 func _ready() -> void:
+	set_region("closed")
 	initialize_loot()
 
 func initialize_loot() -> void:
@@ -36,10 +42,14 @@ func pick_from_pool(pool_id: Items.RARITY) -> Item:
 	var pool : Array = Items.rarity_pools[pool_id]
 	return References.ITEMS[pool.pick_random()]
 
+func set_region(str: String) -> void:
+	texture_normal.region = atlas_regions[str]
+	
 func _on_pressed() -> void:
 	print("pressed bag")
 	if not player_in_range():
 		return
+	set_region("open")
 	var ui : LootScreen = UiManager.UI_SCENES[UiManager.UIs.LOOT_SCREEN].instantiate()
 	ui.save_inventory.connect(reassign_items)
 	ui.initialize(items)

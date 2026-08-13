@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d1ckpr4xv2ggp"]
+[gd_scene format=3 uid="uid://d1ckpr4xv2ggp"]
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_cgsek"]
 [ext_resource type="Script" uid="uid://csoim7dyw4o7f" path="res://Scripts/entities/player/player.gd" id="2_0pi4m"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="4_h84ma"]
 [ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="5_47wu6"]
 [ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="6_2n1s8"]
-[ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/PlayerAnimations.res" id="10_ictha"]
+[ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/Animations/PlayerAnimations.res" id="10_ictha"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="11_1jgrc"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_7wy67"]
 [ext_resource type="Script" uid="uid://cph3depeqbxqd" path="res://Scripts/entity_states/blocking.gd" id="13_q26ax"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://dmfwakpfokgd0" path="res://assets/sfx/parry.mp3" id="20_ibubc"]
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="21_i2e8t"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="23_i2e8t"]
+[ext_resource type="PackedScene" uid="uid://bfug5kr66qdc8" path="res://Scenes/Scoreboard.tscn" id="24_qidb7"]
 
 [sub_resource type="Animation" id="Animation_70hv0"]
 length = 0.001
@@ -47,13 +48,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qidb7"]
 size = Vector2(10, 16)
 
-[node name="Player" node_paths=PackedStringArray("hotbar", "direction_indicator", "camera", "ui", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
+[node name="Player" unique_id=1205549669 node_paths=PackedStringArray("hotbar", "direction_indicator", "camera", "ui", "scoreboard", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
 platform_floor_layers = 4294967040
 script = ExtResource("2_0pi4m")
 hotbar = NodePath("UI/Hotbar")
 direction_indicator = NodePath("DirectionIndicator")
 camera = NodePath("Camera2D")
 ui = NodePath("UI")
+scoreboard = NodePath("Scoreboard")
 speed = 100.0
 animation_path = "PlayerAnimations/"
 hurtbox = NodePath("Hurtbox")
@@ -75,7 +77,7 @@ position = Vector2(-0.5, -8)
 z_index = 1
 position = Vector2(0, -16)
 
-[node name="Legs" type="Sprite2D" parent="Sprites" index="0"]
+[node name="Legs" type="Sprite2D" parent="Sprites" index="0" unique_id=1129979997]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("3_sg6sq")
@@ -83,7 +85,7 @@ hframes = 8
 vframes = 13
 frame = 88
 
-[node name="Body" type="Sprite2D" parent="Sprites" index="1"]
+[node name="Body" type="Sprite2D" parent="Sprites" index="1" unique_id=1396478259]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("4_h84ma")
@@ -91,15 +93,15 @@ hframes = 8
 vframes = 13
 frame = 8
 
-[node name="Arms" type="Sprite2D" parent="Sprites" index="2"]
+[node name="Arms" type="Sprite2D" parent="Sprites" index="2" unique_id=151119078]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("5_47wu6")
 hframes = 8
 vframes = 13
-frame = 8
+frame = 16
 
-[node name="Head" type="Sprite2D" parent="Sprites" index="3"]
+[node name="Head" type="Sprite2D" parent="Sprites" index="3" unique_id=636130262]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("6_2n1s8")
@@ -108,59 +110,57 @@ vframes = 13
 frame = 8
 
 [node name="AnimationPlayer" parent="." index="2"]
-libraries = {
-&"": SubResource("AnimationLibrary_gueye"),
-&"PlayerAnimations": ExtResource("10_ictha")
-}
+libraries/ = SubResource("AnimationLibrary_gueye")
+libraries/PlayerAnimations = ExtResource("10_ictha")
 
 [node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" index="0"]
+[node name="Idle" type="Node" parent="StateMachine" index="0" unique_id=1497144049]
 script = ExtResource("11_1jgrc")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("transition_state")]
+[node name="Attacking" type="Node" parent="StateMachine" index="1" unique_id=2075479693 node_paths=PackedStringArray("transition_state")]
 script = ExtResource("12_7wy67")
 transition_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Blocking" type="Node" parent="StateMachine" index="2" node_paths=PackedStringArray("idle_state")]
+[node name="Blocking" type="Node" parent="StateMachine" index="2" unique_id=1738796518 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("13_q26ax")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="DrinkingPotion" type="Node" parent="StateMachine" index="3" node_paths=PackedStringArray("idle_state")]
+[node name="DrinkingPotion" type="Node" parent="StateMachine" index="3" unique_id=1104468707 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("14_0pi4m")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Spellcasting" type="Node" parent="StateMachine" index="4" node_paths=PackedStringArray("idle_state")]
+[node name="Spellcasting" type="Node" parent="StateMachine" index="4" unique_id=993652747 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("15_sg6sq")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Hurt" type="Node" parent="StateMachine" index="5" node_paths=PackedStringArray("idle_state")]
+[node name="Hurt" type="Node" parent="StateMachine" index="5" unique_id=1087643708 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("15_qidb7")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Roll" type="Node" parent="StateMachine" index="6" node_paths=PackedStringArray("idle_state")]
+[node name="Roll" type="Node" parent="StateMachine" index="6" unique_id=962944734 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("16_70hv0")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
+[node name="Camera2D" type="Camera2D" parent="." index="4" unique_id=1188976238]
 position = Vector2(-7, -8)
 zoom = Vector2(3, 3)
 script = ExtResource("17_qidb7")
 
-[node name="HeldItem" parent="." index="5" instance=ExtResource("18_mrbh7")]
+[node name="HeldItem" parent="." index="5" unique_id=2020946158 instance=ExtResource("18_mrbh7")]
 visible = false
 z_index = 2
 position = Vector2(9, -5)
 
-[node name="DirectionIndicator" type="Sprite2D" parent="." index="6"]
+[node name="DirectionIndicator" type="Sprite2D" parent="." index="6" unique_id=1130203930]
 modulate = Color(1, 1, 1, 0.509804)
 z_index = 1
 z_as_relative = false
@@ -168,30 +168,30 @@ position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_lrhq4")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7" unique_id=2089763617]
 stream = ExtResource("20_ibubc")
 
-[node name="UI" type="CanvasLayer" parent="." index="8"]
+[node name="UI" type="CanvasLayer" parent="." index="8" unique_id=1830249429]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("21_i2e8t")
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="HealthUI" parent="UI" index="0" node_paths=PackedStringArray("parent") instance=ExtResource("15_m7dl7")]
+[node name="HealthUI" parent="UI" index="0" unique_id=193787174 node_paths=PackedStringArray("parent") instance=ExtResource("15_m7dl7")]
 offset_left = 20.0
 offset_top = 15.0
 offset_right = 105.0
 offset_bottom = 55.0
 parent = NodePath("../..")
 
-[node name="ManaUI" parent="UI" index="1" node_paths=PackedStringArray("parent") instance=ExtResource("16_48og4")]
+[node name="ManaUI" parent="UI" index="1" unique_id=576249905 node_paths=PackedStringArray("parent") instance=ExtResource("16_48og4")]
 offset_left = 2.0
 offset_top = 29.0
 offset_right = -1150.0
 offset_bottom = -675.0
 parent = NodePath("../..")
 
-[node name="Hotbar" parent="UI" index="2" instance=ExtResource("17_xmpta")]
+[node name="Hotbar" parent="UI" index="2" unique_id=1224682783 instance=ExtResource("17_xmpta")]
 position = Vector2(218, 218.667)
 
 [node name="Stats" parent="." index="9"]
@@ -204,14 +204,19 @@ combat_stats = Dictionary[int, float]({
 })
 team = 1
 
-[node name="Hurtbox" type="Area2D" parent="." index="10"]
+[node name="Hurtbox" type="Area2D" parent="." index="10" unique_id=1858356822]
 collision_mask = 0
 script = ExtResource("23_i2e8t")
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1167021958]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_qidb7")
 
 [node name="Center" parent="." index="11"]
 position = Vector2(0, -8)
+
+[node name="Scoreboard" parent="." index="12" unique_id=1854695850 instance=ExtResource("24_qidb7")]
+z_index = 100
+position = Vector2(148.99998, -118.00001)
+scale = Vector2(0.33, 0.33)

@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwetdj5om0tm"]
+[gd_scene format=3 uid="uid://bwetdj5om0tm"]
 
 [ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="1_4ef7o"]
 [ext_resource type="Texture2D" uid="uid://vyq7ntge4eqh" path="res://assets/sprites/ui/selected.png" id="2_i6rfv"]
 
-[node name="ItemSlot" type="Control" node_paths=PackedStringArray("sprite", "selected_sprite")]
+[node name="ItemSlot" type="Control" unique_id=1802365271 node_paths=PackedStringArray("sprite", "selected_sprite")]
 physics_interpolation_mode = 0
 z_index = 1
 custom_minimum_size = Vector2(20, 20)
@@ -16,10 +16,10 @@ sprite = NodePath("Sprite2D")
 selected_sprite = NodePath("Selected")
 metadata/_custom_type_script = "uid://b2n0l7wm8dc5x"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=768986079]
 position = Vector2(10, 10)
 
-[node name="Selected" type="Sprite2D" parent="."]
+[node name="Selected" type="Sprite2D" parent="." unique_id=238990894]
 visible = false
 position = Vector2(10, 10)
 texture = ExtResource("2_i6rfv")

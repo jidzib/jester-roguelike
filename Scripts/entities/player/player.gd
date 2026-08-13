@@ -9,6 +9,9 @@ signal player_died
 @export var camera : Camera2D
 
 @export var ui : UI
+var in_menu : bool = false
+
+@export var scoreboard : Scoreboard
 # STATE MACHINE
 
 var held_item : ItemSlot = null
@@ -27,6 +30,10 @@ func _physics_process(delta: float) -> void:
 	
 func _input(event: InputEvent) -> void:
 	state_machine.process_input(event)
+	
+	if in_menu:
+		return
+		
 	if event is InputEventKey and event.pressed:
 		if event.unicode >= KEY_1 and event.unicode <= KEY_5:
 			hotbar.set_selected(event.unicode-48, self)
@@ -54,10 +61,20 @@ func die() -> void:
 	await get_tree().create_timer(0.8).timeout
 	process_mode = Node.PROCESS_MODE_DISABLED
 	visible = false
-	#super()
+	update_high_score()
 	player_died.emit()
 	var ui : GameOverUI = UiManager.UI_SCENES[UiManager.UIs.GAME_OVER].instantiate()
 	UiManager.switch_ui(ui)
+
+func update_high_score() -> void:
+	var highscore_data_path : String = "res://Resources/SaveData/highscore_data.tres"
+	var highscore_data : HighscoreData
+	if not ResourceLoader.exists(highscore_data_path):
+		highscore_data = HighscoreData.new()
+	else:
+		highscore_data = ResourceLoader.load(highscore_data_path)
+	highscore_data.highscore = max(highscore_data.highscore, scoreboard.score)
+	ResourceSaver.save(highscore_data, highscore_data_path)
 	
 func handle_movement(delta: float) -> void:
 	direction.x = Input.get_action_strength("MOVE_RIGHT") - Input.get_action_strength("MOVE_LEFT")

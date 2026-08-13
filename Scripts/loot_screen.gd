@@ -4,7 +4,6 @@ signal save_inventory(_items: Array[Item])
 
 var item_slots : Array[ItemSlot] = []
 @export var items_container : HBoxContainer
-@export var color_rect : ColorRect
 
 
 
@@ -22,4 +21,3 @@ func initialize(_items: Array[Item]) -> void:
 		item_slot.item = item
 		items_container.add_child(item_slot)
 		item_slots.append(item_slot)
-	color_rect.size.x = item_slots.size() * 20.0

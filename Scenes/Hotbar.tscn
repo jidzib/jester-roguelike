@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://drsygg8of0wxa"]
+[gd_scene format=3 uid="uid://drsygg8of0wxa"]
 
 [ext_resource type="Script" uid="uid://c611q82qv1ksk" path="res://Scripts/hotbar.gd" id="1_1074w"]
 [ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/sprites/ui/hotbar.png" id="2_ry1on"]
 [ext_resource type="PackedScene" uid="uid://bwetdj5om0tm" path="res://Scenes/ItemSlot.tscn" id="3_i2kgl"]
-[ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/sword.tres" id="5_stvnf"]
+[ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/Items/sword.tres" id="5_stvnf"]
 
-[node name="Hotbar" type="Node2D" node_paths=PackedStringArray("item_slot1", "item_slot2", "item_slot3", "item_slot4", "item_slot5")]
+[node name="Hotbar" type="Node2D" unique_id=1441456161 node_paths=PackedStringArray("item_slot1", "item_slot2", "item_slot3", "item_slot4", "item_slot5")]
 script = ExtResource("1_1074w")
 item_slot1 = NodePath("ItemSlot1")
 item_slot2 = NodePath("ItemSlot2")
@@ -14,10 +14,10 @@ item_slot4 = NodePath("ItemSlot4")
 item_slot5 = NodePath("ItemSlot5")
 metadata/_custom_type_script = "uid://c611q82qv1ksk"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=714319553]
 texture = ExtResource("2_ry1on")
 
-[node name="ItemSlot1" parent="." instance=ExtResource("3_i2kgl")]
+[node name="ItemSlot1" parent="." unique_id=2037601710 instance=ExtResource("3_i2kgl")]
 offset_left = -48.0
 offset_top = -10.0
 offset_right = -28.0
@@ -25,28 +25,28 @@ offset_bottom = 10.0
 item = ExtResource("5_stvnf")
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemSlot2" parent="." instance=ExtResource("3_i2kgl")]
+[node name="ItemSlot2" parent="." unique_id=589978168 instance=ExtResource("3_i2kgl")]
 offset_left = -29.0
 offset_top = -10.0
 offset_right = -9.0
 offset_bottom = 10.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemSlot3" parent="." instance=ExtResource("3_i2kgl")]
+[node name="ItemSlot3" parent="." unique_id=498432528 instance=ExtResource("3_i2kgl")]
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemSlot4" parent="." instance=ExtResource("3_i2kgl")]
+[node name="ItemSlot4" parent="." unique_id=1407847897 instance=ExtResource("3_i2kgl")]
 offset_left = 9.0
 offset_top = -10.0
 offset_right = 29.0
 offset_bottom = 10.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemSlot5" parent="." instance=ExtResource("3_i2kgl")]
+[node name="ItemSlot5" parent="." unique_id=149891601 instance=ExtResource("3_i2kgl")]
 offset_left = 28.0
 offset_top = -10.0
 offset_right = 48.0

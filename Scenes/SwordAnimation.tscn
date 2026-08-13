@@ -1,16 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce7e6m6snjbt5"]
+[gd_scene format=3 uid="uid://ce7e6m6snjbt5"]
 
 [ext_resource type="PackedScene" uid="uid://cqjf1cr3g6p7f" path="res://Scenes/WeaponAnimation.tscn" id="1_7ngrt"]
 [ext_resource type="Texture2D" uid="uid://b18bvdf7o3m8d" path="res://assets/weapon_animations/sword_spritesheet.png" id="2_0ldg1"]
-[ext_resource type="AnimationLibrary" uid="uid://djhn3g2kkkrm5" path="res://Resources/SwordAnimations.res" id="2_uw7dh"]
+[ext_resource type="AnimationLibrary" uid="uid://djhn3g2kkkrm5" path="res://Resources/Animations/SwordAnimations.res" id="2_uw7dh"]
 
-[node name="SwordAnimation" node_paths=PackedStringArray("animation_player") instance=ExtResource("1_7ngrt")]
+[node name="SwordAnimation" unique_id=587937862 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_7ngrt")]
 animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" parent="." index="0"]
-libraries = {
-&"": ExtResource("2_uw7dh")
-}
+libraries/ = ExtResource("2_uw7dh")
 
 [node name="Spritesheet" parent="." index="1"]
 texture = ExtResource("2_0ldg1")

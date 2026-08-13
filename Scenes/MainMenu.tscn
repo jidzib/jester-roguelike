@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cesjacpgcskw6"]
+[gd_scene format=3 uid="uid://cesjacpgcskw6"]
 
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="1_853f1"]
 [ext_resource type="PackedScene" uid="uid://7ent28d1ul5n" path="res://Scenes/PlayButton.tscn" id="2_8saeu"]
@@ -6,22 +6,22 @@
 [ext_resource type="PackedScene" uid="uid://cvq61acjpymsk" path="res://Scenes/QuitButton.tscn" id="3_8saeu"]
 [ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="4_df05h"]
 
-[node name="MainMenu" type="CanvasLayer"]
+[node name="MainMenu" type="CanvasLayer" unique_id=1908652817]
 script = ExtResource("1_853f1")
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1629769648]
 offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("2_ghw46")
 
-[node name="PlayButton" parent="." instance=ExtResource("2_8saeu")]
+[node name="PlayButton" parent="." unique_id=1736430670 instance=ExtResource("2_8saeu")]
 offset_left = 405.0
 offset_top = 212.0
 offset_right = 876.0
 offset_bottom = 334.0
 
-[node name="UITransitionButton" parent="." instance=ExtResource("4_df05h")]
+[node name="UITransitionButton" parent="." unique_id=146779353 instance=ExtResource("4_df05h")]
 offset_left = 405.0
 offset_top = 317.0
 offset_right = 876.0
@@ -29,7 +29,7 @@ offset_bottom = 439.0
 transition_to = 3
 text = "Settings"
 
-[node name="QuitButton" parent="." instance=ExtResource("3_8saeu")]
+[node name="QuitButton" parent="." unique_id=1936479115 instance=ExtResource("3_8saeu")]
 offset_left = 405.0
 offset_top = 422.0
 offset_right = 876.0

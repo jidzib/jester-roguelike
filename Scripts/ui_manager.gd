@@ -21,7 +21,7 @@ func _ready() -> void:
 	add_child(current_ui)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("close_menu") and current_ui and current_ui.closable:
+	if Input.is_action_just_pressed("close_menu") and current_ui and current_ui.is_menu:
 		resume_game()
 		clear_ui()
 
@@ -31,11 +31,16 @@ func switch_ui(ui: UI) -> void:
 	
 func set_ui(ui_scene : Node) -> void:
 	current_ui = ui_scene
+	if current_ui.is_menu:
+		if Player.player:
+			Player.player.in_menu = true
 	add_child(current_ui)
 	
 func clear_ui() -> void:
 	if current_ui:
 		current_ui.close()
+		if Player.player:
+			Player.player.in_menu = false
 		current_ui.queue_free()
 
 func pause_game() -> void:

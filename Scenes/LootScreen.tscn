@@ -1,26 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://h1urf3ntfase"]
+[gd_scene format=3 uid="uid://h1urf3ntfase"]
 
 [ext_resource type="Script" uid="uid://b4icgoodyjf82" path="res://Scripts/loot_screen.gd" id="1_am07x"]
+[ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/sprites/ui/hotbar.png" id="2_recfd"]
 
-[node name="LootScreen" type="CanvasLayer" node_paths=PackedStringArray("items_container", "color_rect")]
+[node name="LootScreen" type="CanvasLayer" unique_id=18461001 node_paths=PackedStringArray("items_container")]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("1_am07x")
 items_container = NodePath("HBoxContainer")
-color_rect = NodePath("ColorRect")
-closable = true
+is_menu = true
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 185.0
-offset_top = 106.0
-offset_right = 249.0
-offset_bottom = 134.0
-color = Color(0.529412, 0.658824, 1, 0.584314)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1110262224]
+modulate = Color(0.6156863, 0.34901962, 0.38431373, 1)
+position = Vector2(217.66655, 168.99991)
+texture = ExtResource("2_recfd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 185.333
-offset_top = 108.0
-offset_right = 245.333
-offset_bottom = 128.0
-theme_override_constants/separation = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1826986996]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -470.33344
+offset_top = -201.00009
+offset_right = -374.33344
+offset_bottom = -181.00009
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -1
+metadata/_edit_use_anchors_ = true

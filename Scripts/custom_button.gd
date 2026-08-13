@@ -23,10 +23,6 @@ class_name CustomButton extends TextureButton
 @export var click_sound : AudioManager.SOUNDS = AudioManager.SOUNDS.BUTTON_CLICK
 
 func _ready() -> void:
-	print("~~~~~~~~~~~~")
-	print(name)
-	if label:
-		print(label)
 	initialize()
 	
 #func _exit_tree() -> void:

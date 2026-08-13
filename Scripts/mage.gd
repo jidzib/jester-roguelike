@@ -1,4 +1,4 @@
-class_name Mage extends Entity
+class_name Mage extends Enemy
 
 var aggro_range : float = 320.0
 var attack_range : float = 100.0

@@ -1,4 +1,4 @@
-class_name Knight extends Entity
+class_name Knight extends Enemy
 
 var aggro_range : float = 320.0
 var attack_range : float = 48.0

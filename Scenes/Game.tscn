@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cq336y4xds2th"]
+[gd_scene format=3 uid="uid://cq336y4xds2th"]
 
-[ext_resource type="Script" uid="uid://bv7fsjpbjppc2" path="res://Scenes/game.gd" id="1_kldst"]
+[ext_resource type="Script" uid="uid://bv7fsjpbjppc2" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="PackedScene" uid="uid://d1ckpr4xv2ggp" path="res://Scenes/Player.tscn" id="3_kldst"]
 [ext_resource type="PackedScene" uid="uid://cahb0g5s4q4kl" path="res://Scenes/Level.tscn" id="4_b2bpf"]
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=661736112]
 y_sort_enabled = true
 script = ExtResource("1_kldst")
 
-[node name="Player" parent="." node_paths=PackedStringArray("state_nodes") instance=ExtResource("3_kldst")]
+[node name="Player" parent="." unique_id=100865100 node_paths=PackedStringArray("state_nodes") instance=ExtResource("3_kldst")]
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 1: NodePath("StateMachine/Attacking"),
@@ -20,10 +20,12 @@ state_nodes = {
 8: NodePath("StateMachine/Roll")
 }
 
-[node name="Level" parent="." instance=ExtResource("4_b2bpf")]
+[node name="Level" parent="." unique_id=2040038663 instance=ExtResource("4_b2bpf")]
 position = Vector2(0, -2)
+current_level = 1
+level_size = Vector2i(12, 12)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1309292820]
 z_index = -1
 offset_left = -704.0
 offset_top = -406.0
