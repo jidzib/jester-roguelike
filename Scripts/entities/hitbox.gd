@@ -53,7 +53,7 @@ func update_hitlog(entry: Stats) -> void:
 
 func emit_effects() -> void:
 	hit_effect.emit(global_position) 
-	
+
 func _area_entered(area: Area2D) -> void:
 	if area is not Hurtbox:
 		return

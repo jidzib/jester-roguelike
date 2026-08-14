@@ -256,11 +256,12 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 max_hp = 5
 team = 2
 
-[node name="Hurtbox" type="Area2D" parent="." index="5" unique_id=765329538]
+[node name="Hurtbox" type="Area2D" parent="." index="5" unique_id=765329538 node_paths=PackedStringArray("collision_shape")]
 position = Vector2(0, -16)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("13_mfjpr")
+collision_shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1501561491]

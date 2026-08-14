@@ -4,6 +4,8 @@ var parent_stats : Stats
 var blocking : bool = false
 signal successful_parry
 
+@export var collision_shape : CollisionShape2D
+
 var parry_hit_effect : HitEffect = References.HIT_EFFECTS[Enums.HitEffects.PARRY_HIT]
 
 func _ready() -> void:
@@ -26,13 +28,21 @@ func receive_hit(attacker_stats: Stats, source_item: Item, coming_from: Vector2,
 	if parent_stats.owner is Player:
 		Camera.camera.camera_shake(damage)
 		Camera.camera.screen_flash(Color.RED)
+		give_i_frame()
+		
 	# knockback
 	var hurt_state : State = parent.state_nodes[parent.States.HURT]
 	hurt_state.knockback_strength = knockback_strength
 	hurt_state.knockback_direction = coming_from
 	parent.change_state(hurt_state)
 
+func give_i_frame(duration: float = 1.0) -> void:
+	disable()
+	await get_tree().create_timer(duration).timeout
+	enable()
+
 func disable() -> void:
-	monitorable = false
+	collision_shape.set_deferred("disabled", true)
+	
 func enable() -> void:
-	monitorable = true
+	collision_shape.set_deferred("disabled", false)
