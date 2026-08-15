@@ -4,6 +4,7 @@ static var player : Player
 signal player_died
 
 @export var hotbar : Hotbar
+@export var inventory : Inventory
 #@export var held_item : HeldItem
 @export var direction_indicator : Sprite2D
 @export var camera : Camera2D
@@ -31,14 +32,15 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 	
+	if event is InputEventKey or event is InputEventMouseButton and event.pressed:
+		if event.is_action_pressed("TOGGLE_INVENTORY"):
+			inventory.visible = !inventory.visible
 	if in_menu:
 		return
 		
 	if event is InputEventKey and event.pressed:
 		if event.unicode >= KEY_1 and event.unicode <= KEY_5:
 			hotbar.set_selected(event.unicode-48, self)
-		elif event.is_action_pressed("toggle_camera"):
-			camera.enabled = !camera.enabled
 
 	if not action_locked:
 		if event is InputEventKey or event is InputEventMouseButton and event.pressed:
@@ -48,9 +50,8 @@ func _input(event: InputEvent) -> void:
 					held_item.item.use(self, weapon_dir)
 			elif event.is_action_pressed("ROLL"):
 				change_state(state_nodes[States.ROLL])
-
+				
 func die() -> void:
-	print("is this working")
 	set_physics_process(false)
 	set_process(false)
 	set_process_input(false)

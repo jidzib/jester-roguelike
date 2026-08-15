@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_unyy7"]
 [ext_resource type="Script" uid="uid://bb3efy6b8oiae" path="res://Scripts/mage.gd" id="2_j6mq2"]
 [ext_resource type="Texture2D" uid="uid://c4us8yc6ovowy" path="res://assets/sprites/entities/mage/mage_spritesheet.png" id="3_tbcp4"]
+[ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="9_6sp4a"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="9_iyoo4"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_pukvw"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entity_states/spellcasting.gd" id="11_vjf4w"]
@@ -140,6 +141,16 @@ _data = {
 &"side_walk": SubResource("Animation_4x5sc")
 }
 
+[sub_resource type="Resource" id="Resource_04rgk"]
+script = ExtResource("9_6sp4a")
+combat_stats = Dictionary[int, float]({
+0: 0.0,
+1: 1.0,
+2: 2.0,
+3: 2.0
+})
+metadata/_custom_type_script = "uid://cocg7yax0q6v2"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7i3ca"]
 size = Vector2(10, 24)
 
@@ -159,17 +170,17 @@ state_nodes = {
 7: NodePath("StateMachine/ChasingTarget")
 }
 
-[node name="Spritesheet" type="Sprite2D" parent="Sprites" index="0" unique_id=1142849184]
+[node name="Spritesheet" type="Sprite2D" parent="Sprites" parent_id_path=PackedInt32Array(882517692) index="0" unique_id=1142849184]
 z_index = 1
 use_parent_material = true
 texture = ExtResource("3_tbcp4")
 hframes = 4
 vframes = 9
 
-[node name="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" parent="." index="2" unique_id=1851328693]
 libraries/ = SubResource("AnimationLibrary_ahi3q")
 
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]
+[node name="StateMachine" parent="." index="3" unique_id=1289695732 node_paths=PackedStringArray("starting_state")]
 starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" index="0" unique_id=2076370193]
@@ -194,9 +205,10 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 script = ExtResource("14_crkg3")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Stats" parent="." index="4"]
+[node name="Stats" parent="." index="4" unique_id=1175305160]
 max_hp = 3
 max_mana = 100
+base_combat_stats = SubResource("Resource_04rgk")
 team = 2
 
 [node name="Hurtbox" type="Area2D" parent="." index="6" unique_id=2013052257 node_paths=PackedStringArray("collision_shape")]

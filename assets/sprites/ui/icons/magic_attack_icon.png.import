@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhcnhshyno6gy"
-path="res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"
+uid="uid://rklefs6hup04"
+path="res://.godot/imported/magic_attack_icon.png-786cdfafdc628307cd0cd9a38e261eaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/hotbar.png"
-dest_files=["res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"]
+source_file="res://assets/sprites/ui/icons/magic_attack_icon.png"
+dest_files=["res://.godot/imported/magic_attack_icon.png-786cdfafdc628307cd0cd9a38e261eaa.ctex"]
 
 [params]
 

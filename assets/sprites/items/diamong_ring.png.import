@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhcnhshyno6gy"
-path="res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"
+uid="uid://dq08hsqlt0dxe"
+path="res://.godot/imported/diamong_ring.png-7636426e00d403625b4df510d4be1616.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/hotbar.png"
-dest_files=["res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"]
+source_file="res://assets/sprites/items/diamong_ring.png"
+dest_files=["res://.godot/imported/diamong_ring.png-7636426e00d403625b4df510d4be1616.ctex"]
 
 [params]
 

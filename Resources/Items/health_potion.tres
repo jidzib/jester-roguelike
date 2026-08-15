@@ -1,13 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dxab75s7flvdm"]
+[gd_resource type="Resource" format=3 uid="uid://dxab75s7flvdm"]
 
 [ext_resource type="Script" uid="uid://cf81kyktejhbq" path="res://Scripts/items/health_potion.gd" id="1_5s3tr"]
 [ext_resource type="Texture2D" uid="uid://bpsulxv3jyuqk" path="res://assets/sprites/items/health_potion.png" id="2_gu1py"]
 
 [resource]
 script = ExtResource("1_5s3tr")
-heal_amount = 1
 texture = ExtResource("2_gu1py")
 ID = 2
 name = "Health Potion"
-description = "Use to restore a heart"
+description = "Use to restore HP"
 metadata/_custom_type_script = "uid://cf81kyktejhbq"

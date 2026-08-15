@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://5n64gij18w37"]
+
+[ext_resource type="Texture2D" uid="uid://8owl778bkm33" path="res://assets/sprites/ui/inventory.png" id="1_3n7vm"]
+[ext_resource type="Script" uid="uid://dcm6y7alytwc5" path="res://Scripts/inventory.gd" id="1_nwt7c"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="3_jqulp"]
+[ext_resource type="PackedScene" uid="uid://bwetdj5om0tm" path="res://Scenes/ItemSlot.tscn" id="4_jqulp"]
+
+[node name="Inventory" type="Node2D" unique_id=935258046 node_paths=PackedStringArray("atk_label", "def_label", "mga_label", "mgd_label", "item_slot_container")]
+script = ExtResource("1_nwt7c")
+atk_label = NodePath("ATK_LABEL")
+def_label = NodePath("DEF_LABEL")
+mga_label = NodePath("MGA_LABEL")
+mgd_label = NodePath("MGD_LABEL")
+item_slot_container = NodePath("ItemSlots")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1177827461]
+texture = ExtResource("1_3n7vm")
+
+[node name="ATK_LABEL" type="Label" parent="." unique_id=261881977]
+offset_left = 35.0
+offset_top = -34.0
+offset_right = 44.0
+offset_bottom = -26.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jqulp")
+theme_override_font_sizes/font_size = 6
+text = "10"
+
+[node name="DEF_LABEL" type="Label" parent="." unique_id=510952988]
+offset_left = 35.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = -12.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jqulp")
+theme_override_font_sizes/font_size = 6
+
+[node name="MGA_LABEL" type="Label" parent="." unique_id=1974117326]
+offset_left = 35.0
+offset_top = -6.0
+offset_right = 44.0
+offset_bottom = 2.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jqulp")
+theme_override_font_sizes/font_size = 6
+
+[node name="MGD_LABEL" type="Label" parent="." unique_id=591080805]
+offset_left = 35.0
+offset_top = 7.0
+offset_right = 44.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_jqulp")
+theme_override_font_sizes/font_size = 6
+
+[node name="ItemSlots" type="Control" parent="." unique_id=1253583897]
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_left = -48.0
+offset_top = -32.0
+offset_right = -8.0
+offset_bottom = 8.0
+
+[node name="ItemSlot" parent="ItemSlots" unique_id=1802365271 instance=ExtResource("4_jqulp")]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 19.0
+offset_bottom = 19.0
+
+[node name="ItemSlot2" parent="ItemSlots" unique_id=1124092817 instance=ExtResource("4_jqulp")]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 19.0
+
+[node name="ItemSlot3" parent="ItemSlots" unique_id=1607436480 instance=ExtResource("4_jqulp")]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 21.0
+offset_right = 41.0
+offset_bottom = 41.0
+
+[node name="ItemSlot4" parent="ItemSlots" unique_id=507959142 instance=ExtResource("4_jqulp")]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 19.0
+offset_bottom = 41.0

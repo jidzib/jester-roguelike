@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="1_4ef7o"]
 [ext_resource type="Texture2D" uid="uid://vyq7ntge4eqh" path="res://assets/sprites/ui/selected.png" id="2_i6rfv"]
+[ext_resource type="PackedScene" uid="uid://u4f2de4cni6r" path="res://Scenes/ItemDescription.tscn" id="3_vim8q"]
 
-[node name="ItemSlot" type="Control" unique_id=1802365271 node_paths=PackedStringArray("sprite", "selected_sprite")]
+[node name="ItemSlot" type="Control" unique_id=1802365271 node_paths=PackedStringArray("sprite", "selected_sprite", "item_description")]
 physics_interpolation_mode = 0
 z_index = 1
 custom_minimum_size = Vector2(20, 20)
@@ -14,6 +15,7 @@ offset_bottom = 20.0
 script = ExtResource("1_4ef7o")
 sprite = NodePath("Sprite2D")
 selected_sprite = NodePath("Selected")
+item_description = NodePath("ItemDescription")
 metadata/_custom_type_script = "uid://b2n0l7wm8dc5x"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=768986079]
@@ -23,6 +25,11 @@ position = Vector2(10, 10)
 visible = false
 position = Vector2(10, 10)
 texture = ExtResource("2_i6rfv")
+
+[node name="ItemDescription" parent="." unique_id=1654594692 node_paths=PackedStringArray("item_slot") instance=ExtResource("3_vim8q")]
+visible = false
+position = Vector2(-60, -120)
+item_slot = NodePath("..")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

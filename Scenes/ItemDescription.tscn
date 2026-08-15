@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://u4f2de4cni6r"]
+
+[ext_resource type="Script" uid="uid://bs67irygh2m3b" path="res://Scripts/item_description.gd" id="1_eduhq"]
+[ext_resource type="Texture2D" uid="uid://cl2xaekwmd83p" path="res://assets/sprites/ui/ninepatch.png" id="2_3soxr"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="3_gy7hx"]
+
+[node name="ItemDescription" type="Node2D" unique_id=1654594692 node_paths=PackedStringArray("label", "back")]
+z_index = 2
+script = ExtResource("1_eduhq")
+label = NodePath("NinePatchRect/RichTextLabel")
+back = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1237168183]
+offset_right = 140.0
+offset_bottom = 120.0
+texture = ExtResource("2_3soxr")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect" unique_id=808151652]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -50.5
+offset_right = 67.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_selected_color = Color(1, 1, 1, 0)
+theme_override_fonts/normal_font = ExtResource("3_gy7hx")
+theme_override_fonts/bold_font = ExtResource("3_gy7hx")
+theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Name of a long item
+
+Description of what the item does or how to use it. For example, you can click the [BUTTON] to do a cool thing! This is the longest possible part of the item description so be sure to leave room!
+
+[STAT NAME]: 100.0
+[STAT NAME]: 100.0
+[STAT NAME]: 100.0
+[STAT NAME]: 100.0
+"
+horizontal_alignment = 1
+vertical_alignment = 1

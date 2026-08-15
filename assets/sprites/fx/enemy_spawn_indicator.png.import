@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhcnhshyno6gy"
-path="res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"
+uid="uid://br5jvc3s1qri8"
+path="res://.godot/imported/enemy_spawn_indicator.png-62c53f5ac3cb5f23f22d8df0946e063e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/hotbar.png"
-dest_files=["res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"]
+source_file="res://assets/sprites/fx/enemy_spawn_indicator.png"
+dest_files=["res://.godot/imported/enemy_spawn_indicator.png-62c53f5ac3cb5f23f22d8df0946e063e.ctex"]
 
 [params]
 

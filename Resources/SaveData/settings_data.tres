@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="SettingsData" format=3 uid="uid://c5n8a7ik2vnes"]
+[gd_resource type="Resource" script_class="SettingsData" format=3]
 
-[ext_resource type="Script" uid="uid://c8icpvoygcu45" path="res://Scripts/settings_data.gd" id="1_453hs"]
+[ext_resource type="Script" path="res://Scripts/settings_data.gd" id="1_453hs"]
 
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_m7gwq"]
-button_index = 1
+[sub_resource type="InputEventKey" id="InputEventKey_453hs"]
+physical_keycode = 87
 
 [sub_resource type="InputEventKey" id="InputEventKey_k2dnp"]
 physical_keycode = 83
@@ -14,11 +14,11 @@ physical_keycode = 65
 [sub_resource type="InputEventKey" id="InputEventKey_7kvrt"]
 physical_keycode = 68
 
-[sub_resource type="InputEventKey" id="InputEventKey_453hs"]
-physical_keycode = 87
-
 [sub_resource type="InputEventKey" id="InputEventKey_im025"]
 physical_keycode = 4194325
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_m7gwq"]
+button_index = 1
 
 [resource]
 script = ExtResource("1_453hs")

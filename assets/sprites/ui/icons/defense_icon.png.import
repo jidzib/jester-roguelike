@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhcnhshyno6gy"
-path="res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"
+uid="uid://dbkj74lnick16"
+path="res://.godot/imported/defense_icon.png-b0eaa4de1275284ad04cfa2fa64f07a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/hotbar.png"
-dest_files=["res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"]
+source_file="res://assets/sprites/ui/icons/defense_icon.png"
+dest_files=["res://.godot/imported/defense_icon.png-b0eaa4de1275284ad04cfa2fa64f07a7.ctex"]
 
 [params]
 

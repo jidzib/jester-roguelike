@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_jjefk"]
 [ext_resource type="Script" uid="uid://hmv0hrbol6k8" path="res://Scripts/entities/knight/knight.gd" id="2_fpytc"]
 [ext_resource type="Texture2D" uid="uid://dopvx1jaut056" path="res://assets/sprites/entities/knight/knight_spritesheet.png" id="3_j6i3u"]
+[ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="9_i42vn"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_wqosg"]
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="11_0ld3f"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_xf7i1"]
@@ -191,6 +192,16 @@ _data = {
 &"side_walk": SubResource("Animation_kxi4b")
 }
 
+[sub_resource type="Resource" id="Resource_1pi3o"]
+script = ExtResource("9_i42vn")
+combat_stats = Dictionary[int, float]({
+0: 1.0,
+1: 2.0,
+2: 0.0,
+3: 1.0
+})
+metadata/_custom_type_script = "uid://cocg7yax0q6v2"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7i1"]
 
 [node name="Knight" unique_id=1645230401 node_paths=PackedStringArray("held_item", "raycast", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
@@ -209,10 +220,10 @@ state_nodes = {
 7: NodePath("StateMachine/ChasingTarget")
 }
 
-[node name="CollisionShape2D" parent="." index="0"]
+[node name="CollisionShape2D" parent="." index="0" unique_id=696101315]
 position = Vector2(0, -16)
 
-[node name="Sprites" parent="." index="1"]
+[node name="Sprites" parent="." index="1" unique_id=882517692]
 position = Vector2(0, -16)
 
 [node name="Sprite" type="Sprite2D" parent="Sprites" index="0" unique_id=1876018213]
@@ -222,10 +233,10 @@ texture = ExtResource("3_j6i3u")
 hframes = 8
 vframes = 9
 
-[node name="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" parent="." index="2" unique_id=1851328693]
 libraries/ = SubResource("AnimationLibrary_i42vn")
 
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("starting_state")]
+[node name="StateMachine" parent="." index="3" unique_id=1289695732 node_paths=PackedStringArray("starting_state")]
 starting_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" index="0" unique_id=887768005]
@@ -252,8 +263,9 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 script = ExtResource("13_4jv4l")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Stats" parent="." index="4"]
+[node name="Stats" parent="." index="4" unique_id=1175305160]
 max_hp = 5
+base_combat_stats = SubResource("Resource_1pi3o")
 team = 2
 
 [node name="Hurtbox" type="Area2D" parent="." index="5" unique_id=765329538 node_paths=PackedStringArray("collision_shape")]
@@ -276,7 +288,7 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Center" parent="." index="8"]
+[node name="Center" parent="." index="8" unique_id=1305023402]
 position = Vector2(0, -8)
 
 [node name="HeldItem" type="Control" parent="." index="9" unique_id=944962931]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhcnhshyno6gy"
-path="res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"
+uid="uid://cl2xaekwmd83p"
+path="res://.godot/imported/ninepatch.png-1a4c74582089afd828fd99c134d450d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ui/hotbar.png"
-dest_files=["res://.godot/imported/hotbar.png-0fee16d376beec9fc7fd1c37acd25eb3.ctex"]
+source_file="res://assets/sprites/ui/ninepatch.png"
+dest_files=["res://.godot/imported/ninepatch.png-1a4c74582089afd828fd99c134d450d4.ctex"]
 
 [params]
 

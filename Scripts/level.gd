@@ -50,14 +50,28 @@ func initialize_level() -> void:
 	spawn_enemies(num_enemies, tier.enemy_pool)
 	
 
-func spawn_enemies(num_enemies: int, enemy_pool: Dictionary[Enums.Enemies, bool]) -> void:
-	var occupied_positions : Dictionary[Vector2, bool] = {}
-	for i in range(num_enemies):
-		var enemy_id : Enums.Enemies = enemy_pool.keys().pick_random()
-		var random_pos : Vector2 = pick_random_unoccupied_position(occupied_positions)
-		spawn_enemy(enemy_id, random_pos)
-		occupied_positions.set(random_pos, true)
+var spawn_indicator_texture : Texture = preload("uid://br5jvc3s1qri8")
 
+func spawn_enemies(num_enemies: int, enemy_pool: Dictionary[Enums.Enemies, bool], with_delay: float = 1.0) -> void:
+	var occupied_positions : Dictionary[Vector2, Sprite2D] = {}
+	for i in range(num_enemies):
+		#var enemy_id : Enums.Enemies = enemy_pool.keys().pick_random()
+		var random_pos : Vector2 = pick_random_unoccupied_position(occupied_positions)
+		#spawn_enemy(enemy_id, random_pos)
+		var spawn_indicator : Sprite2D = Sprite2D.new()
+		spawn_indicator.texture = spawn_indicator_texture
+		spawn_indicator.position = random_pos
+		occupied_positions.set(random_pos, spawn_indicator)
+		add_child(spawn_indicator)
+	
+	await get_tree().create_timer(with_delay).timeout
+	
+	for pos in occupied_positions:
+		var enemy_id : Enums.Enemies = enemy_pool.keys().pick_random()
+		spawn_enemy(enemy_id, pos)
+		occupied_positions[pos].queue_free()
+		#occupied_positions.erase(pos)
+	occupied_positions.clear()
 func spawn_enemy(enemy_id: Enums.Enemies, _position: Vector2) -> void:
 	var enemy : Enemy = References.ENEMIES[enemy_id].instantiate()
 	enemy.position = _position
@@ -67,7 +81,7 @@ func spawn_enemy(enemy_id: Enums.Enemies, _position: Vector2) -> void:
 	if Player.player:
 		enemy.send_points_value.connect(Player.player.scoreboard.increase_score)
 		
-func pick_random_unoccupied_position(occupied_positions: Dictionary[Vector2, bool]) -> Vector2:
+func pick_random_unoccupied_position(occupied_positions: Dictionary[Vector2, Sprite2D]) -> Vector2:
 	while true:
 		var random_pos: Vector2 = pick_random_position()
 		if random_pos not in occupied_positions:

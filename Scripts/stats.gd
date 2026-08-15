@@ -1,8 +1,5 @@
 class_name Stats extends Node
 
-signal lose_hp
-signal gain_hp
-
 signal update_hp(new_amount : int)
 signal update_mana(new_amount : int)
 
@@ -15,37 +12,33 @@ var current_hp : int :
 @export var max_mana : int
 var current_mana : int
 
-# COMBAT
-enum COMBAT_STATS {
-	PHYSICAL_ATTACK,
-	DEFENSE,
-	MAGIC_POWER
-}
-@export var combat_stats : Dictionary[COMBAT_STATS, float] = {
-	COMBAT_STATS.PHYSICAL_ATTACK : 1.0,
-	COMBAT_STATS.DEFENSE : 1.0,
-	COMBAT_STATS.MAGIC_POWER : 1.0,
-}
+@export var base_combat_stats : CombatStats
+var combat_stats : CombatStats = CombatStats.new() # <- use this in dmg calc
+var added_stats : Dictionary[CombatStats, bool] = {}
 
-func get_physical_attack() -> float:
-	return combat_stats[COMBAT_STATS.PHYSICAL_ATTACK]
-func set_physical_attack(new_value: float) -> void:
-	combat_stats[COMBAT_STATS.PHYSICAL_ATTACK] = new_value
-func get_defense() -> float:
-	return combat_stats[COMBAT_STATS.DEFENSE]
-func set_defense(new_value: float) -> void:
-	combat_stats[COMBAT_STATS.DEFENSE] = new_value
-func get_magic_power() -> float:
-	return combat_stats[COMBAT_STATS.MAGIC_POWER]
-func set_magic_power(new_value: float) -> void:
-	combat_stats[COMBAT_STATS.MAGIC_POWER] = new_value
+signal updated_combat_stats
+
+func reset_combat_stats() -> void:
+	for stat in combat_stats.combat_stats:
+		combat_stats.combat_stats[stat] = base_combat_stats.combat_stats[stat]
+func add_combat_stats(_new_stats: CombatStats) -> void:
+	for stat in _new_stats.combat_stats:
+		combat_stats.combat_stats[stat] += _new_stats.combat_stats[stat]
+	updated_combat_stats.emit()
+func remove_combat_stats(_stats_to_remove: CombatStats) -> void:
+	for stat in _stats_to_remove.combat_stats:
+		combat_stats.combat_stats[stat] -= _stats_to_remove.combat_stats[stat]
+	updated_combat_stats.emit()
 
 @export var team : Enums.Teams
 
 func _ready() -> void:
 	current_hp = max_hp
 	current_mana = max_mana
-
+	reset_combat_stats()
+	#update_combat_stats()
+	#updated_combat_stats.connect(update_combat_stats)
+	
 func heal(amount : int) -> void:
 	current_hp = min(current_hp+amount, max_hp)
 func take_damage(damage : int) -> void:

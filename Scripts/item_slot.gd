@@ -1,14 +1,22 @@
 @tool
 class_name ItemSlot extends Control
 
+signal change_slot(_item: Item)
+signal fill_slot(_item: Item)
+
 @export var item : Item :
 	set(value):
+		change_slot.emit(item)
 		item = value
 		update_display()
+		fill_slot.emit(item)
+		#update_slot.emit()
 		
 var selected : bool = false
 @export var sprite : Sprite2D
 @export var selected_sprite : Sprite2D
+
+@export var item_description : ItemDescription
 
 func _ready() -> void:
 	z_index = 1
@@ -52,3 +60,9 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	item = data.item
 	data.item = temp_item
 	
+func _on_mouse_entered() -> void:
+	if item:
+		item_description.visible = true
+
+func _on_mouse_exited() -> void:
+	item_description.visible = false

@@ -6,7 +6,8 @@ static var ITEMS : Dictionary[Enums.Items, Item] = {
 	Enums.Items.HEALTH_POTION : load("uid://dxab75s7flvdm"),
 	Enums.Items.SPELLBOOK : load("uid://bishitcpv23v7"),
 	Enums.Items.MANA_POTION : load("uid://yqmj5n8bqsw1"),
-	Enums.Items.KINGS_SWORD : load("uid://ckooecd18v48w")
+	Enums.Items.KINGS_SWORD : load("uid://ckooecd18v48w"),
+	Enums.Items.DIAMOND_RING : load("uid://d024j5vnfrxwp")
 }
 
 static var SHADERS : Dictionary[Enums.Shaders, ShaderMaterial] = {

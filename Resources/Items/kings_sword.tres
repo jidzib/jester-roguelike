@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Sword" load_steps=5 format=3 uid="uid://ckooecd18v48w"]
+[gd_resource type="Resource" script_class="Sword" format=3 uid="uid://ckooecd18v48w"]
 
 [ext_resource type="Script" uid="uid://cpjujfq6auxdt" path="res://Scripts/items/sword.gd" id="1_33qn1"]
 [ext_resource type="PackedScene" uid="uid://dptyhu4bxjj0s" path="res://Scenes/KingsSwordAnimation.tscn" id="1_v5lhv"]
@@ -7,16 +7,12 @@
 
 [resource]
 script = ExtResource("1_33qn1")
-range = 20.0
-attack_lifetime = 0.2
-hit_effect = 0
 use_sound = ExtResource("2_eihie")
 power = 3
 animation = ExtResource("1_v5lhv")
-ATTACK_TYPE = 0
 texture = ExtResource("3_idyb5")
 ID = 5
 name = "King's Sword"
 rarity = 3
-description = ""
+description = "This thing hurts!"
 metadata/_custom_type_script = "uid://cpjujfq6auxdt"
