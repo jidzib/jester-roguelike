@@ -1,20 +1,34 @@
-[gd_scene load_steps=3 format=3 uid="uid://2t62ne0qtqjw"]
+[gd_scene format=3 uid="uid://2t62ne0qtqjw"]
 
 [ext_resource type="Script" uid="uid://cca4li63facwh" path="res://Scripts/entities/held_item.gd" id="1_vhxq4"]
-[ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="2_wn2ec"]
+[ext_resource type="Texture2D" uid="uid://b2t7g6s67rnvl" path="res://assets/sprites/items/sword.png" id="2_wn2ec"]
+[ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="3_lmogc"]
 
-[node name="HeldItem" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="HeldItem" type="Node2D" unique_id=1824840031 node_paths=PackedStringArray("item_slot", "sprite", "anchor")]
 script = ExtResource("1_vhxq4")
-sprite = NodePath("Sprite2D")
+item_slot = NodePath("ItemSlot")
+sprite = NodePath("Anchor/Sprite2D")
+anchor = NodePath("Anchor")
 metadata/_custom_type_script = "uid://cca4li63facwh"
 
-[node name="ItemSlot" type="Control" parent="."]
+[node name="Anchor" type="Control" parent="." unique_id=819370588]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Anchor" unique_id=498425434]
+rotation = -0.7853982
+texture = ExtResource("2_wn2ec")
+flip_v = true
+
+[node name="ItemSlot" type="Control" parent="." unique_id=111106019]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_wn2ec")
+rotation = -0.3141545
+script = ExtResource("3_lmogc")
 metadata/_custom_type_script = "uid://b2n0l7wm8dc5x"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

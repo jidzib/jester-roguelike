@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="13_4jv4l"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="13_ikt6d"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="13_mfjpr"]
-[ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="15_4jv4l"]
 [ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/Items/sword.tres" id="15_ikt6d"]
 
 [sub_resource type="Animation" id="Animation_i42vn"]
@@ -195,19 +194,19 @@ _data = {
 [sub_resource type="Resource" id="Resource_1pi3o"]
 script = ExtResource("9_i42vn")
 combat_stats = Dictionary[int, float]({
-0: 1.0,
-1: 2.0,
+0: 20.0,
+1: 20.0,
 2: 0.0,
-3: 1.0
+3: 20.0
 })
 metadata/_custom_type_script = "uid://cocg7yax0q6v2"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7i1"]
+size = Vector2(14, 24)
 
-[node name="Knight" unique_id=1645230401 node_paths=PackedStringArray("held_item", "raycast", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
+[node name="Knight" unique_id=1645230401 node_paths=PackedStringArray("raycast", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
 platform_floor_layers = 4294967040
 script = ExtResource("2_fpytc")
-held_item = NodePath("HeldItem")
 raycast = NodePath("RayCast2D")
 points_value = 1
 speed = 50.0
@@ -264,7 +263,7 @@ script = ExtResource("13_4jv4l")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Stats" parent="." index="4" unique_id=1175305160]
-max_hp = 5
+max_hp = 100.0
 base_combat_stats = SubResource("Resource_1pi3o")
 team = 2
 
@@ -277,6 +276,7 @@ collision_shape = NodePath("CollisionShape2D")
 metadata/_custom_type_script = "uid://q56ve612ckre"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0" unique_id=1501561491]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_xf7i1")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="6" unique_id=1107431483]
@@ -291,13 +291,6 @@ offset_bottom = 23.0
 [node name="Center" parent="." index="8" unique_id=1305023402]
 position = Vector2(0, -8)
 
-[node name="HeldItem" type="Control" parent="." index="9" unique_id=944962931]
-visible = false
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("15_4jv4l")
+[node name="HeldItem" parent="." index="9" unique_id=1824840031]
+position = Vector2(0, -12)
 item = ExtResource("15_ikt6d")
-metadata/_custom_type_script = "uid://b2n0l7wm8dc5x"

@@ -4,17 +4,19 @@
 [ext_resource type="Script" uid="uid://h2givxqewg3a" path="res://Scripts/state_machine.gd" id="2_4n0f1"]
 [ext_resource type="Script" uid="uid://cc1jxux0wmew6" path="res://Scripts/sprite_group.gd" id="2_p2pde"]
 [ext_resource type="Script" uid="uid://cwog6wu1xadc0" path="res://Scripts/stats.gd" id="4_wtxqo"]
+[ext_resource type="PackedScene" uid="uid://2t62ne0qtqjw" path="res://Scenes/HeldItem.tscn" id="5_ipmbw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rnyw1"]
 size = Vector2(9, 16)
 
-[node name="Entity" type="CharacterBody2D" unique_id=1102494934 node_paths=PackedStringArray("stats", "sprites", "animation_player", "center", "state_machine")]
+[node name="Entity" type="CharacterBody2D" unique_id=1102494934 node_paths=PackedStringArray("stats", "sprites", "animation_player", "center", "state_machine", "held_item")]
 script = ExtResource("1_rnyw1")
 stats = NodePath("Stats")
 sprites = NodePath("Sprites")
 animation_player = NodePath("AnimationPlayer")
 center = NodePath("Center")
 state_machine = NodePath("StateMachine")
+held_item = NodePath("HeldItem")
 metadata/_custom_type_script = "uid://cfrbiuspyci4r"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=696101315]
@@ -34,6 +36,8 @@ script = ExtResource("4_wtxqo")
 metadata/_custom_type_script = "uid://cwog6wu1xadc0"
 
 [node name="Center" type="Marker2D" parent="." unique_id=1305023402]
+
+[node name="HeldItem" parent="." unique_id=1824840031 instance=ExtResource("5_ipmbw")]
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo4ktjqlrfpul"]
+[gd_scene format=3 uid="uid://bo4ktjqlrfpul"]
 
 [ext_resource type="Texture2D" uid="uid://plxpda2o18ua" path="res://assets/sprites/ui/manabar_under.png" id="1_igpjy"]
 [ext_resource type="Script" uid="uid://cnvfjvc18eix4" path="res://Scripts/mana_ui.gd" id="1_qlswa"]
 [ext_resource type="Texture2D" uid="uid://epqegkpv67ol" path="res://assets/sprites/ui/manabar_over.png" id="2_qb2ne"]
 [ext_resource type="Texture2D" uid="uid://b8kuufipvigla" path="res://assets/sprites/ui/manabar_progress.png" id="3_l8wwd"]
 
-[node name="ManaUI" type="TextureProgressBar"]
+[node name="ManaUI" type="TextureProgressBar" unique_id=1910088837]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

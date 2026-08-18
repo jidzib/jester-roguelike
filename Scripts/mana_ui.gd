@@ -11,12 +11,6 @@ func update_mana(new_amount : int) -> void:
 	value = max(value, 0)
 	value = min(value, max_value)
 
-#func gain_mana(amount : int) -> void:
-	#value += amount
-	#
-#func lose_mana(amount : int) -> void:
-	#value -= amount
-
 func _on_tree_entered() -> void:
 	parent.stats.update_mana.connect(update_mana)
 	

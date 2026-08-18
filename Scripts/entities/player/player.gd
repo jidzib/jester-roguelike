@@ -15,8 +15,6 @@ var in_menu : bool = false
 @export var scoreboard : Scoreboard
 # STATE MACHINE
 
-var held_item : ItemSlot = null
-
 func _ready() -> void:
 	PlayerCursor.set_cursor(PlayerCursor.CURSOR_MODES.DEFAULT)
 	super()
@@ -25,6 +23,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	update_weapon_direction()
+	held_item.target_pos = get_global_mouse_position()
+	#if held_item and held_item.item:
+		#
+		#weapon.sprite.texture = held_item.item.texture
+	#else:
+		#weapon.sprite.texture = null
 	
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -55,7 +59,7 @@ func die() -> void:
 	set_physics_process(false)
 	set_process(false)
 	set_process_input(false)
-	hurtbox.disable() # <- not working
+	hurtbox.disable()
 	hurtbox.queue_free()
 	
 	animation_player.play(animation_path + "death")
@@ -82,6 +86,10 @@ func handle_movement(delta: float) -> void:
 	direction.y = Input.get_action_strength("MOVE_DOWN") - Input.get_action_strength("MOVE_UP")
 	direction = direction.normalized()
 	velocity = lerp(velocity, direction * speed, min(acceleration * delta, 1.0))
+	
+func handle_movement_direction() -> void:
+	cardinal_direction = get_cardinal_direction(global_position.direction_to(get_global_mouse_position()))
+	set_facing(cardinal_direction)
 		
 func update_weapon_direction() -> void:
 	if action_locked:

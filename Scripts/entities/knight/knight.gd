@@ -9,8 +9,6 @@ var attack_timer : Timer
 
 var target : Player
 
-@export var held_item : ItemSlot
-
 # DEBUGGING
 @export var raycast : RayCast2D
 

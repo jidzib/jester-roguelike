@@ -5,7 +5,10 @@ signal save_inventory(_items: Array[Item])
 var item_slots : Array[ItemSlot] = []
 @export var items_container : HBoxContainer
 
+@export var close_button : TextureButton
 
+func _ready() -> void:
+	close_button.pressed.connect(close)
 
 func close() -> void:
 	var items : Array[Item] = []
@@ -13,7 +16,9 @@ func close() -> void:
 		items.append(item_slot.item)
 	save_inventory.emit(items)
 	closed.emit()
-	pass
+	if Player.player:
+		Player.player.in_menu = false
+	queue_free()
 
 func initialize(_items: Array[Item]) -> void:
 	for item in _items:

@@ -3,7 +3,6 @@ class_name Hitbox extends Area2D
 signal landed_hit(target: Stats)
 var hitlog : Dictionary[Stats, bool]
 
-
 var parent_stats : Stats
 var lifetime : float
 var shape : Shape2D
@@ -22,7 +21,7 @@ func _ready() -> void:
 	monitorable = false
 	area_entered.connect(_area_entered)
 	landed_hit.connect(update_hitlog)
-	
+
 	if lifetime > 0:
 		var timer = Timer.new()
 		add_child(timer)

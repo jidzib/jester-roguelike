@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://wxgn1e4u0o1u"]
+[gd_scene format=3 uid="uid://wxgn1e4u0o1u"]
 
 [ext_resource type="Texture2D" uid="uid://ca3ukd2cp3uet" path="res://assets/sprites/ui/button_normal.png" id="1_fg652"]
 [ext_resource type="Texture2D" uid="uid://br3c3vx2ij3jy" path="res://assets/sprites/ui/button_pressed.png" id="2_bx1ql"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cuj3gw8cyk7kl" path="res://Scripts/custom_button.gd" id="4_1wpkd"]
 [ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="5_rpth0"]
 
-[node name="CustomButton" type="TextureButton" node_paths=PackedStringArray("label")]
+[node name="CustomButton" type="TextureButton" unique_id=368464177 node_paths=PackedStringArray("label")]
 offset_right = 471.0
 offset_bottom = 122.0
 texture_normal = ExtResource("1_fg652")
@@ -17,7 +17,7 @@ stretch_mode = 5
 script = ExtResource("4_1wpkd")
 label = NodePath("Label")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1487834522]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

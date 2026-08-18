@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeaponItem" format=3 uid="uid://c663qq1cu06ex"]
+
+[ext_resource type="PackedScene" uid="uid://cf8stpc4sevy5" path="res://Scenes/ScytheAnimation.tscn" id="1_7d62s"]
+[ext_resource type="Texture2D" uid="uid://bm04hujvtfwjt" path="res://assets/sprites/items/scythe.png" id="2_6bb45"]
+[ext_resource type="Script" uid="uid://45bjrxmk56ns" path="res://Scripts/melee_weapon_item.gd" id="2_l3ykb"]
+[ext_resource type="AudioStream" uid="uid://byiiu3ajioyex" path="res://assets/sfx/sword_swing.wav" id="4_7d62s"]
+
+[resource]
+script = ExtResource("2_l3ykb")
+hitbox_size = 40.0
+use_sound = ExtResource("4_7d62s")
+attack_name = "scythe_swing"
+power = 15
+animation = ExtResource("1_7d62s")
+texture = ExtResource("2_6bb45")
+ID = 7
+name = "Scythe"
+rarity = 2
+description = "Click to do a large AOE attack"

@@ -7,7 +7,8 @@ enum Items {
 	SPELLBOOK,
 	MANA_POTION,
 	KINGS_SWORD,
-	DIAMOND_RING
+	DIAMOND_RING,
+	SCYTHE
 }
 
 enum Shaders {

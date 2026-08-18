@@ -41,8 +41,5 @@ func disconnect_signals() -> void:
 	mouse_exited.disconnect(PlayerCursor.decrement_hover_count)
 	
 func play_sound() -> void:
-	print("playing sound")
-	print("volume: ", AudioManager.volume)
-	print("db: ", AudioManager.db)
 	AudioManager.play_randomized_sound_id(click_sound)
 	

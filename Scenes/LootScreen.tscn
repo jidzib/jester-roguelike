@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b4icgoodyjf82" path="res://Scripts/loot_screen.gd" id="1_am07x"]
 [ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/sprites/ui/hotbar.png" id="2_recfd"]
+[ext_resource type="PackedScene" uid="uid://bj0dudn1h88pk" path="res://Scenes/CloseMenuButton.tscn" id="3_8p3gt"]
 
-[node name="LootScreen" type="CanvasLayer" unique_id=18461001 node_paths=PackedStringArray("items_container")]
+[node name="LootScreen" type="CanvasLayer" unique_id=18461001 node_paths=PackedStringArray("items_container", "close_button")]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("1_am07x")
 items_container = NodePath("HBoxContainer")
+close_button = NodePath("CloseMenuButton")
 is_menu = true
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
@@ -30,3 +32,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = -1
 metadata/_edit_use_anchors_ = true
+
+[node name="CloseMenuButton" parent="." unique_id=1100963506 instance=ExtResource("3_8p3gt")]
+anchors_preset = -1
+anchor_bottom = 0.008
+offset_left = 272.66666
+offset_top = 146.33334
+offset_right = 283.66666
+offset_bottom = 151.57335

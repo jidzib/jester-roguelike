@@ -5,6 +5,6 @@ func play_particle(particles_id: Enums.Particles, pos: Vector2) -> void:
 	particles.global_position = pos
 	add_child(particles)
 	particles.emitting = true
+	particles.z_index = 10
 	await particles.finished
 	particles.queue_free()
-	

@@ -1,10 +1,10 @@
 class_name Stats extends Node
 
-signal update_hp(new_amount : int)
+signal update_hp(new_amount : float)
 signal update_mana(new_amount : int)
 
-@export var max_hp : int
-var current_hp : int :
+@export var max_hp : float
+var current_hp : float :
 	set(hp):
 		current_hp = hp
 		update_hp.emit(hp)
@@ -39,9 +39,9 @@ func _ready() -> void:
 	#update_combat_stats()
 	#updated_combat_stats.connect(update_combat_stats)
 	
-func heal(amount : int) -> void:
+func heal(amount : float) -> void:
 	current_hp = min(current_hp+amount, max_hp)
-func take_damage(damage : int) -> void:
+func take_damage(damage : float) -> void:
 	current_hp -= damage
 	if current_hp <= 0:
 		pass # DIE

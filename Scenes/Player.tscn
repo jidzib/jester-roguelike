@@ -2,24 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://gbuhkq5sfnya" path="res://Scenes/Entity.tscn" id="1_cgsek"]
 [ext_resource type="Script" uid="uid://csoim7dyw4o7f" path="res://Scripts/entities/player/player.gd" id="2_0pi4m"]
-[ext_resource type="Texture2D" uid="uid://bv03allpgloxb" path="res://assets/sprites/entities/player/blockout_legs.png" id="3_sg6sq"]
-[ext_resource type="Texture2D" uid="uid://v88mtf8xdc70" path="res://assets/sprites/entities/player/blockout_body.png" id="4_h84ma"]
-[ext_resource type="Texture2D" uid="uid://dhihllq7nhurs" path="res://assets/sprites/entities/player/blockout_arms.png" id="5_47wu6"]
-[ext_resource type="Texture2D" uid="uid://bj2ioquwg6n1c" path="res://assets/sprites/entities/player/blockout_head.png" id="6_2n1s8"]
-[ext_resource type="AnimationLibrary" uid="uid://b66exveenwq6" path="res://Resources/Animations/PlayerAnimations.res" id="10_ictha"]
+[ext_resource type="Texture2D" uid="uid://djucmjenk1g6g" path="res://assets/sprites/entities/player/player_spritesheet.png" id="3_5v66d"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="11_1jgrc"]
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="12_7wy67"]
 [ext_resource type="Script" uid="uid://cph3depeqbxqd" path="res://Scripts/entity_states/blocking.gd" id="13_q26ax"]
 [ext_resource type="Script" uid="uid://duuc6xobpcyo" path="res://Scripts/entity_states/drinking_potion.gd" id="14_0pi4m"]
-[ext_resource type="PackedScene" uid="uid://cwugmqbycg0ev" path="res://Scenes/HealthUI.tscn" id="15_m7dl7"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="15_qidb7"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entity_states/spellcasting.gd" id="15_sg6sq"]
 [ext_resource type="PackedScene" uid="uid://bo4ktjqlrfpul" path="res://Scenes/ManaUI.tscn" id="16_48og4"]
 [ext_resource type="Script" uid="uid://c6vmu6iuhlc4" path="res://Scripts/roll.gd" id="16_70hv0"]
 [ext_resource type="Script" uid="uid://dshs26qengjqh" path="res://Scripts/camera.gd" id="17_qidb7"]
 [ext_resource type="PackedScene" uid="uid://drsygg8of0wxa" path="res://Scenes/Hotbar.tscn" id="17_xmpta"]
-[ext_resource type="PackedScene" uid="uid://2t62ne0qtqjw" path="res://Scenes/HeldItem.tscn" id="18_mrbh7"]
 [ext_resource type="Texture2D" uid="uid://ch8jvlnsygm3u" path="res://assets/sprites/ui/direction_indictator.png" id="19_lrhq4"]
+[ext_resource type="PackedScene" uid="uid://dbbfa2bnacuxf" path="res://Scenes/Healthbar.tscn" id="20_8flut"]
 [ext_resource type="AudioStream" uid="uid://dmfwakpfokgd0" path="res://assets/sfx/parry.mp3" id="20_ibubc"]
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="21_i2e8t"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="23_8flut"]
@@ -27,34 +22,268 @@
 [ext_resource type="PackedScene" uid="uid://bfug5kr66qdc8" path="res://Scenes/Scoreboard.tscn" id="24_qidb7"]
 [ext_resource type="PackedScene" uid="uid://5n64gij18w37" path="res://Scenes/Inventory.tscn" id="26_8flut"]
 
-[sub_resource type="Animation" id="Animation_70hv0"]
+[sub_resource type="Animation" id="Animation_x63xi"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Legs:frame")
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [88]
+"values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gueye"]
+[sub_resource type="Animation" id="Animation_i2e8t"]
+resource_name = "back_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_5v66d"]
+resource_name = "back_scythe_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [44, 45, 46]
+}
+
+[sub_resource type="Animation" id="Animation_70hv0"]
+resource_name = "back_sword_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_8flut"]
+resource_name = "back_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_u7x0b"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [36, 37, 38]
+}
+
+[sub_resource type="Animation" id="Animation_qidb7"]
+resource_name = "front_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_utwlt"]
+resource_name = "front_scythe_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [40, 41, 42]
+}
+
+[sub_resource type="Animation" id="Animation_kih0c"]
+resource_name = "front_sword_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_lyrkg"]
+resource_name = "front_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_c43xd"]
+resource_name = "side_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_avx33"]
+resource_name = "side_scythe_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [48, 49, 50]
+}
+
+[sub_resource type="Animation" id="Animation_rxg2u"]
+resource_name = "side_sword_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [32, 33, 34]
+}
+
+[sub_resource type="Animation" id="Animation_xixlo"]
+resource_name = "side_walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70hv0"]
 _data = {
-&"RESET": SubResource("Animation_70hv0")
+&"RESET": SubResource("Animation_x63xi"),
+&"back_idle": SubResource("Animation_i2e8t"),
+&"back_scythe_swing": SubResource("Animation_5v66d"),
+&"back_sword_swing": SubResource("Animation_70hv0"),
+&"back_walk": SubResource("Animation_8flut"),
+&"death": SubResource("Animation_u7x0b"),
+&"front_idle": SubResource("Animation_qidb7"),
+&"front_scythe_swing": SubResource("Animation_utwlt"),
+&"front_sword_swing": SubResource("Animation_kih0c"),
+&"front_walk": SubResource("Animation_lyrkg"),
+&"side_idle": SubResource("Animation_c43xd"),
+&"side_scythe_swing": SubResource("Animation_avx33"),
+&"side_sword_swing": SubResource("Animation_rxg2u"),
+&"side_walk": SubResource("Animation_xixlo")
 }
 
 [sub_resource type="Resource" id="Resource_utwlt"]
 script = ExtResource("23_8flut")
+combat_stats = Dictionary[int, float]({
+0: 20.0,
+1: 20.0,
+2: 20.0,
+3: 20.0
+})
 metadata/_custom_type_script = "uid://cocg7yax0q6v2"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qidb7"]
 size = Vector2(10, 16)
 
 [node name="Player" unique_id=1205549669 node_paths=PackedStringArray("hotbar", "inventory", "direction_indicator", "camera", "ui", "scoreboard", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
+y_sort_enabled = true
 platform_floor_layers = 4294967040
 script = ExtResource("2_0pi4m")
 hotbar = NodePath("UI/Hotbar")
@@ -64,7 +293,6 @@ camera = NodePath("Camera2D")
 ui = NodePath("UI")
 scoreboard = NodePath("Scoreboard")
 speed = 100.0
-animation_path = "PlayerAnimations/"
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
@@ -82,43 +310,16 @@ position = Vector2(-0.5, -8)
 
 [node name="Sprites" parent="." index="1" unique_id=882517692]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(0, -16)
 
-[node name="Legs" type="Sprite2D" parent="Sprites" index="0" unique_id=1129979997]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("3_sg6sq")
-hframes = 8
+[node name="Sprite2D" type="Sprite2D" parent="Sprites" index="0" unique_id=2119047980]
+texture = ExtResource("3_5v66d")
+hframes = 4
 vframes = 13
-frame = 88
-
-[node name="Body" type="Sprite2D" parent="Sprites" index="1" unique_id=1396478259]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("4_h84ma")
-hframes = 8
-vframes = 13
-frame = 8
-
-[node name="Arms" type="Sprite2D" parent="Sprites" index="2" unique_id=151119078]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("5_47wu6")
-hframes = 8
-vframes = 13
-frame = 16
-
-[node name="Head" type="Sprite2D" parent="Sprites" index="3" unique_id=636130262]
-z_index = 1
-use_parent_material = true
-texture = ExtResource("6_2n1s8")
-hframes = 8
-vframes = 13
-frame = 8
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=1851328693]
-libraries/ = SubResource("AnimationLibrary_gueye")
-libraries/PlayerAnimations = ExtResource("10_ictha")
+libraries/ = SubResource("AnimationLibrary_70hv0")
 
 [node name="StateMachine" parent="." index="3" unique_id=1289695732 node_paths=PackedStringArray("starting_state")]
 starting_state = NodePath("Idle")
@@ -162,52 +363,46 @@ position = Vector2(-7, -8)
 zoom = Vector2(3, 3)
 script = ExtResource("17_qidb7")
 
-[node name="HeldItem" parent="." index="5" unique_id=2020946158 instance=ExtResource("18_mrbh7")]
-visible = false
-z_index = 2
-position = Vector2(9, -5)
-
-[node name="DirectionIndicator" type="Sprite2D" parent="." index="6" unique_id=1130203930]
+[node name="DirectionIndicator" type="Sprite2D" parent="." index="5" unique_id=1130203930]
 modulate = Color(1, 1, 1, 0.509804)
-z_index = 1
 z_as_relative = false
 position = Vector2(0, -2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_lrhq4")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="7" unique_id=2089763617]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6" unique_id=2089763617]
 stream = ExtResource("20_ibubc")
 
-[node name="UI" type="CanvasLayer" parent="." index="8" unique_id=1830249429]
+[node name="UI" type="CanvasLayer" parent="." index="7" unique_id=1830249429]
 scale = Vector2(3, 3)
 transform = Transform2D(3, 0, 0, 3, 0, 0)
 script = ExtResource("21_i2e8t")
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="HealthUI" parent="UI" index="0" unique_id=193787174 node_paths=PackedStringArray("parent") instance=ExtResource("15_m7dl7")]
-offset_left = 20.0
-offset_top = 15.0
-offset_right = 105.0
-offset_bottom = 55.0
+[node name="Healthbar" parent="UI" index="0" unique_id=511719155 node_paths=PackedStringArray("parent") instance=ExtResource("20_8flut")]
+offset_left = 2.3333335
+offset_top = 1.6666667
+offset_right = 130.33333
+offset_bottom = 17.666666
 parent = NodePath("../..")
 
 [node name="ManaUI" parent="UI" index="1" unique_id=576249905 node_paths=PackedStringArray("parent") instance=ExtResource("16_48og4")]
 offset_left = 2.0
-offset_top = 29.0
+offset_top = 25.33333
 offset_right = -1150.0
-offset_bottom = -675.0
+offset_bottom = -678.66644
 parent = NodePath("../..")
 
 [node name="Hotbar" parent="UI" index="2" unique_id=1224682783 instance=ExtResource("17_xmpta")]
 position = Vector2(218, 218.667)
 
-[node name="Stats" parent="." index="9" unique_id=1175305160]
-max_hp = 5
+[node name="Stats" parent="." index="8" unique_id=1175305160]
+max_hp = 100.0
 max_mana = 100
 base_combat_stats = SubResource("Resource_utwlt")
 team = 1
 
-[node name="Hurtbox" type="Area2D" parent="." index="10" unique_id=1858356822 node_paths=PackedStringArray("collision_shape")]
+[node name="Hurtbox" type="Area2D" parent="." index="9" unique_id=1858356822 node_paths=PackedStringArray("collision_shape")]
 collision_mask = 0
 script = ExtResource("23_i2e8t")
 collision_shape = NodePath("CollisionShape2D")
@@ -218,16 +413,19 @@ z_index = 2
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_qidb7")
 
-[node name="Center" parent="." index="11" unique_id=1305023402]
+[node name="Center" parent="." index="10" unique_id=1305023402]
 position = Vector2(0, -8)
 
-[node name="Scoreboard" parent="." index="12" unique_id=1854695850 instance=ExtResource("24_qidb7")]
+[node name="Scoreboard" parent="." index="11" unique_id=1854695850 instance=ExtResource("24_qidb7")]
 z_index = 100
 position = Vector2(148.99998, -118.00001)
 scale = Vector2(0.33, 0.33)
 
-[node name="Inventory" parent="." index="13" unique_id=935258046 node_paths=PackedStringArray("parent_stats") instance=ExtResource("26_8flut")]
+[node name="Inventory" parent="." index="12" unique_id=935258046 node_paths=PackedStringArray("parent_stats") instance=ExtResource("26_8flut")]
 visible = false
 z_index = 100
 position = Vector2(-133, 9)
 parent_stats = NodePath("../Stats")
+
+[node name="HeldItem" parent="." index="13" unique_id=1824840031]
+position = Vector2(0, -8)

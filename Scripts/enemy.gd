@@ -10,3 +10,8 @@ signal send_points_value(points: int)
 func die() -> void:
 	send_points_value.emit(points_value)
 	super()
+
+func _process(delta: float) -> void:
+	super(delta)
+	held_item.target_pos = Player.player.global_position
+	

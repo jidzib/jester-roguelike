@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_5s3tr")
+heal_amount = 20
 texture = ExtResource("2_gu1py")
 ID = 2
 name = "Health Potion"

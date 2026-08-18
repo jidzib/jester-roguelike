@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bj0dudn1h88pk"]
+
+[ext_resource type="Texture2D" uid="uid://b04kg7v1o7xci" path="res://assets/sprites/ui/icons/x_button.png" id="1_mpi8k"]
+[ext_resource type="Texture2D" uid="uid://b1lkyas4rdjjc" path="res://assets/sprites/ui/icons/x_button_hover.png" id="2_6r7xq"]
+
+[node name="CloseMenuButton" type="TextureButton" unique_id=1100963506]
+offset_right = 11.0
+offset_bottom = 11.0
+texture_normal = ExtResource("1_mpi8k")
+texture_hover = ExtResource("2_6r7xq")

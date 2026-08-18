@@ -44,7 +44,7 @@ func set_selected(slot: int, player: Player) -> void:
 		items[slot].selected = true
 		items[slot].update_display()
 		selected_slot = slot
-		player.held_item = items[selected_slot]
+		player.held_item.item_slot = items[selected_slot]
 	#if not items[selected_slot].item:
 		#player.held_item.item = null
 		#player.held_item.update_display()

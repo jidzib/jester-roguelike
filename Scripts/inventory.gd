@@ -10,8 +10,11 @@ class_name Inventory extends Node2D
 @export var item_slot_container : Control
 var item_slots : Dictionary[ItemSlot, bool]
 
+@export var close_menu_button : TextureButton
+
 func _ready() -> void:
 	parent_stats.updated_combat_stats.connect(update_labels)
+	close_menu_button.pressed.connect(hide)
 	update_labels()
 	init_item_slots()
 
@@ -32,7 +35,7 @@ func stats_removed(item: CharmItem) -> void:
 		parent_stats.remove_combat_stats(item.combat_stats)
 
 func update_labels() -> void:
-	atk_label.text = str(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.ATTACK])
-	def_label.text = str(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.DEFENSE])
-	mga_label.text = str(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.MAGIC_ATTACK])
-	mgd_label.text = str(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.MAGIC_DEFENSE])
+	atk_label.text = str(int(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.ATTACK]))
+	def_label.text = str(int(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.DEFENSE]))
+	mga_label.text = str(int(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.MAGIC_ATTACK]))
+	mgd_label.text = str(int(parent_stats.combat_stats.combat_stats[CombatManager.COMBAT_STATS.MAGIC_DEFENSE]))

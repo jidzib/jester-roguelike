@@ -47,6 +47,8 @@ var current_state : States = States.IDLE
 
 @export var sound : AudioStreamPlayer2D
 
+@export var held_item : HeldItem
+
 func _ready() -> void:
 	state_machine.initialize(self)
 	died.connect(die)

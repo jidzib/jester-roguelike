@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqjf1cr3g6p7f"]
+[gd_scene format=3 uid="uid://cqjf1cr3g6p7f"]
 
 [ext_resource type="Script" uid="uid://dvc8p2li7iqum" path="res://Scripts/weapon_animation.gd" id="1_3hu1m"]
 
-[node name="WeaponAnimation" type="Node2D"]
+[node name="WeaponAnimation" type="Node2D" unique_id=376928273]
 script = ExtResource("1_3hu1m")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1566051379]
 
-[node name="Spritesheet" type="Sprite2D" parent="."]
+[node name="Spritesheet" type="Sprite2D" parent="." unique_id=391622497]

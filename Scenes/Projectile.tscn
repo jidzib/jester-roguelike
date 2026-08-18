@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2wrydx5a7n4o"]
+[gd_scene format=3 uid="uid://2wrydx5a7n4o"]
 
 [ext_resource type="Script" uid="uid://b1uj58wkk48o3" path="res://Scripts/projectile.gd" id="1_lal66"]
 [ext_resource type="AudioStream" uid="uid://b10ori3v8riky" path="res://assets/sfx/fireball_woosh.mp3" id="2_0tri7"]
@@ -75,7 +75,7 @@ _data = {
 &"fly": SubResource("Animation_5i1ty")
 }
 
-[node name="Projectile" type="Node2D" node_paths=PackedStringArray("sprite", "animation_player")]
+[node name="Projectile" type="Node2D" unique_id=2001173021 node_paths=PackedStringArray("sprite", "animation_player")]
 top_level = true
 z_index = 2
 script = ExtResource("1_lal66")
@@ -87,12 +87,10 @@ speed = 250.0
 cast_sound = ExtResource("2_0tri7")
 metadata/_custom_type_script = "uid://b1uj58wkk48o3"
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1900848167]
 texture = ExtResource("2_y0kec")
 hframes = 4
 vframes = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4tued")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=23346864]
+libraries/ = SubResource("AnimationLibrary_4tued")

@@ -27,11 +27,11 @@ func _ready() -> void:
 	real_speed = speed
 	speed /= 4
 	charge()
+	add_child(hitbox)
 	AudioManager.play_randomized_sound(cast_sound)
 	await charged
 	speed = real_speed
 	animation_player.play("fly")
-	add_child(hitbox)
 	
 func _process(delta: float) -> void:
 	time_alive += delta

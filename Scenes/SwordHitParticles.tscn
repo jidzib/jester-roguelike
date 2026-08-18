@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7bwdxi6ra7ah"]
+[gd_scene format=3 uid="uid://c7bwdxi6ra7ah"]
 
 [ext_resource type="Texture2D" uid="uid://wg3x4o7vk3or" path="res://assets/sprites/fx/circle.png" id="1_372v6"]
 
@@ -14,7 +14,7 @@ scale_min = 0.1
 scale_max = 0.4
 color = Color(1, 1, 1, 0.780392)
 
-[node name="SwordHitParticles" type="GPUParticles2D"]
+[node name="SwordHitParticles" type="GPUParticles2D" unique_id=488397455]
 emitting = false
 amount = 16
 texture = ExtResource("1_372v6")

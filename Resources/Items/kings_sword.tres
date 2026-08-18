@@ -1,14 +1,15 @@
-[gd_resource type="Resource" script_class="Sword" format=3 uid="uid://ckooecd18v48w"]
+[gd_resource type="Resource" script_class="MeleeWeaponItem" format=3 uid="uid://ckooecd18v48w"]
 
-[ext_resource type="Script" uid="uid://cpjujfq6auxdt" path="res://Scripts/items/sword.gd" id="1_33qn1"]
 [ext_resource type="PackedScene" uid="uid://dptyhu4bxjj0s" path="res://Scenes/KingsSwordAnimation.tscn" id="1_v5lhv"]
 [ext_resource type="AudioStream" uid="uid://byiiu3ajioyex" path="res://assets/sfx/sword_swing.wav" id="2_eihie"]
+[ext_resource type="Script" uid="uid://45bjrxmk56ns" path="res://Scripts/melee_weapon_item.gd" id="2_xmo5v"]
 [ext_resource type="Texture2D" uid="uid://dmn2ee0gv8d1r" path="res://assets/sprites/items/kings_sword.png" id="3_idyb5"]
 
 [resource]
-script = ExtResource("1_33qn1")
+script = ExtResource("2_xmo5v")
 use_sound = ExtResource("2_eihie")
-power = 3
+attack_name = "sword_swing"
+power = 60
 animation = ExtResource("1_v5lhv")
 texture = ExtResource("3_idyb5")
 ID = 5

@@ -9,8 +9,6 @@ var attack_timer : Timer
 
 var target : Player
 
-@export var held_item : ItemSlot
-
 # DEBUGGING
 @export var raycast : RayCast2D
 
@@ -31,8 +29,10 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	
 func _process(delta: float) -> void:
+	super(delta)
 	if not target:
 		return
+	
 		
 	raycast.target_position = (center.global_position.direction_to(Player.player.center.global_position) * 
 			center.global_position.distance_to(Player.player.center.global_position))

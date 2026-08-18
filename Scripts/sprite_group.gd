@@ -17,4 +17,5 @@ func remove_shader() -> void:
 
 func update_offset() -> void:	
 	for child in get_children():
-		child.offset = offset
+		if child is Sprite2D:
+			child.offset = offset

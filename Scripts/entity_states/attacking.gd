@@ -10,7 +10,7 @@ var progress : float
 var windup_point: float
 
 var original_speed : float
-var attack_name : String = "attack"
+var attack_name : String = ""
 var speed_multiplier : float = 0.5
 
 var target_dir : Vector2
