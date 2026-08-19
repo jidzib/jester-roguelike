@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="12_crkg3"]
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="13_vjf4w"]
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="14_crkg3"]
-[ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/Items/spellbook.tres" id="17_i4hpe"]
+[ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/Items/fireball_spellbook.tres" id="17_i4hpe"]
 
 [sub_resource type="Animation" id="Animation_bn2mj"]
 length = 0.001

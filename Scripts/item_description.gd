@@ -30,6 +30,8 @@ func set_text(item: Item) -> void:
 		label.text += "\n" + combat_stats_as_string(item.combat_stats)
 	if item_is_weapon(item):
 		label.text += "\n" + item_power_as_string(item)
+	if item_is_potion(item):
+		label.text += "\n" + potion_restore_as_string(item)
 func get_item_name(item: Item) -> String:
 	return item.name
 func get_item_description(item: Item) -> String:
@@ -61,10 +63,12 @@ func get_label_height() -> float:
 	return label.get_content_height()
 func get_label_width() -> float:
 	return label.get_content_width()
-
 func set_back_size(_width: float, _height: float, padding: Vector2 = Vector2(20.0, 20.0)) -> void:
 	back.size = Vector2(_width, _height) + padding
-
+func item_is_potion(item: Item) -> bool:
+	return item is PotionItem
+func potion_restore_as_string(item: PotionItem) -> String:
+	return "Restores " + str(int(item.restore_amount))
 var display_data : Dictionary[CombatManager.COMBAT_STATS, Dictionary] = {
 	CombatManager.COMBAT_STATS.ATTACK : {
 		"icon" : "[img]uid://cv8a6hg1gnrly[/img]",

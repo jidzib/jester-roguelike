@@ -34,6 +34,7 @@ func enter() -> void:
 	
 	AnimationHelper.play(parent.animation_player, parent.animation_path+parent.facing+"_"+attack_name,
 	windup_point, wind_up_duration)
+	
 	#parent.animation_player.play(parent.animation_path+parent.facing+"_"+attack_name)
 
 func process_frame(delta: float) -> void:

@@ -20,9 +20,9 @@ texture = ExtResource("1_3n7vm")
 
 [node name="ATK_LABEL" type="Label" parent="." unique_id=261881977]
 offset_left = 33.0
-offset_top = -35.0
+offset_top = -24.0
 offset_right = 48.0
-offset_bottom = -26.0
+offset_bottom = -15.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jqulp")
 theme_override_font_sizes/font_size = 5
@@ -32,9 +32,9 @@ vertical_alignment = 1
 
 [node name="DEF_LABEL" type="Label" parent="." unique_id=510952988]
 offset_left = 33.0
-offset_top = -21.0
+offset_top = -10.0
 offset_right = 48.0
-offset_bottom = -12.0
+offset_bottom = -1.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jqulp")
 theme_override_font_sizes/font_size = 5
@@ -43,9 +43,9 @@ vertical_alignment = 1
 
 [node name="MGA_LABEL" type="Label" parent="." unique_id=1974117326]
 offset_left = 33.0
-offset_top = -7.0
+offset_top = 4.0
 offset_right = 48.0
-offset_bottom = 2.0
+offset_bottom = 13.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jqulp")
 theme_override_font_sizes/font_size = 5
@@ -54,9 +54,9 @@ vertical_alignment = 1
 
 [node name="MGD_LABEL" type="Label" parent="." unique_id=591080805]
 offset_left = 33.0
-offset_top = 7.0
+offset_top = 18.0
 offset_right = 48.0
-offset_bottom = 16.0
+offset_bottom = 27.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_jqulp")
 theme_override_font_sizes/font_size = 5

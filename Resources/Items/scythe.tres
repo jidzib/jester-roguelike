@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("2_l3ykb")
-hitbox_size = 40.0
+hitbox_size = 35.0
 use_sound = ExtResource("4_7d62s")
 attack_name = "scythe_swing"
 power = 15

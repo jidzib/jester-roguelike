@@ -27,7 +27,7 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	entity_attack_state.attack_name = attack_name
 	entity_attack_state.duration = attack_duration
 	entity.change_state(entity_attack_state)
-	spawn_animation(new_animation, entity, entity_attack_state.wind_up_duration)
+	spawn_animation(new_animation, entity, target_dir, entity_attack_state.wind_up_duration)
 	await entity_attack_state.wind_up_finished
 	entity.add_child(hitbox)
 	AudioManager.play_randomized_sound(use_sound)

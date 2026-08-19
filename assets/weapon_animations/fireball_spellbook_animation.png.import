@@ -2,22 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj2ioquwg6n1c"
-path="res://.godot/imported/blockout_head.png-e9caa188b4f2d9e7299afda3508fba2f.ctex"
+uid="uid://du7fc37neo3b"
+path="res://.godot/imported/fireball_spellbook_animation.png-6df758b784818e13ab143364beec9aa2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/entities/player/blockout_head.png"
-dest_files=["res://.godot/imported/blockout_head.png-e9caa188b4f2d9e7299afda3508fba2f.ctex"]
+source_file="res://assets/weapon_animations/fireball_spellbook_animation.png"
+dest_files=["res://.godot/imported/fireball_spellbook_animation.png-6df758b784818e13ab143364beec9aa2.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

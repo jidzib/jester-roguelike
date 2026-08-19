@@ -46,7 +46,7 @@ func initialize(_parent_stats: Stats) -> void:
 	shape.size = Vector2(8, 8)
 	hitbox = Hitbox.new(_parent_stats, lifetime, shape, 
 						References.HIT_EFFECTS[Enums.HitEffects.FIREBALL_HIT],
-	 					References.ITEMS[Enums.Items.SPELLBOOK])
+	 					References.ITEMS[Enums.Items.FIREBALL_SPELLBOOK])
 	
 func init_hitbox(_packed_hitbox: PackedScene) -> void:
 	hitbox = _packed_hitbox.instantiate()

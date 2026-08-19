@@ -57,5 +57,5 @@ func _process(delta: float) -> void:
 	anchor.rotation = weapon_angle
 
 func animation_done() -> void:
-	anchor.show()
+	sprite.show()
 	locked = false

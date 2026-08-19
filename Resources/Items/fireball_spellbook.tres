@@ -1,17 +1,17 @@
 [gd_resource type="Resource" script_class="SpellbookItem" format=3 uid="uid://bishitcpv23v7"]
 
+[ext_resource type="PackedScene" uid="uid://cm14hdbt1sjcm" path="res://Scenes/FireballSpellbookAnimation.tscn" id="1_sxcbp"]
 [ext_resource type="Script" uid="uid://d371i8b12lp6q" path="res://Scripts/items/spellbook.gd" id="1_whfmv"]
-[ext_resource type="PackedScene" uid="uid://cm14hdbt1sjcm" path="res://Scenes/SpellbookAnimation.tscn" id="1_x4w2y"]
-[ext_resource type="Texture2D" uid="uid://dgtdopb7iknrb" path="res://assets/sprites/items/book.png" id="2_3oqxw"]
+[ext_resource type="Texture2D" uid="uid://bvt4vmf2e0v7i" path="res://assets/sprites/items/fireball_spellbook.png" id="3_a24i5"]
 
 [resource]
 script = ExtResource("1_whfmv")
 power = 40
-animation = ExtResource("1_x4w2y")
+animation = ExtResource("1_sxcbp")
 ATTACK_TYPE = 2
-texture = ExtResource("2_3oqxw")
+texture = ExtResource("3_a24i5")
 ID = 3
-name = "Spellbook"
+name = "Fireball Spellbook"
 rarity = 2
 description = "Use to shoot fireballs!"
 metadata/_custom_type_script = "uid://d371i8b12lp6q"

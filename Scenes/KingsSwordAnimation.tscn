@@ -8,10 +8,10 @@
 animation_player = NodePath("AnimationPlayer")
 animation_path = "SwordAnimations/"
 
-[node name="AnimationPlayer" parent="." index="0"]
+[node name="AnimationPlayer" parent="." index="0" unique_id=1566051379]
 libraries/SwordAnimations = ExtResource("2_n1fol")
 
-[node name="Spritesheet" parent="." index="1"]
+[node name="Spritesheet" parent="." index="1" unique_id=391622497]
 texture = ExtResource("3_qei7u")
-hframes = 3
-vframes = 3
+hframes = 2
+frame = 1

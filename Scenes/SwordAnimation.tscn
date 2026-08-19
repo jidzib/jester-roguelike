@@ -7,10 +7,9 @@
 [node name="SwordAnimation" unique_id=587937862 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_7ngrt")]
 animation_player = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" parent="." index="0"]
+[node name="AnimationPlayer" parent="." index="0" unique_id=1566051379]
 libraries/ = ExtResource("2_uw7dh")
 
-[node name="Spritesheet" parent="." index="1"]
+[node name="Spritesheet" parent="." index="1" unique_id=391622497]
 texture = ExtResource("2_0ldg1")
-hframes = 3
-vframes = 3
+hframes = 2
