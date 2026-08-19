@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://5asav0mchmun"]
-
-[ext_resource type="AudioStream" uid="uid://dciqrjwbluctj" path="res://assets/sfx/explode.mp3" id="2_bu1ki"]
-
-[node name="LightningHitEffect" unique_id=525792783]
-audio = ExtResource("2_bu1ki")
-particles_id = 3
