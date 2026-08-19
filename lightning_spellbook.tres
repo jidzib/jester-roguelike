@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SpellbookItem" format=3 uid="uid://c4xxr1vwy752c"]
+
+[ext_resource type="Script" uid="uid://d371i8b12lp6q" path="res://Scripts/items/spellbook.gd" id="1_3c275"]
+[ext_resource type="PackedScene" uid="uid://cm14hdbt1sjcm" path="res://Scenes/FireballSpellbookAnimation.tscn" id="1_5ru5o"]
+[ext_resource type="Texture2D" uid="uid://cquoyqg7gjn2x" path="res://assets/sprites/items/lightning_spellbook.png" id="3_8rihk"]
+
+[resource]
+script = ExtResource("1_3c275")
+projectile_id = 1
+power = 30
+animation = ExtResource("1_5ru5o")
+ATTACK_TYPE = 2
+texture = ExtResource("3_8rihk")
+ID = 8
+name = "Lightning Spellbook"
+rarity = 2
+description = "Shoot a bolt of lightning that chains between enemies"
+metadata/_custom_type_script = "uid://d371i8b12lp6q"

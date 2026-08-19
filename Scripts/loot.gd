@@ -20,13 +20,13 @@ func initialize_loot() -> void:
 	for i in range(level):
 		var rand : float = Util.RNG.randf_range(0.0, 1.0)
 		var pool_id : Items.RARITY
-		if rand <= 0.5:
+		if rand <= 0.35:
 			#COMMON
 			pool_id = Items.RARITY.COMMON
-		elif rand <= 0.8:
+		elif rand <= 0.65:
 			# UNCOMMON
 			pool_id = Items.RARITY.UNCOMMON
-		elif rand <= 0.95: # rand <= 1.0
+		elif rand <= 0.85: # rand <= 1.0
 			# RARE
 			pool_id = Items.RARITY.RARE
 		elif rand <= 1.0:

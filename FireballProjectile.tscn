@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://duq2ati8kjp6d"]
+
+[ext_resource type="PackedScene" uid="uid://2wrydx5a7n4o" path="res://Scenes/Projectile.tscn" id="1_0cnjm"]
+[ext_resource type="Script" uid="uid://crfmfj4jjdga8" path="res://fireball_projectile.gd" id="2_kr6cf"]
+
+[node name="FireballProjectile" unique_id=2001173021 instance=ExtResource("1_0cnjm")]
+script = ExtResource("2_kr6cf")
+hitbox_size = Vector2i(8, 8)
+slow_multiplier = 0.25

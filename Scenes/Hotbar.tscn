@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/sprites/ui/hotbar.png" id="2_ry1on"]
 [ext_resource type="PackedScene" uid="uid://bwetdj5om0tm" path="res://Scenes/ItemSlot.tscn" id="3_i2kgl"]
 [ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/Items/sword.tres" id="5_stvnf"]
+[ext_resource type="Resource" uid="uid://c4xxr1vwy752c" path="res://lightning_spellbook.tres" id="6_stvnf"]
 
 [node name="Hotbar" type="Node2D" unique_id=1441456161 node_paths=PackedStringArray("item_slot1", "item_slot2", "item_slot3", "item_slot4", "item_slot5")]
 script = ExtResource("1_1074w")
@@ -30,6 +31,7 @@ offset_left = -29.0
 offset_top = -10.0
 offset_right = -9.0
 offset_bottom = 10.0
+item = ExtResource("6_stvnf")
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemSlot3" parent="." unique_id=498432528 instance=ExtResource("3_i2kgl")]

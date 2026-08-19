@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duo22wcoaaq0f"
-path="res://.godot/imported/sword_spritesheet.png-3a5a0a71fbebf477a9df7a7a1d842946.ctex"
+uid="uid://brovrdb8g5iog"
+path="res://.godot/imported/lightning.png-c7f3a383b19684e5fdeea6629afd9996.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/weapon_animations/sword_spritesheet.png"
-dest_files=["res://.godot/imported/sword_spritesheet.png-3a5a0a71fbebf477a9df7a7a1d842946.ctex"]
+source_file="res://assets/sprites/fx/lightning.png"
+dest_files=["res://.godot/imported/lightning.png-c7f3a383b19684e5fdeea6629afd9996.ctex"]
 
 [params]
 

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d274yiile6rv"]
-
-[ext_resource type="Script" uid="uid://cqg7hi7j3qb0c" path="res://Scripts/hit_effect.gd" id="1_cf756"]
-
-[node name="HitEffect" type="Node"]
-script = ExtResource("1_cf756")
-metadata/_custom_type_script = "uid://cqg7hi7j3qb0c"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

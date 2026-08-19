@@ -32,6 +32,8 @@ func set_text(item: Item) -> void:
 		label.text += "\n" + item_power_as_string(item)
 	if item_is_potion(item):
 		label.text += "\n" + potion_restore_as_string(item)
+	if item_is_spellbook(item):
+		label.text += "\n" + spellbook_mana_cost_string(item)
 func get_item_name(item: Item) -> String:
 	return item.name
 func get_item_description(item: Item) -> String:
@@ -69,6 +71,10 @@ func item_is_potion(item: Item) -> bool:
 	return item is PotionItem
 func potion_restore_as_string(item: PotionItem) -> String:
 	return "Restores " + str(int(item.restore_amount))
+func item_is_spellbook(item: Item) -> bool:
+	return item is SpellbookItem
+func spellbook_mana_cost_string(item: SpellbookItem) -> String:
+	return "Mana Cost: " +  "[color=blue]" + str(int(item.mana_cost)) + "[/color]"
 var display_data : Dictionary[CombatManager.COMBAT_STATS, Dictionary] = {
 	CombatManager.COMBAT_STATS.ATTACK : {
 		"icon" : "[img]uid://cv8a6hg1gnrly[/img]",

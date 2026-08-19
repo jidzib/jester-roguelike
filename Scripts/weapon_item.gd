@@ -1,6 +1,6 @@
 class_name WeaponItem extends Item
 
-@export var power : int = 1.0
+@export var power : int = 20.0
 @export var animation : PackedScene
 @export var ATTACK_TYPE : CombatManager.COMBAT_STATS
 @export var attack_duration : float = 0.6

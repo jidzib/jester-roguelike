@@ -8,7 +8,13 @@ enum Items {
 	MANA_POTION,
 	KINGS_SWORD,
 	DIAMOND_RING,
-	SCYTHE
+	SCYTHE,
+	LIGHTNING_SPELLBOOK
+}
+
+enum Projectiles {
+	FIREBALL,
+	LIGHTNING
 }
 
 enum Shaders {
@@ -24,13 +30,15 @@ enum Teams {
 enum HitEffects {
 	SWORD_HIT,
 	PARRY_HIT,
-	FIREBALL_HIT
+	FIREBALL_HIT,
+	LIGHTNING_HIT
 }
 
 enum Particles {
 	NONE,
 	SWORD_HIT,
-	FIREBALL_HIT
+	FIREBALL_HIT,
+	LIGHTNING_HIT
 }
 
 enum Enemies {

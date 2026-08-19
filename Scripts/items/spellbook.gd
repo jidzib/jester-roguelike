@@ -1,6 +1,7 @@
 class_name SpellbookItem extends WeaponItem
 
-var projectile : PackedScene = load("res://Scenes/Projectile.tscn")
+#var projectile : PackedScene = load("res://Scenes/Projectile.tscn")
+@export var projectile_id : Enums.Projectiles # NEW
 var mana_cost : int = 10
 var cast_duration : float = 0.5
 
@@ -8,7 +9,8 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	if not entity.stats.has_enough_mana(mana_cost):
 		return
 	entity.stats.use_mana(mana_cost)
-	var new_projectile : Projectile = projectile.instantiate()
+	#var new_projectile : Projectile = projectile.instantiate()
+	var new_projectile : Projectile = References.PROJECTILES[projectile_id].instantiate() # NEW
 	new_projectile.initialize(entity.stats)
 	
 	new_projectile.global_position = entity.global_position

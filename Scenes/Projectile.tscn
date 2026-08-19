@@ -67,7 +67,7 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4tued"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0kec"]
 _data = {
 &"RESET": SubResource("Animation_ds7j7"),
 &"charging": SubResource("Animation_0tri7"),
@@ -79,11 +79,12 @@ _data = {
 top_level = true
 z_index = 2
 script = ExtResource("1_lal66")
-sprite = NodePath("Sprite")
-animation_player = NodePath("AnimationPlayer")
-base_damage = 1
+hit_effect = 2
+item_source = 3
 lifetime = 1.0
 speed = 250.0
+sprite = NodePath("Sprite")
+animation_player = NodePath("AnimationPlayer")
 cast_sound = ExtResource("2_0tri7")
 metadata/_custom_type_script = "uid://b1uj58wkk48o3"
 
@@ -93,4 +94,4 @@ hframes = 4
 vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=23346864]
-libraries/ = SubResource("AnimationLibrary_4tued")
+libraries/ = SubResource("AnimationLibrary_y0kec")

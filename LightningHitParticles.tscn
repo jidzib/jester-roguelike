@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://guv1dj52y2nd"]
+
+[ext_resource type="PackedScene" uid="uid://c7bwdxi6ra7ah" path="res://Scenes/SwordHitParticles.tscn" id="1_g7kgn"]
+
+[node name="LightningHitParticles" unique_id=488397455 instance=ExtResource("1_g7kgn")]
+modulate = Color(0, 1, 1, 1)
