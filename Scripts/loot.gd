@@ -26,11 +26,15 @@ func initialize_loot() -> void:
 		elif rand <= 0.65:
 			# UNCOMMON
 			pool_id = Items.RARITY.UNCOMMON
-		elif rand <= 0.85: # rand <= 1.0
+		elif rand <= 0.85:
 			# RARE
 			pool_id = Items.RARITY.RARE
-		elif rand <= 1.0:
+		elif rand <= 0.95:
+			# EPIC
 			pool_id = Items.RARITY.EPIC
+		elif rand <= 1.0:
+			# LEGENDARY
+			pool_id = Items.RARITY.LEGENDARY
 			
 		var item : Item = pick_from_pool(pool_id)
 		if item not in selected_loot:

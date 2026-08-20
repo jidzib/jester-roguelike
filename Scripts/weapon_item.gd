@@ -5,10 +5,10 @@ class_name WeaponItem extends Item
 @export var ATTACK_TYPE : CombatManager.COMBAT_STATS
 @export var attack_duration : float = 0.6
 
-func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir: Vector2, _windup_duration: float = 0.0) -> void:
+func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir: Vector2,
+					_windup_duration: float = 0.0, _playback_speed: float = 1.0) -> void:
 	var new_animation : WeaponAnimation = animation.instantiate()
 	#new_animation.scale.x = entity.sprites.scale.x
-	
 	entity.held_item.anchor.add_child(new_animation)
 	#new_animation.global_position = entity.sprites.global_position
 	new_animation.global_position = Vector2(
@@ -23,6 +23,6 @@ func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir
 		new_animation.z_index = -1
 	else:
 		new_animation.z_index = 1
-	new_animation.play(entity.facing, _windup_duration)
+	new_animation.play(entity.facing, _windup_duration, _playback_speed)
 	#if _wait_signal:
 		#new_animation.wait(_wait_signal)

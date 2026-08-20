@@ -12,6 +12,6 @@ ATTACK_TYPE = 2
 texture = ExtResource("3_8rihk")
 ID = 8
 name = "Lightning Spellbook"
-rarity = 2
+rarity = 3
 description = "Shoot a bolt of lightning that chains between enemies"
 metadata/_custom_type_script = "uid://d371i8b12lp6q"

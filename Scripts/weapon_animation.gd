@@ -8,9 +8,10 @@ class_name WeaponAnimation extends Node2D
 
 signal animation_finished
 
-func play(_direction: String, _windup_duration: float = 0.0) -> void:
+func play(_direction: String, _windup_duration: float = 0.0, _playback_speed: float = 1.0) -> void:
 	animation_finished.connect(despawn)
-	AnimationHelper.play(animation_player, animation_path+_direction, windup_point, _windup_duration, animation_finished)
+	AnimationHelper.play(animation_player, animation_path+_direction, windup_point,
+				 _windup_duration, _playback_speed, animation_finished)
 
 func despawn() -> void:
 	animation_finished.disconnect(despawn)

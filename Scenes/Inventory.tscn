@@ -68,9 +68,9 @@ z_index = 100
 layout_mode = 3
 anchors_preset = 0
 offset_left = -48.0
-offset_top = -21.0
+offset_top = -20.5
 offset_right = -8.0
-offset_bottom = 19.0
+offset_bottom = 19.5
 
 [node name="ItemSlot" parent="ItemSlots" unique_id=1802365271 instance=ExtResource("4_jqulp")]
 layout_mode = 0

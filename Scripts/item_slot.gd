@@ -37,6 +37,7 @@ func update_display() -> void:
 	else:
 		selected_sprite.visible = false
 
+	
 func _get_drag_data(at_position: Vector2) -> Variant:
 	if item:
 		var preview_container : Control = Control.new()

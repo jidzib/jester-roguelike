@@ -27,6 +27,9 @@ state_nodes = {
 [node name="Sprite" parent="Sprites" parent_id_path=PackedInt32Array(882517692) index="0" unique_id=1876018213]
 texture = ExtResource("2_s4xfh")
 
+[node name="Attacking" parent="StateMachine" parent_id_path=PackedInt32Array(1289695732) index="1" unique_id=58407747]
+windup_duration = 0.3
+
 [node name="Stats" parent="." index="4" unique_id=1175305160]
 max_hp = 200.0
 base_combat_stats = SubResource("Resource_pti76")

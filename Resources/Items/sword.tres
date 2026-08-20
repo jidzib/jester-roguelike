@@ -7,10 +7,9 @@
 
 [resource]
 script = ExtResource("2_sn0y7")
-hitbox_size = 30.0
+range = 15.0
 use_sound = ExtResource("3_0bu56")
 attack_name = "sword_swing"
-power = 20
 animation = ExtResource("1_wputs")
 texture = ExtResource("2_pk6ra")
 name = "Sword"

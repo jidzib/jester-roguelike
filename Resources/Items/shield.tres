@@ -8,6 +8,6 @@ script = ExtResource("1_x6u6w")
 texture = ExtResource("2_ron5c")
 ID = 1
 name = "Shield"
-rarity = 2
+rarity = 1
 description = "Please don't use this item"
 metadata/_custom_type_script = "uid://c2oydjj6qxhuc"

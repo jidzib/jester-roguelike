@@ -24,8 +24,12 @@ func set_text(item: Item) -> void:
 	var data : Dictionary = {
 		"name" : get_item_name(item),
 		"description" : get_item_description(item),
+		"rarity_color" : get_item_rarity_color(item),
+		"rarity_name" : get_item_rarity_name(item)
 	}
-	label.text = "[b]{name}[/b]\n{description}".format(data)
+	label.text = "[b]{name}[/b]".format(data)
+	label.text += "\n[font_size=4][color={rarity_color}]{rarity_name}[/color][/font_size]".format(data)
+	label.text += "\n{description}".format(data)
 	if item_is_charm(item):
 		label.text += "\n" + combat_stats_as_string(item.combat_stats)
 	if item_is_weapon(item):
@@ -38,6 +42,10 @@ func get_item_name(item: Item) -> String:
 	return item.name
 func get_item_description(item: Item) -> String:
 	return item.description
+func get_item_rarity_name(item: Item) -> String:
+	return Items.RARITY.keys()[item.rarity]
+func get_item_rarity_color(item: Item) -> String:
+	return Items.COLOR_FROM_RARITY[item.rarity].to_html(true)
 func item_is_charm(item: Item) -> bool:
 	return item is CharmItem
 func get_item_combat_stats(item: CharmItem) -> CombatStats:
@@ -78,18 +86,18 @@ func spellbook_mana_cost_string(item: SpellbookItem) -> String:
 var display_data : Dictionary[CombatManager.COMBAT_STATS, Dictionary] = {
 	CombatManager.COMBAT_STATS.ATTACK : {
 		"icon" : "[img]uid://cv8a6hg1gnrly[/img]",
-		"color_open" : "[color=red]"
+		"color_open" : "[color=RED]"
 	},
 	CombatManager.COMBAT_STATS.DEFENSE : {
 		"icon" : "[img]uid://dbkj74lnick16[/img]",
-		"color_open" : "[color=green]"
+		"color_open" : "[color=GREEN]"
 	},
 	CombatManager.COMBAT_STATS.MAGIC_ATTACK : {
 		"icon" : "[img]uid://rklefs6hup04[/img]",
-		"color_open" : "[color=purple]"
+		"color_open" : "[color=PURPLE]"
 	},
 	CombatManager.COMBAT_STATS.MAGIC_DEFENSE : {
 		"icon" : "[img]uid://ctaxu5f6pop5l[/img]",
-		"color_open" : "[color=pink]"
+		"color_open" : "[color=PINK]"
 	},
 }

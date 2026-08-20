@@ -245,8 +245,7 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 [node name="Attacking" type="Node" parent="StateMachine" index="1" unique_id=58407747 node_paths=PackedStringArray("transition_state")]
 script = ExtResource("12_xf7i1")
 transition_state = NodePath("../Idle")
-duration = 0.75
-wind_up_duration = 0.5
+windup_duration = 0.5
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Hurt" type="Node" parent="StateMachine" index="2" unique_id=1736198245 node_paths=PackedStringArray("idle_state")]

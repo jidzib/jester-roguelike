@@ -5,27 +5,31 @@ signal wind_up_finished
 @export var transition_state : State
 
 var progress : float
-@export var duration : float = 0.5
-@export var wind_up_duration : float = 0.0
+var duration : float
+@export var windup_duration : float = 0.0
 var windup_point: float
 
 var original_speed : float
 var attack_name : String = ""
-var speed_multiplier : float = 0.5
+var slow_effect : float = 0.5
+
+var animation_speed : float
 
 var target_dir : Vector2
 	
-func initialize(_duration: float, _attack_name: String, _speed_multiplier: float) -> void:
+func initialize(_duration: float, _attack_name: String, _windup_point: float, _slow_effect: float, _animation_speed: float) -> void:
 	duration = _duration
 	attack_name = _attack_name
-	speed_multiplier = _speed_multiplier
+	windup_point = _windup_point
+	slow_effect = _slow_effect
+	animation_speed = _animation_speed
 
 func enter() -> void:
 	parent.current_state = parent.States.ATTACKING
 	parent.action_locked = true
 	progress = 0.0
 	original_speed = parent.speed
-	parent.speed *= speed_multiplier
+	parent.speed *= slow_effect
 	
 	parent.cardinal_direction = parent.get_cardinal_direction(parent.center.global_position.direction_to(target_dir))
 	parent.set_facing(parent.cardinal_direction)
@@ -33,13 +37,13 @@ func enter() -> void:
 	#parent.update_direction("direction", parent.center.global_position.direction_to(target))
 	
 	AnimationHelper.play(parent.animation_player, parent.animation_path+parent.facing+"_"+attack_name,
-	windup_point, wind_up_duration)
+	windup_point, windup_duration, animation_speed)
 	
 	#parent.animation_player.play(parent.animation_path+parent.facing+"_"+attack_name)
 
 func process_frame(delta: float) -> void:
 	progress += delta
-	if progress > parent.animation_player.current_animation_length * windup_point + wind_up_duration:
+	if progress > parent.animation_player.current_animation_length * windup_point + windup_duration:
 		wind_up_finished.emit()
 	if progress > duration:
 		parent.change_state(transition_state)

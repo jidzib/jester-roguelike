@@ -8,6 +8,14 @@ enum RARITY {
 	LEGENDARY
 }
 
+static var COLOR_FROM_RARITY : Dictionary[RARITY, Color] = {
+	RARITY.COMMON : Color.GRAY,
+	RARITY.UNCOMMON : Color.GREEN,
+	RARITY.RARE : Color.BLUE,
+	RARITY.EPIC : Color.PURPLE,
+	RARITY.LEGENDARY : Color.GOLD
+}
+
 static var rarity_pools = {}
 
 static func build_rarity_pools() -> void:
