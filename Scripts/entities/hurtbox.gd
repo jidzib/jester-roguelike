@@ -22,6 +22,7 @@ func is_blocking() -> bool:
 
 func receive_hit(attacker_stats: Stats, source_item: Item, coming_from: Vector2, knockback_strength : float = 100.0) -> void:
 	var damage : float = CombatManager.calculate_damage(attacker_stats, parent_stats, source_item)
+	ParticleManager.spawn_damage_indicator_instance(damage, source_item.ATTACK_TYPE, global_position)
 	parent_stats.take_damage(damage)
 	var parent : Entity = parent_stats.owner
 	parent.hit_flash()

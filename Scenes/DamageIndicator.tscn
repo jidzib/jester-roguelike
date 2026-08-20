@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dvssaggp65nk1"]
+
+[ext_resource type="Script" uid="uid://d0rx0511rwn1g" path="res://Scripts/damage_indicator.gd" id="1_a0jpp"]
+[ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="2_culvy"]
+
+[node name="DamageIndicator" type="Node2D" unique_id=1357956730 node_paths=PackedStringArray("label")]
+z_index = 20
+script = ExtResource("1_a0jpp")
+label = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1123551565]
+offset_right = 290.0
+offset_bottom = 111.0
+theme_override_fonts/normal_font = ExtResource("2_culvy")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+text = "\"[color=blue]yo angelo[/color]\""

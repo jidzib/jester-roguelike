@@ -43,5 +43,7 @@ enum Particles {
 
 enum Enemies {
 	KNIGHT,
-	MAGE
+	MAGE,
+	ELITE_KNIGHT,
+	ELITE_MAGE
 }

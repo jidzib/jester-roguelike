@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://kipq2mhclagv"]
+
+[ext_resource type="PackedScene" uid="uid://rqrdh44d37if" path="res://Scenes/Mage.tscn" id="1_3vblr"]
+[ext_resource type="Texture2D" uid="uid://b0amtg62nbqcg" path="res://assets/sprites/entities/mage/elite_mage_spritesheet.png" id="2_rid0c"]
+[ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="3_yopqc"]
+
+[sub_resource type="Resource" id="Resource_bq1ey"]
+script = ExtResource("3_yopqc")
+combat_stats = Dictionary[int, float]({
+0: 20.0,
+1: 20.0,
+2: 40.0,
+3: 20.0
+})
+metadata/_custom_type_script = "uid://cocg7yax0q6v2"
+
+[node name="EliteMage" unique_id=168480387 node_paths=PackedStringArray("state_nodes") instance=ExtResource("1_3vblr")]
+speed = 120.0
+state_nodes = {
+0: NodePath("StateMachine/Idle"),
+4: NodePath("StateMachine/Spellcasting"),
+5: NodePath("StateMachine/Hurt"),
+6: NodePath("StateMachine/CirclingTarget"),
+7: NodePath("StateMachine/ChasingTarget")
+}
+
+[node name="Spritesheet" parent="Sprites" parent_id_path=PackedInt32Array(882517692) index="0" unique_id=1142849184]
+texture = ExtResource("2_rid0c")
+
+[node name="Stats" parent="." index="4" unique_id=1175305160]
+max_hp = 120.0
+base_combat_stats = SubResource("Resource_bq1ey")

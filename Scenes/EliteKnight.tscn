@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bv4ujnsg3lv3x"]
+
+[ext_resource type="PackedScene" uid="uid://cek561y3ub7kl" path="res://Scenes/Knight.tscn" id="1_uqgdg"]
+[ext_resource type="Texture2D" uid="uid://dw3de7qce3cbk" path="res://assets/sprites/entities/knight/elite_knight_spritesheet.png" id="2_s4xfh"]
+[ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="3_0gajq"]
+
+[sub_resource type="Resource" id="Resource_pti76"]
+script = ExtResource("3_0gajq")
+combat_stats = Dictionary[int, float]({
+0: 40.0,
+1: 20.0,
+2: 0.0,
+3: 20.0
+})
+metadata/_custom_type_script = "uid://cocg7yax0q6v2"
+
+[node name="EliteKnight" unique_id=1645230401 node_paths=PackedStringArray("state_nodes") instance=ExtResource("1_uqgdg")]
+speed = 80.0
+state_nodes = {
+0: NodePath("StateMachine/Idle"),
+1: NodePath("StateMachine/Attacking"),
+5: NodePath("StateMachine/Hurt"),
+6: NodePath("StateMachine/CirclingTarget"),
+7: NodePath("StateMachine/ChasingTarget")
+}
+
+[node name="Sprite" parent="Sprites" parent_id_path=PackedInt32Array(882517692) index="0" unique_id=1876018213]
+texture = ExtResource("2_s4xfh")
+
+[node name="Stats" parent="." index="4" unique_id=1175305160]
+max_hp = 200.0
+base_combat_stats = SubResource("Resource_pti76")

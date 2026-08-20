@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://2pci2pxkyots"]
+
+[ext_resource type="PackedScene" uid="uid://cm14hdbt1sjcm" path="res://Scenes/FireballSpellbookAnimation.tscn" id="1_sbnqy"]
+[ext_resource type="Texture2D" uid="uid://bq3boperd2lwl" path="res://assets/weapon_animations/lightning_spellbook_animation.png" id="2_ed7hn"]
+
+[node name="LightningSpellbookAnimation" unique_id=633703897 instance=ExtResource("1_sbnqy")]
+
+[node name="Spritesheet" parent="." index="1" unique_id=391622497]
+texture = ExtResource("2_ed7hn")

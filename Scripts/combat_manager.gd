@@ -1,6 +1,5 @@
 class_name CombatManager
 
-
 enum COMBAT_STATS {
 	ATTACK,
 	DEFENSE,

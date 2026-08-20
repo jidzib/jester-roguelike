@@ -31,7 +31,9 @@ static var PARTICLES : Dictionary[Enums.Particles, PackedScene] = {
 
 static var ENEMIES : Dictionary[Enums.Enemies, PackedScene] = {
 	Enums.Enemies.KNIGHT : load("uid://cek561y3ub7kl"),
-	Enums.Enemies.MAGE : load("uid://rqrdh44d37if")
+	Enums.Enemies.MAGE : load("uid://rqrdh44d37if"),
+	Enums.Enemies.ELITE_KNIGHT : load("uid://bv4ujnsg3lv3x"),
+	Enums.Enemies.ELITE_MAGE : load("uid://kipq2mhclagv")
 }
 
 static var PROJECTILES : Dictionary[Enums.Projectiles, PackedScene] = {
