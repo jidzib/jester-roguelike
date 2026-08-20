@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharmItem" format=3 uid="uid://chfou3vmj7pg3"]
+
+[ext_resource type="Script" uid="uid://ikvu1fp3cxhn" path="res://Scripts/charm_item.gd" id="1_s6rd7"]
+[ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="1_s8y1o"]
+[ext_resource type="Texture2D" uid="uid://5ge0ju3f6amo" path="res://assets/sprites/items/whetstone_pendant.png" id="3_c54vw"]
+
+[sub_resource type="Resource" id="Resource_s8y1o"]
+script = ExtResource("1_s8y1o")
+combat_stats = Dictionary[int, float]({
+0: 20.0
+})
+metadata/_custom_type_script = "uid://cocg7yax0q6v2"
+
+[resource]
+script = ExtResource("1_s6rd7")
+combat_stats = SubResource("Resource_s8y1o")
+texture = ExtResource("3_c54vw")
+ID = 9
+name = "Whetstone Pendant"
+rarity = 3
+description = "Place in inventory to gain attack"
+metadata/_custom_type_script = "uid://ikvu1fp3cxhn"

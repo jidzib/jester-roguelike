@@ -12,7 +12,6 @@ func initialize(damage: float, attack_type : CombatManager.COMBAT_STATS, _positi
 	set_text(damage, color)
 	global_position = _position	
 
-
 func _physics_process(delta: float) -> void:
 	position.y -= delta * float_speed
 	

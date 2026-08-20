@@ -80,7 +80,7 @@ func spawn_enemy(enemy_id: Enums.Enemies, _position: Vector2) -> void:
 	enemy.died.connect(decrement_active_enemy_count)
 	if Player.player:
 		enemy.send_points_value.connect(Player.player.scoreboard.increase_score)
-		
+
 func pick_random_unoccupied_position(occupied_positions: Dictionary[Vector2, Sprite2D]) -> Vector2:
 	while true:
 		var random_pos: Vector2 = pick_random_position()
