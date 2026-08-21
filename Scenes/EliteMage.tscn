@@ -16,7 +16,6 @@ metadata/_custom_type_script = "uid://cocg7yax0q6v2"
 
 [node name="EliteMage" unique_id=168480387 node_paths=PackedStringArray("state_nodes") instance=ExtResource("1_3vblr")]
 points_value = 4
-speed = 120.0
 state_nodes = {
 0: NodePath("StateMachine/Idle"),
 4: NodePath("StateMachine/Spellcasting"),

@@ -35,7 +35,6 @@ func enter() -> void:
 	parent.set_facing(parent.cardinal_direction)
 	
 	#parent.update_direction("direction", parent.center.global_position.direction_to(target))
-	
 	AnimationHelper.play(parent.animation_player, parent.animation_path+parent.facing+"_"+attack_name,
 	windup_point, windup_duration, animation_speed)
 	

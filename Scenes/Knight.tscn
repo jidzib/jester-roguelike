@@ -209,7 +209,7 @@ platform_floor_layers = 4294967040
 script = ExtResource("2_fpytc")
 raycast = NodePath("RayCast2D")
 points_value = 1
-speed = 50.0
+speed = 65.0
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
 0: NodePath("StateMachine/Idle"),

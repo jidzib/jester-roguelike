@@ -34,7 +34,7 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 							attack_timings["windup_point"],
 							slow_effect, attack_speed)
 	entity.change_state(entity_attack_state)
-	spawn_animation(new_animation, entity, target_dir, new_animation.windup_point, attack_speed)
+	spawn_animation(new_animation, entity, target_dir, attack_timings["windup_duration"], attack_speed)
 	await entity_attack_state.wind_up_finished
 	entity.add_child(hitbox)
 	AudioManager.play_randomized_sound(use_sound)

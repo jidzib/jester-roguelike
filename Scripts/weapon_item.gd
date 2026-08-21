@@ -7,6 +7,7 @@ class_name WeaponItem extends Item
 
 func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir: Vector2,
 					_windup_duration: float = 0.0, _playback_speed: float = 1.0) -> void:
+						
 	var new_animation : WeaponAnimation = animation.instantiate()
 	#new_animation.scale.x = entity.sprites.scale.x
 	entity.held_item.anchor.add_child(new_animation)

@@ -9,7 +9,8 @@ func play(animation_player: AnimationPlayer,
 	animation_player.current_animation = _animation_name
 	var windup_time : float = animation_player.current_animation_length * windup_point
 	animation_player.play()
-	animation_player.seek(windup_time, true)
+	await get_tree().create_timer(windup_time).timeout
+	#animation_player.seek(windup_time, true)
 	animation_player.pause()
 	await get_tree().create_timer(_windup_duration).timeout
 	if animation_player:
