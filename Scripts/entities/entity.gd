@@ -120,9 +120,10 @@ func is_parried(source: Entity, attack_type: String, damage: int) -> bool:
 			return true
 	return false
 
-func hit_flash() -> void:
+func hit_flash(_duration: float = 0.25) -> void:
+	print("hti flash")
 	sprites.change_shader(Enums.Shaders.HIT_FLASH)
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(_duration).timeout
 	sprites.remove_shader()
 
 func handle_movement(delta: float) -> void:

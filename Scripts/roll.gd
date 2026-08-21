@@ -12,6 +12,8 @@ func enter() -> void:
 	original_speed = parent.speed
 	parent.speed *= roll_multiplier
 	parent.action_locked = true
+	parent.hurtbox.disable()
+	parent.hit_flash()
 
 func process_frame(delta: float) -> void:
 	if parent.speed <= original_speed / 4:
@@ -23,3 +25,4 @@ func process_physics(delta: float) -> void:
 func exit() -> void:
 	parent.speed = original_speed
 	parent.action_locked = false
+	parent.hurtbox.enable()

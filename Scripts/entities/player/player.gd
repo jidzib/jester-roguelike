@@ -55,7 +55,7 @@ func _input(event: InputEvent) -> void:
 					state_nodes[States.ATTACKING].target_dir = get_global_mouse_position() # MAYBE HAVE A TARGET_DIR VARIABLE IN ENTITY CLASS
 					held_item.item.use(self, weapon_dir)
 			elif event.is_action_pressed("ROLL"):
-				if stamina_bar.stamina > 0:
+				if stamina_bar.stamina >= 1.0:
 					stamina_bar.stamina -= 1
 					change_state(state_nodes[States.ROLL])
 func die() -> void:
