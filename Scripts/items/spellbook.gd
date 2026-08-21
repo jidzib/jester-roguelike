@@ -2,7 +2,7 @@ class_name SpellbookItem extends WeaponItem
 
 #var projectile : PackedScene = load("res://Scenes/Projectile.tscn")
 @export var projectile_id : Enums.Projectiles # NEW
-@export var mana_cost : int = 10
+@export var mana_cost : int = 5
 var cast_duration : float = 0.5
 
 func use(entity: Entity, target_dir: Vector2) -> void:

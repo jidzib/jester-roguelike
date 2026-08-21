@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_whfmv")
-power = 40
+mana_cost = 10
 animation = ExtResource("1_sxcbp")
 ATTACK_TYPE = 2
 texture = ExtResource("3_a24i5")
