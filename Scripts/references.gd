@@ -10,7 +10,8 @@ static var ITEMS : Dictionary[Enums.Items, Item] = {
 	Enums.Items.DIAMOND_RING : load("uid://d024j5vnfrxwp"),
 	Enums.Items.SCYTHE : load("uid://c663qq1cu06ex"),
 	Enums.Items.LIGHTNING_SPELLBOOK : load("uid://c4xxr1vwy752c"),
-	Enums.Items.WHETSTONE_PENDANT : load("uid://chfou3vmj7pg3")
+	Enums.Items.WHETSTONE_PENDANT : load("uid://chfou3vmj7pg3"),
+	Enums.Items.KNIGHTS_CHESTPLATE : load("uid://ca4oy1eqa4g8h")
 }
 
 static var SHADERS : Dictionary[Enums.Shaders, ShaderMaterial] = {

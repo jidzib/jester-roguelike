@@ -15,6 +15,13 @@ static var ATTACK_TO_DEFENSE : Dictionary[COMBAT_STATS, COMBAT_STATS] = {
 }
 
 
+static func damage_calculation(attacker_stats: Stats, defender_stats: Stats, item: WeaponItem) -> float:
+	var attack_type : COMBAT_STATS = item.ATTACK_TYPE
+	var defense_type : COMBAT_STATS = ATTACK_TO_DEFENSE[attack_type]
+	var attack_power : float = attacker_stats.combat_stats.combat_stats[attack_type]
+	var defense_power : float = defender_stats.combat_stats.combat_stats[defense_type]
+	return item.power * (attack_power / (attack_power + defense_power))
+
 static func calculate_damage(attacker_stats: Stats, defender_stats: Stats, item: WeaponItem) -> float:
 	return apply_defenses(calculate_raw_damage(attacker_stats, item), item.ATTACK_TYPE, defender_stats)
 static func calculate_raw_damage(attacker_stats: Stats, item: WeaponItem) -> float:

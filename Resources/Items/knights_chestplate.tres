@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CharmItem" format=3 uid="uid://ca4oy1eqa4g8h"]
+
+[ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="1_bdelf"]
+[ext_resource type="Script" uid="uid://ikvu1fp3cxhn" path="res://Scripts/charm_item.gd" id="2_3phol"]
+[ext_resource type="Texture2D" uid="uid://blyfbiogywiws" path="res://assets/sprites/items/knights_chestplate.png" id="3_7d1j5"]
+
+[sub_resource type="Resource" id="Resource_p125p"]
+script = ExtResource("1_bdelf")
+combat_stats = Dictionary[int, float]({
+1: 10.0
+})
+metadata/_custom_type_script = "uid://cocg7yax0q6v2"
+
+[resource]
+script = ExtResource("2_3phol")
+combat_stats = SubResource("Resource_p125p")
+texture = ExtResource("3_7d1j5")
+ID = 10
+name = "Knight's Chestplate"
+rarity = 2
+description = "Equip in inventory to gain defense"
+metadata/_custom_type_script = "uid://ikvu1fp3cxhn"

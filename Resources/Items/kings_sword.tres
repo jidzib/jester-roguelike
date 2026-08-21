@@ -9,7 +9,7 @@
 script = ExtResource("2_xmo5v")
 use_sound = ExtResource("2_eihie")
 attack_name = "sword_swing"
-power = 60
+power = 100
 animation = ExtResource("1_v5lhv")
 texture = ExtResource("3_idyb5")
 ID = 5
