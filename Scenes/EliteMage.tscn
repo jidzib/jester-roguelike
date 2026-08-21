@@ -26,6 +26,7 @@ state_nodes = {
 
 [node name="Spritesheet" parent="Sprites" parent_id_path=PackedInt32Array(882517692) index="0" unique_id=1142849184]
 texture = ExtResource("2_rid0c")
+vframes = 6
 
 [node name="Stats" parent="." index="4" unique_id=1175305160]
 max_hp = 120.0

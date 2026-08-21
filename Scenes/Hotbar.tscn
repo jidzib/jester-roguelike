@@ -3,10 +3,7 @@
 [ext_resource type="Script" uid="uid://c611q82qv1ksk" path="res://Scripts/hotbar.gd" id="1_1074w"]
 [ext_resource type="Texture2D" uid="uid://bhcnhshyno6gy" path="res://assets/sprites/ui/hotbar.png" id="2_ry1on"]
 [ext_resource type="PackedScene" uid="uid://bwetdj5om0tm" path="res://Scenes/ItemSlot.tscn" id="3_i2kgl"]
-[ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/Items/fireball_spellbook.tres" id="5_o071h"]
 [ext_resource type="Resource" uid="uid://d3ru8alwc0xq4" path="res://Resources/Items/sword.tres" id="5_stvnf"]
-[ext_resource type="Resource" uid="uid://c4xxr1vwy752c" path="res://Resources/Items/lightning_spellbook.tres" id="6_stvnf"]
-[ext_resource type="Resource" uid="uid://d024j5vnfrxwp" path="res://Resources/Items/diamond_ring.tres" id="7_0gnsb"]
 
 [node name="Hotbar" type="Node2D" unique_id=1441456161 node_paths=PackedStringArray("item_slot1", "item_slot2", "item_slot3", "item_slot4", "item_slot5")]
 script = ExtResource("1_1074w")
@@ -33,7 +30,6 @@ offset_left = -29.0
 offset_top = -10.0
 offset_right = -9.0
 offset_bottom = 10.0
-item = ExtResource("5_o071h")
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemSlot3" parent="." unique_id=498432528 instance=ExtResource("3_i2kgl")]
@@ -41,7 +37,6 @@ offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
-item = ExtResource("6_stvnf")
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemSlot4" parent="." unique_id=1407847897 instance=ExtResource("3_i2kgl")]
@@ -49,7 +44,6 @@ offset_left = 9.0
 offset_top = -10.0
 offset_right = 29.0
 offset_bottom = 10.0
-item = ExtResource("7_0gnsb")
 metadata/_edit_use_anchors_ = true
 
 [node name="ItemSlot5" parent="." unique_id=149891601 instance=ExtResource("3_i2kgl")]
@@ -57,5 +51,4 @@ offset_left = 28.0
 offset_top = -10.0
 offset_right = 48.0
 offset_bottom = 10.0
-item = ExtResource("7_0gnsb")
 metadata/_edit_use_anchors_ = true
