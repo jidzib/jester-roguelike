@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://du0sojruahine"]
+
+[ext_resource type="Script" uid="uid://b1gj0rkkdrd0u" path="res://Scripts/stamina_bar.gd" id="1_h5quu"]
+[ext_resource type="Texture2D" uid="uid://ellqm0de6116" path="res://assets/sprites/ui/healthbar_progress.png" id="2_ftilq"]
+[ext_resource type="Texture2D" uid="uid://epqegkpv67ol" path="res://assets/sprites/ui/manabar_over.png" id="2_w6ulq"]
+
+[node name="StaminaBar" type="Node2D" unique_id=695902168 node_paths=PackedStringArray("progress_bar")]
+script = ExtResource("1_h5quu")
+progress_bar = NodePath("TextureProgressBar")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1275030524]
+modulate = Color(3.1672676, 3.1672676, 3.1672676, 1)
+offset_right = 128.0
+offset_bottom = 16.0
+max_value = 3.0
+step = 0.1
+value = 1.0
+texture_over = ExtResource("2_w6ulq")
+texture_progress = ExtResource("2_ftilq")

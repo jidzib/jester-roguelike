@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dbbfa2bnacuxf" path="res://Scenes/Healthbar.tscn" id="20_8flut"]
 [ext_resource type="AudioStream" uid="uid://dmfwakpfokgd0" path="res://assets/sfx/parry.mp3" id="20_ibubc"]
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="21_i2e8t"]
+[ext_resource type="PackedScene" uid="uid://du0sojruahine" path="res://Scenes/StaminaBar.tscn" id="22_x63xi"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="23_8flut"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="23_i2e8t"]
 [ext_resource type="PackedScene" uid="uid://bfug5kr66qdc8" path="res://Scenes/Scoreboard.tscn" id="24_qidb7"]
@@ -282,7 +283,7 @@ metadata/_custom_type_script = "uid://cocg7yax0q6v2"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qidb7"]
 size = Vector2(10, 16)
 
-[node name="Player" unique_id=1205549669 node_paths=PackedStringArray("hotbar", "inventory", "direction_indicator", "camera", "ui", "scoreboard", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
+[node name="Player" unique_id=1205549669 node_paths=PackedStringArray("hotbar", "inventory", "direction_indicator", "camera", "ui", "scoreboard", "stamina_bar", "hurtbox", "state_nodes", "sound") instance=ExtResource("1_cgsek")]
 y_sort_enabled = true
 platform_floor_layers = 4294967040
 script = ExtResource("2_0pi4m")
@@ -292,6 +293,7 @@ direction_indicator = NodePath("DirectionIndicator")
 camera = NodePath("Camera2D")
 ui = NodePath("UI")
 scoreboard = NodePath("Scoreboard")
+stamina_bar = NodePath("UI/StaminaBar")
 speed = 100.0
 hurtbox = NodePath("Hurtbox")
 state_nodes = {
@@ -395,6 +397,10 @@ parent = NodePath("../..")
 
 [node name="Hotbar" parent="UI" index="2" unique_id=1224682783 instance=ExtResource("17_xmpta")]
 position = Vector2(218, 218.667)
+
+[node name="StaminaBar" parent="UI" index="3" unique_id=695902168 instance=ExtResource("22_x63xi")]
+position = Vector2(3, 46)
+scale = Vector2(0.5, 0.5)
 
 [node name="Stats" parent="." index="8" unique_id=1175305160]
 max_hp = 100.0
