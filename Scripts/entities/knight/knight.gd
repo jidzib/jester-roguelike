@@ -1,9 +1,9 @@
 class_name Knight extends Enemy
 
-var aggro_range : float = 320.0
-var attack_range : float = 48.0
+@export var aggro_range : float = 320.0
+@export var attack_range : float = 48.0
 
-var attack_cooldown : float = 2.0
+@export var attack_cooldown : float = 2.0
 var attack_ready : float = true
 var attack_timer : Timer
 
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		
 	super(delta)
 	raycast.target_position = (center.global_position.direction_to(Player.player.center.global_position) * 
-			center.global_position.distance_to(Player.player.center.global_position))
+		center.global_position.distance_to(Player.player.center.global_position))
 	if action_locked:
 		return
 	if not player_in_aggro_range():

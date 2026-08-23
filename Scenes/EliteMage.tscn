@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rqrdh44d37if" path="res://Scenes/Mage.tscn" id="1_3vblr"]
 [ext_resource type="Texture2D" uid="uid://b0amtg62nbqcg" path="res://assets/sprites/entities/mage/elite_mage_spritesheet.png" id="2_rid0c"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="3_yopqc"]
+[ext_resource type="Resource" uid="uid://bishitcpv23v7" path="res://Resources/Items/fireball_spellbook.tres" id="4_wx8j2"]
 
 [sub_resource type="Resource" id="Resource_bq1ey"]
 script = ExtResource("3_yopqc")
@@ -31,3 +32,6 @@ vframes = 6
 [node name="Stats" parent="." index="4" unique_id=1175305160]
 max_hp = 120.0
 base_combat_stats = SubResource("Resource_bq1ey")
+
+[node name="HeldItem" parent="." index="9" unique_id=1824840031]
+item = ExtResource("4_wx8j2")

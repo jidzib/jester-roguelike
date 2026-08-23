@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b2n0l7wm8dc5x" path="res://Scripts/item_slot.gd" id="3_lmogc"]
 
 [node name="HeldItem" type="Node2D" unique_id=1824840031 node_paths=PackedStringArray("item_slot", "sprite", "anchor")]
+z_index = 1
 script = ExtResource("1_vhxq4")
 item_slot = NodePath("ItemSlot")
 sprite = NodePath("Anchor/Sprite2D")

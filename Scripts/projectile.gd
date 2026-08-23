@@ -40,13 +40,15 @@ func _process(delta: float) -> void:
 func _despawn() -> void:
 	queue_free()
 
-func initialize(_parent_stats: Stats) -> void:
+func initialize(_parent_stats: Stats, _spawn_hitbox: bool = true) -> void:
+	if not _spawn_hitbox:
+		return
 	var shape : Shape2D = RectangleShape2D.new()
 	shape.size = hitbox_size
 	hitbox = Hitbox.new(_parent_stats, lifetime, shape, 
 						References.HIT_EFFECTS[hit_effect],
 	 					References.ITEMS[item_source])
-	
+
 func charge() -> void:
 	pass
 	#animation_player.play("charging")

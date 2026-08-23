@@ -7,6 +7,7 @@
 
 [resource]
 script = ExtResource("2_xmo5v")
+range = 15.0
 use_sound = ExtResource("2_eihie")
 attack_name = "sword_swing"
 power = 60

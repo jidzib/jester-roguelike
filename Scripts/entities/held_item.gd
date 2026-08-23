@@ -41,7 +41,9 @@ var locked : bool = false
 
 func _process(delta: float) -> void:
 	if locked:
+		sprite.hide()
 		return
+	sprite.show()
 	var dir : Vector2 = global_position.direction_to(target_pos)
 	var angle : float = global_position.angle_to_point(target_pos)
 	var distance : float = global_position.distance_to(target_pos)
@@ -49,13 +51,15 @@ func _process(delta: float) -> void:
 	weapon_angle = global_position.angle_to_point(target_pos)
 	
 	if rad_to_deg(weapon_angle) > -180 and rad_to_deg(weapon_angle) < 0:
-		sprite.z_index = 0
+		sprite.z_index = -1
 	else:
-		sprite.z_index = 1
+		sprite.z_index = 0
 	
-	sprite.global_position = Vector2(global_position.x + distance * cos(weapon_angle), global_position.y + distance * sin(weapon_angle))
+	_set_position(distance, sprite)
 	anchor.rotation = weapon_angle
 
+func _set_position(distance: float, _node: Node2D) -> void:
+	_node.global_position = Vector2(global_position.x + distance * cos(weapon_angle), global_position.y + distance * sin(weapon_angle))
+
 func animation_done() -> void:
-	sprite.show()
 	locked = false

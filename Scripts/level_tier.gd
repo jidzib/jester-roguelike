@@ -4,10 +4,11 @@ enum LevelTiers {
 	EASY,
 	MEDIUM,
 	HARD,
-	EXTREME
+	EXTREME,
+	IMPOSSIBLE
 }
 
-@export_range(0, 4) var level_difficulty : int = 0
+@export_range(0, 5) var level_difficulty : int = 0
 @export var enemy_count_range : Vector2i :
 	set(value):
 		if value.x >= 0:

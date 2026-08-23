@@ -5,7 +5,8 @@ enum RARITY {
 	UNCOMMON,
 	RARE,
 	EPIC,
-	LEGENDARY
+	LEGENDARY,
+	MYTHIC
 }
 
 static var COLOR_FROM_RARITY : Dictionary[RARITY, Color] = {
@@ -13,7 +14,8 @@ static var COLOR_FROM_RARITY : Dictionary[RARITY, Color] = {
 	RARITY.UNCOMMON : Color.GREEN,
 	RARITY.RARE : Color.BLUE,
 	RARITY.EPIC : Color.PURPLE,
-	RARITY.LEGENDARY : Color.GOLD
+	RARITY.LEGENDARY : Color.GOLD,
+	RARITY.MYTHIC : Color.RED
 }
 
 static var rarity_pools = {}

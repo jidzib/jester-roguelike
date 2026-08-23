@@ -9,7 +9,8 @@ var loot_scene : PackedScene = load("uid://jvhbrpdhcuwa")
 	LevelTier.LevelTiers.EASY : load("uid://cm2brn5s2fx0c"),
 	LevelTier.LevelTiers.MEDIUM : load("uid://dtwkvasgalb7r"),
 	LevelTier.LevelTiers.HARD : load("uid://bgthyhcto04kr"),
-	LevelTier.LevelTiers.EXTREME : load("uid://by8qc35yqgg8n")
+	LevelTier.LevelTiers.EXTREME : load("uid://by8qc35yqgg8n"),
+	LevelTier.LevelTiers.IMPOSSIBLE : load("uid://h4hgf28251yn")
 }
 
 var active_enemy_count : int = 0 :
@@ -25,6 +26,7 @@ func _ready():
 @export var medium_threshold : int = 6
 @export var hard_threshold : int = 9
 @export var extreme_threshold : int = 12
+@export var impossible_threshold : int = 15
 
 func pick_level(_current_level: int) -> LevelTier:
 	if _current_level <= easy_threshold:
@@ -33,9 +35,11 @@ func pick_level(_current_level: int) -> LevelTier:
 		return level_tiers[LevelTier.LevelTiers.MEDIUM]
 	elif _current_level <= hard_threshold:
 		return level_tiers[LevelTier.LevelTiers.HARD]
-	else:
+	elif _current_level <= extreme_threshold:
 		return level_tiers[LevelTier.LevelTiers.EXTREME]
-
+	else:
+		return level_tiers[LevelTier.LevelTiers.IMPOSSIBLE]
+		
 func start_next_level() -> void:
 	if not get_tree():
 		return

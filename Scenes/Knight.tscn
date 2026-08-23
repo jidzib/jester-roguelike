@@ -207,6 +207,9 @@ size = Vector2(14, 24)
 [node name="Knight" unique_id=1645230401 node_paths=PackedStringArray("raycast", "hurtbox", "state_nodes") instance=ExtResource("1_jjefk")]
 platform_floor_layers = 4294967040
 script = ExtResource("2_fpytc")
+aggro_range = 320.0
+attack_range = 48.0
+attack_cooldown = 2.0
 raycast = NodePath("RayCast2D")
 points_value = 1
 speed = 65.0

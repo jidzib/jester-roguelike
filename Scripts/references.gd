@@ -13,7 +13,8 @@ static var ITEMS : Dictionary[Enums.Items, Item] = {
 	Enums.Items.WHETSTONE_PENDANT : load("uid://chfou3vmj7pg3"),
 	Enums.Items.KNIGHTS_CHESTPLATE : load("uid://ca4oy1eqa4g8h"),
 	Enums.Items.ELITE_MAGES_CLOAK : load("uid://b00ca07pw3a2x"),
-	Enums.Items.ELITE_MAGES_HAT : load("uid://damepn41pmbng")
+	Enums.Items.ELITE_MAGES_HAT : load("uid://damepn41pmbng"),
+	Enums.Items.BLADE_OF_DARKNESS : load("uid://d3r2rlkfp5fjm")
 }
 
 static var SHADERS : Dictionary[Enums.Shaders, ShaderMaterial] = {
@@ -37,7 +38,9 @@ static var ENEMIES : Dictionary[Enums.Enemies, PackedScene] = {
 	Enums.Enemies.KNIGHT : load("uid://cek561y3ub7kl"),
 	Enums.Enemies.MAGE : load("uid://rqrdh44d37if"),
 	Enums.Enemies.ELITE_KNIGHT : load("uid://bv4ujnsg3lv3x"),
-	Enums.Enemies.ELITE_MAGE : load("uid://kipq2mhclagv")
+	Enums.Enemies.ELITE_MAGE : load("uid://kipq2mhclagv"),
+	Enums.Enemies.SHADOW_KNIGHT : load("uid://dt1sw2c8qpn30")
+	
 }
 
 static var PROJECTILES : Dictionary[Enums.Projectiles, PackedScene] = {

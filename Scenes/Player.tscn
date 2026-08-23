@@ -15,8 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://drsygg8of0wxa" path="res://Scenes/Hotbar.tscn" id="17_xmpta"]
 [ext_resource type="Texture2D" uid="uid://ch8jvlnsygm3u" path="res://assets/sprites/ui/direction_indictator.png" id="19_lrhq4"]
 [ext_resource type="PackedScene" uid="uid://dbbfa2bnacuxf" path="res://Scenes/Healthbar.tscn" id="20_8flut"]
+[ext_resource type="Texture2D" uid="uid://cbh8o2p00btnn" path="res://assets/sprites/ui/icons/inventory_icon.png" id="20_70hv0"]
 [ext_resource type="AudioStream" uid="uid://dmfwakpfokgd0" path="res://assets/sfx/parry.mp3" id="20_ibubc"]
+[ext_resource type="Texture2D" uid="uid://cbc1q2gnssfub" path="res://assets/sprites/ui/icons/inventory_icon_hover.png" id="21_8flut"]
 [ext_resource type="Script" uid="uid://b7n15j53prl5i" path="res://Scripts/ui.gd" id="21_i2e8t"]
+[ext_resource type="Script" uid="uid://cj2lvbueysea7" path="res://Scenes/inventory_button.gd" id="22_u7x0b"]
 [ext_resource type="PackedScene" uid="uid://du0sojruahine" path="res://Scenes/StaminaBar.tscn" id="22_x63xi"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="23_8flut"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="23_i2e8t"]
@@ -288,7 +291,7 @@ y_sort_enabled = true
 platform_floor_layers = 4294967040
 script = ExtResource("2_0pi4m")
 hotbar = NodePath("UI/Hotbar")
-inventory = NodePath("Inventory")
+inventory = NodePath("UI/Inventory")
 direction_indicator = NodePath("DirectionIndicator")
 camera = NodePath("Camera2D")
 ui = NodePath("UI")
@@ -404,6 +407,21 @@ position = Vector2(3, 46)
 scale = Vector2(0.5, 0.5)
 max_stamina = 5
 
+[node name="Inventory" parent="UI" index="4" unique_id=935258046 node_paths=PackedStringArray("parent_stats") instance=ExtResource("26_8flut")]
+z_index = 100
+position = Vector2(95.00001, 120.333336)
+parent_stats = NodePath("../../Stats")
+
+[node name="InventoryButton" type="TextureButton" parent="UI" index="5" unique_id=1789224598 node_paths=PackedStringArray("inventory")]
+offset_left = 143.66667
+offset_top = 210.33334
+offset_right = 159.66667
+offset_bottom = 226.33334
+texture_normal = ExtResource("20_70hv0")
+texture_hover = ExtResource("21_8flut")
+script = ExtResource("22_u7x0b")
+inventory = NodePath("../Inventory")
+
 [node name="Stats" parent="." index="8" unique_id=1175305160]
 max_hp = 100.0
 max_mana = 100
@@ -429,11 +447,5 @@ z_index = 100
 position = Vector2(148.99998, -118.00001)
 scale = Vector2(0.33, 0.33)
 
-[node name="Inventory" parent="." index="12" unique_id=935258046 node_paths=PackedStringArray("parent_stats") instance=ExtResource("26_8flut")]
-visible = false
-z_index = 100
-position = Vector2(-133, 9)
-parent_stats = NodePath("../Stats")
-
-[node name="HeldItem" parent="." index="13" unique_id=1824840031]
+[node name="HeldItem" parent="." index="12" unique_id=1824840031]
 position = Vector2(0, -8)

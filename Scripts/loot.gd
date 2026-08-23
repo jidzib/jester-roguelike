@@ -50,7 +50,6 @@ func set_region(str: String) -> void:
 	texture_normal.region = atlas_regions[str]
 	
 func _on_pressed() -> void:
-	print("pressed bag")
 	if not player_in_range():
 		return
 	set_region("open")

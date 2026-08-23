@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://ce7e6m6snjbt5"]
+[gd_scene format=3 uid="uid://7e8s2evjuhyy"]
 
-[ext_resource type="PackedScene" uid="uid://cqjf1cr3g6p7f" path="res://Scenes/WeaponAnimation.tscn" id="1_7ngrt"]
-[ext_resource type="Texture2D" uid="uid://duo22wcoaaq0f" path="res://assets/weapon_animations/sword_spritesheet.png" id="2_0ldg1"]
+[ext_resource type="PackedScene" uid="uid://ce7e6m6snjbt5" path="res://Scenes/SwordAnimation.tscn" id="1_1sukq"]
+[ext_resource type="Texture2D" uid="uid://dv1rkqy60pdgd" path="res://assets/weapon_animations/blade_of_darkness_animation.png" id="2_4yqri"]
 
-[sub_resource type="Animation" id="Animation_7ngrt"]
+[sub_resource type="Animation" id="Animation_vgcoa"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_0ldg1"]
+[sub_resource type="Animation" id="Animation_7v780"]
 resource_name = "back"
 length = 0.39999999999999997
 tracks/0/type = "value"
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_uw7dh"]
+[sub_resource type="Animation" id="Animation_4yqri"]
 resource_name = "front"
 length = 0.39999999999999997
 tracks/0/type = "value"
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_e32pw"]
+[sub_resource type="Animation" id="Animation_rc42x"]
 resource_name = "side"
 length = 0.39999999999999997
 tracks/0/type = "value"
@@ -66,20 +66,19 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_biu0e"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4yqri"]
 _data = {
-&"RESET": SubResource("Animation_7ngrt"),
-&"back": SubResource("Animation_0ldg1"),
-&"front": SubResource("Animation_uw7dh"),
-&"side": SubResource("Animation_e32pw")
+&"RESET": SubResource("Animation_vgcoa"),
+&"back": SubResource("Animation_7v780"),
+&"front": SubResource("Animation_4yqri"),
+&"side": SubResource("Animation_rc42x")
 }
 
-[node name="SwordAnimation" unique_id=587937862 node_paths=PackedStringArray("animation_player") instance=ExtResource("1_7ngrt")]
-animation_player = NodePath("AnimationPlayer")
+[node name="BladeOfDarknessAnimation" unique_id=587937862 instance=ExtResource("1_1sukq")]
 
 [node name="AnimationPlayer" parent="." index="0" unique_id=1566051379]
-libraries/ = SubResource("AnimationLibrary_biu0e")
+libraries/ = SubResource("AnimationLibrary_4yqri")
 
 [node name="Spritesheet" parent="." index="1" unique_id=391622497]
-texture = ExtResource("2_0ldg1")
+texture = ExtResource("2_4yqri")
 hframes = 4
