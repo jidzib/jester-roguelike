@@ -10,17 +10,11 @@ func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir
 					_windup_duration: float = 0.0, _playback_speed: float = 1.0, _range: float = 0.0) -> void:
 						
 	var new_animation : WeaponAnimation = animation.instantiate()
-	#new_animation.scale.x = entity.sprites.scale.x
 	entity.held_item.anchor.add_child(new_animation)
 	entity.held_item._set_position(_range, new_animation)
-	#new_animation.global_position = entity.sprites.global_position
-	#new_animation.global_position = Vector2(
-		#entity.held_item.global_position.x + 8 * cos(entity.held_item.weapon_angle), entity.held_item.global_position.y + 8 * sin(entity.held_item.weapon_angle))
-	#new_animation.rotation_degrees = 45.0
 	entity.held_item.sprite.hide()
 	
 	entity.held_item.locked = true
-	new_animation.animation_finished.connect(entity.held_item.animation_done)
 	new_animation.z_as_relative = true
 	
 	if entity.facing == "back":
@@ -28,5 +22,3 @@ func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir
 	else:
 		new_animation.z_index = 1
 	new_animation.play(entity.facing, _windup_duration, _playback_speed)
-	#if _wait_signal:
-		#new_animation.wait(_wait_signal)

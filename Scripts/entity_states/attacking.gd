@@ -48,5 +48,6 @@ func process_frame(delta: float) -> void:
 		parent.change_state(transition_state)
 
 func exit() -> void:
+	parent.held_item.animation_done()
 	parent.action_locked = false
 	parent.speed = original_speed
