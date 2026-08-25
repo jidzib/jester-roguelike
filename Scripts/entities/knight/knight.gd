@@ -29,8 +29,8 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	
 func _process(delta: float) -> void:
-	if not target:
-		return
+	#if not target:
+		#return
 		
 	super(delta)
 	raycast.target_position = (center.global_position.direction_to(Player.player.center.global_position) * 
@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		if player_in_attack_range():
 			if attack_ready:
 				attack_ready = false
-				state_nodes[States.ATTACKING].target_dir = raycast.target_position
+				state_nodes[States.ATTACKING].target_dir = Player.player.center.global_position
 				held_item.item.use(self, center.global_position.direction_to(Player.player.center.global_position))
 				attack_timer.start()
 				#change_state(state_nodes[Entity.States.ATTACKING])

@@ -33,6 +33,7 @@ func enter() -> void:
 	
 	parent.cardinal_direction = parent.get_cardinal_direction(parent.center.global_position.direction_to(target_dir))
 	parent.set_facing(parent.cardinal_direction)
+
 	
 	#parent.update_direction("direction", parent.center.global_position.direction_to(target))
 	AnimationHelper.play(parent.animation_player, parent.animation_path+parent.facing+"_"+attack_name,
@@ -47,7 +48,10 @@ func process_frame(delta: float) -> void:
 	if progress > duration:
 		parent.change_state(transition_state)
 
+
+signal attack_finished
 func exit() -> void:
 	parent.held_item.animation_done()
 	parent.action_locked = false
 	parent.speed = original_speed
+	attack_finished.emit()

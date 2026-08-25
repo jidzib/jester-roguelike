@@ -46,6 +46,22 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_opy4t"]
+resource_name = "back_sword_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [28, 29]
+}
+
 [sub_resource type="Animation" id="Animation_qosj0"]
 resource_name = "back_walk"
 loop_mode = 1
@@ -76,6 +92,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_rger0"]
+resource_name = "front_sword_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_mtr8r"]
@@ -110,6 +142,22 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11]
 }
 
+[sub_resource type="Animation" id="Animation_magfg"]
+resource_name = "side_sword_swing"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Spritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [32, 33]
+}
+
 [sub_resource type="Animation" id="Animation_kxe5d"]
 resource_name = "side_walk"
 loop_mode = 1
@@ -130,10 +178,13 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_ug82v"),
 &"back_idle": SubResource("Animation_yw635"),
+&"back_sword_swing": SubResource("Animation_opy4t"),
 &"back_walk": SubResource("Animation_qosj0"),
 &"front_idle": SubResource("Animation_gfjjc"),
+&"front_sword_swing": SubResource("Animation_rger0"),
 &"front_walk": SubResource("Animation_mtr8r"),
 &"side_idle": SubResource("Animation_ymu3b"),
+&"side_sword_swing": SubResource("Animation_magfg"),
 &"side_walk": SubResource("Animation_kxe5d")
 }
 
@@ -153,7 +204,7 @@ size = Vector2(21, 31)
 [node name="ShadowKnight" unique_id=1102494934 node_paths=PackedStringArray("raycast", "hurtbox", "state_nodes") instance=ExtResource("1_5pwu5")]
 script = ExtResource("2_kxe5d")
 aggro_range = 320.0
-attack_range = 64.0
+attack_range = 36.0
 attack_cooldown = 3.0
 raycast = NodePath("RayCast2D")
 points_value = 10
@@ -177,7 +228,7 @@ use_parent_material = true
 position = Vector2(-1, -16)
 texture = ExtResource("2_qosj0")
 hframes = 4
-vframes = 6
+vframes = 9
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=1851328693]
 libraries/ = SubResource("AnimationLibrary_ymu3b")
@@ -192,7 +243,7 @@ metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 [node name="Attacking" type="Node" parent="StateMachine" index="1" unique_id=206640161 node_paths=PackedStringArray("transition_state")]
 script = ExtResource("4_kxe5d")
 transition_state = NodePath("../Idle")
-windup_duration = 0.8
+windup_duration = 0.4
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Hurt" type="Node" parent="StateMachine" index="2" unique_id=1503828475 node_paths=PackedStringArray("idle_state")]

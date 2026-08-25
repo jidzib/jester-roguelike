@@ -8,8 +8,11 @@ class_name WeaponItem extends Item
 
 func spawn_animation(_new_animation: WeaponAnimation, entity: Entity, target_dir: Vector2,
 					_windup_duration: float = 0.0, _playback_speed: float = 1.0, _range: float = 0.0) -> void:
-						
+
+	
 	var new_animation : WeaponAnimation = animation.instantiate()
+	if entity.current_state == entity.States.ATTACKING:
+		entity.state_nodes[entity.States.ATTACKING].attack_finished.connect(new_animation.despawn)
 	entity.held_item.anchor.add_child(new_animation)
 	entity.held_item._set_position(_range, new_animation)
 	entity.held_item.sprite.hide()
