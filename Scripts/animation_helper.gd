@@ -11,6 +11,8 @@ func play(animation_player: AnimationPlayer,
 	animation_player.play()
 	await get_tree().create_timer(windup_time).timeout
 	#animation_player.seek(windup_time, true)
+	if not animation_player:
+		return
 	animation_player.pause()
 	await get_tree().create_timer(_windup_duration).timeout
 	if animation_player:

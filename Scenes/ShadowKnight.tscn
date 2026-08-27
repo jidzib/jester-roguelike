@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bue0uiguwyb64" path="res://assets/sprites/entities/knight/shadow_knight_spritesheet.png" id="2_qosj0"]
 [ext_resource type="Resource" uid="uid://d3r2rlkfp5fjm" path="res://Resources/Items/blade_of_darkness.tres" id="2_tp8ki"]
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="3_ymu3b"]
-[ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="4_kxe5d"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="5_lbu1w"]
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="6_netj3"]
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="7_0slne"]
+[ext_resource type="Script" uid="uid://con6o8mf4ndd8" path="res://lunge.gd" id="8_opy4t"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="9_netj3"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="10_lbu1w"]
 
@@ -204,7 +204,7 @@ size = Vector2(21, 31)
 [node name="ShadowKnight" unique_id=1102494934 node_paths=PackedStringArray("raycast", "hurtbox", "state_nodes") instance=ExtResource("1_5pwu5")]
 script = ExtResource("2_kxe5d")
 aggro_range = 320.0
-attack_range = 36.0
+attack_range = 48.0
 attack_cooldown = 3.0
 raycast = NodePath("RayCast2D")
 points_value = 10
@@ -240,23 +240,23 @@ starting_state = NodePath("Idle")
 script = ExtResource("3_ymu3b")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="Attacking" type="Node" parent="StateMachine" index="1" unique_id=206640161 node_paths=PackedStringArray("transition_state")]
-script = ExtResource("4_kxe5d")
-transition_state = NodePath("../Idle")
-windup_duration = 0.4
-metadata/_custom_type_script = "uid://bvqwjex4rkub2"
-
-[node name="Hurt" type="Node" parent="StateMachine" index="2" unique_id=1503828475 node_paths=PackedStringArray("idle_state")]
+[node name="Hurt" type="Node" parent="StateMachine" index="1" unique_id=1503828475 node_paths=PackedStringArray("idle_state")]
 script = ExtResource("5_lbu1w")
 idle_state = NodePath("../Idle")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="CirclingTarget" type="Node" parent="StateMachine" index="3" unique_id=227162392]
+[node name="CirclingTarget" type="Node" parent="StateMachine" index="2" unique_id=227162392]
 script = ExtResource("6_netj3")
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
-[node name="ChasingTarget" type="Node" parent="StateMachine" index="4" unique_id=839133815]
+[node name="ChasingTarget" type="Node" parent="StateMachine" index="3" unique_id=839133815]
 script = ExtResource("7_0slne")
+metadata/_custom_type_script = "uid://bvqwjex4rkub2"
+
+[node name="Attacking" type="Node" parent="StateMachine" index="4" unique_id=1452084515 node_paths=PackedStringArray("transition_state")]
+script = ExtResource("8_opy4t")
+transition_state = NodePath("../Idle")
+windup_duration = 0.4
 metadata/_custom_type_script = "uid://bvqwjex4rkub2"
 
 [node name="Stats" parent="." index="4" unique_id=1175305160]

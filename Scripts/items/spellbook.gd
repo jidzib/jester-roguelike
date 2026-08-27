@@ -24,9 +24,10 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	var spellcasting_state : State = entity.state_nodes[entity.States.SPELLCASTING]
 	entity.change_state(spellcasting_state)
 	spellcasting_state.duration = cast_duration
-	spellcasting_state.start_timer()
 	var new_animation : WeaponAnimation = animation.instantiate()
-	spawn_animation(new_animation, entity, target_dir)
+	spellcasting_state.initialize(new_animation)
+	spellcasting_state.start_timer()
+	spawn_animation(new_animation, entity, target_dir, AnimationData.new())
 	
 func has_enough_mana(entity: Entity) -> bool:
 	if entity.current_mana >= mana_cost:

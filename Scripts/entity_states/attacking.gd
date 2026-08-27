@@ -1,4 +1,4 @@
-extends State
+class_name AttackingState extends State
 
 signal wind_up_finished
 
@@ -17,12 +17,15 @@ var animation_speed : float
 
 var target_dir : Vector2
 	
-func initialize(_duration: float, _attack_name: String, _windup_point: float, _slow_effect: float, _animation_speed: float) -> void:
+func initialize(_animation_data: AnimationData, _duration: float,
+				_attack_name: String, _slow_effect: float, _animation_speed: float,
+				_weapon_animation: WeaponAnimation) -> void:
 	duration = _duration
 	attack_name = _attack_name
-	windup_point = _windup_point
+	windup_point = _animation_data.windup_point
 	slow_effect = _slow_effect
 	animation_speed = _animation_speed
+	attack_finished.connect(_weapon_animation.despawn)
 
 func enter() -> void:
 	parent.current_state = parent.States.ATTACKING
@@ -34,12 +37,9 @@ func enter() -> void:
 	parent.cardinal_direction = parent.get_cardinal_direction(parent.center.global_position.direction_to(target_dir))
 	parent.set_facing(parent.cardinal_direction)
 
-	
-	#parent.update_direction("direction", parent.center.global_position.direction_to(target))
 	AnimationHelper.play(parent.animation_player, parent.animation_path+parent.facing+"_"+attack_name,
 	windup_point, windup_duration, animation_speed)
-	
-	#parent.animation_player.play(parent.animation_path+parent.facing+"_"+attack_name)
+
 
 func process_frame(delta: float) -> void:
 	progress += delta

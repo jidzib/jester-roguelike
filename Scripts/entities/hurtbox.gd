@@ -31,7 +31,11 @@ func receive_hit(attacker_stats: Stats, source_item: Item, coming_from: Vector2,
 		Camera.camera.camera_shake(damage)
 		Camera.camera.screen_flash(Color.RED)
 		give_i_frame()
-		
+	#else:
+		#var tween : Tween = create_tween()
+		#var scale_multiplier : float = 1.1
+		#tween.tween_property(parent_stats.owner.sprites, "scale", parent_stats.owner.sprites.scale * scale_multiplier, 0.25)
+		#tween.tween_property(parent_stats.owner.sprites, "scale", parent_stats.owner.sprites.scale / scale_multiplier, 0.1)
 	# knockback
 	var hurt_state : State = parent.state_nodes[parent.States.HURT]
 	hurt_state.knockback_strength = knockback_strength
