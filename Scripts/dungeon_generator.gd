@@ -19,9 +19,14 @@ var rooms : Array[Rect2] = []
 
 func generate() -> void:
 	rooms = []
+	clear_cells()
 	var cells : Dictionary[Rect2, bool] = generate_cells()
 	separate_cells(cells)
 
+	var snapped_cells : Dictionary[Rect2, bool] = {}
+	for cell in cells.keys():
+		snapped_cells[snap_to_grid(cell, Util.TILE_SIZE)] = true
+	cells = snapped_cells
 	var all_cells_array : Array[Rect2] = cells.keys()
 	rooms = get_rooms(cells)
 
@@ -69,7 +74,7 @@ func generate_cells() -> Dictionary[Rect2, bool]:
 		var h : int = gaussian_size(rng)
 		h = clampi(h, int(w / max_aspect_ratio), int(w * max_aspect_ratio))
 		var new_cell : Rect2
-		new_cell.size = Vector2(w, h)
+		new_cell.size = Vector2(snapped(w, Util.TILE_SIZE), snapped(h, Util.TILE_SIZE))
 		new_cell.position = random_point_in_circle(spawn_radius, rng)
 		cells.set(new_cell, true)
 	return cells
@@ -397,6 +402,13 @@ func link_connections(room_data: Array[AreaData], corridor_data: Array[AreaData]
 		room_b.connections.append(corridor.id)
 		corridor.connections.append(room_a.id)
 		corridor.connections.append(room_b.id)
+
+func snap_to_grid(rect: Rect2, grid_size: int) -> Rect2:
+	var pos : Vector2 = (rect.position / grid_size).round() * grid_size
+	var size : Vector2 = (rect.size / grid_size).round() * grid_size
+	size.x = max(size.x, grid_size) # avoid zero-size rooms
+	size.y = max(size.y, grid_size)
+	return Rect2(pos, size)
 
 func clear_cells() -> void:
 	for cell in cells_container.get_children():
