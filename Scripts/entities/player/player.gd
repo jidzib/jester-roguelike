@@ -21,17 +21,13 @@ func _ready() -> void:
 	PlayerCursor.set_cursor(PlayerCursor.CURSOR_MODES.DEFAULT)
 	super()
 	player = self
+	hotbar.set_selected(1, self)
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	update_weapon_direction()
 	held_item.target_pos = get_global_mouse_position()
-	#if held_item and held_item.item:
-		#
-		#weapon.sprite.texture = held_item.item.texture
-	#else:
-		#weapon.sprite.texture = null
-	
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	
@@ -39,7 +35,7 @@ func _input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 	
 	if event is InputEventKey or event is InputEventMouseButton and event.pressed:
-		if event.is_action_pressed("TOGGLE_INVENTORY"):
+		if event.is_action_pressed("INVENTORY"):
 			inventory.visible = !inventory.visible
 	if in_menu:
 		return
@@ -50,6 +46,23 @@ func _input(event: InputEvent) -> void:
 
 	if not action_locked:
 		if event is InputEventKey or event is InputEventMouseButton and event.pressed:
+			if event.is_action_pressed("HOTBAR_1"):
+				hotbar.set_selected(1, self)
+			elif event.is_action_pressed("HOTBAR_2"):
+				hotbar.set_selected(2, self)
+			elif event.is_action_pressed("HOTBAR_3"):
+				hotbar.set_selected(3, self)
+			elif event.is_action_pressed("HOTBAR_4"):
+				hotbar.set_selected(4, self)
+			elif event.is_action_pressed("HOTBAR_5"):
+				hotbar.set_selected(5, self)
+			
+			if event is InputEventMouseButton:
+				if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+					hotbar.select_left(self)
+				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+					hotbar.select_right(self)
+			
 			if event.is_action_pressed("ITEM_USE"):
 				if held_item and held_item.item:
 					state_nodes[States.ATTACKING].target_dir = get_global_mouse_position() # MAYBE HAVE A TARGET_DIR VARIABLE IN ENTITY CLASS
@@ -75,7 +88,7 @@ func die() -> void:
 	UiManager.switch_ui(ui)
 
 func update_high_score() -> void:
-	var highscore_data_path : String = "res://Resources/SaveData/highscore_data.tres"
+	var highscore_data_path : String = "user://highscore_data.tres"
 	var highscore_data : HighscoreData
 	if not ResourceLoader.exists(highscore_data_path):
 		highscore_data = HighscoreData.new()

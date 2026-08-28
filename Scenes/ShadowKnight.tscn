@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="5_lbu1w"]
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="6_netj3"]
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="7_0slne"]
-[ext_resource type="Script" uid="uid://con6o8mf4ndd8" path="res://lunge.gd" id="8_opy4t"]
+[ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="8_opy4t"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="9_netj3"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="10_lbu1w"]
 

@@ -7,6 +7,6 @@ script = ExtResource("1_5pq7n")
 level_difficulty = 1
 enemy_count_range = Vector2i(1, 2)
 enemy_pool = Dictionary[int, bool]({
-2: false
+0: false
 })
 metadata/_custom_type_script = "uid://bmqhum78qil71"

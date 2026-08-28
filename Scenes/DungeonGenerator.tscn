@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ju855jannc06" path="res://Scripts/dungeon_generator.gd" id="1_4ihhh"]
 [ext_resource type="Texture2D" uid="uid://dorpekmbvs7av" path="res://assets/sprites/tiles/base_tileset.png" id="2_hdu5v"]
-[ext_resource type="Script" uid="uid://oriaic8yfv0o" path="res://debug_draw.gd" id="3_hdu5v"]
-[ext_resource type="Script" uid="uid://djm3438t05efk" path="res://dungeon_streamer.gd" id="4_xpg2w"]
+[ext_resource type="Script" uid="uid://oriaic8yfv0o" path="res://WIP/debug_draw.gd" id="3_hdu5v"]
+[ext_resource type="Script" uid="uid://djm3438t05efk" path="res://WIP/dungeon_streamer.gd" id="4_xpg2w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpg2w"]
 texture = ExtResource("2_hdu5v")
@@ -21,6 +21,7 @@ min_cell_size = 320
 max_cell_size = 640
 cells_container = NodePath("Cells")
 debug_draw = NodePath("DebugDraw")
+corridor_width_tiles = 4
 streamer = NodePath("DungeonStreamer")
 grid_cell_size = 16
 metadata/_custom_type_script = "uid://ju855jannc06"

@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cek561y3ub7kl" path="res://Scenes/Knight.tscn" id="1_uqgdg"]
 [ext_resource type="Texture2D" uid="uid://dw3de7qce3cbk" path="res://assets/sprites/entities/knight/elite_knight_spritesheet.png" id="2_s4xfh"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="3_0gajq"]
-[ext_resource type="Script" uid="uid://con6o8mf4ndd8" path="res://lunge.gd" id="3_jyhaf"]
 
 [sub_resource type="Resource" id="Resource_pti76"]
 script = ExtResource("3_0gajq")
@@ -29,8 +28,6 @@ state_nodes = {
 texture = ExtResource("2_s4xfh")
 
 [node name="Attacking" parent="StateMachine" parent_id_path=PackedInt32Array(1289695732) index="1" unique_id=58407747]
-script = ExtResource("3_jyhaf")
-lunge_multiplier = 1.5
 windup_duration = 0.5
 
 [node name="Stats" parent="." index="4" unique_id=1175305160]

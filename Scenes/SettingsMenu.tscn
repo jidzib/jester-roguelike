@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhepxlot6h21d"]
+[gd_scene format=3 uid="uid://bhepxlot6h21d"]
 
 [ext_resource type="Script" uid="uid://crhu0hj4lda7s" path="res://Scripts/settings_menu.gd" id="1_svoao"]
 [ext_resource type="PackedScene" uid="uid://b8ccxy53kxmc" path="res://Scenes/VolumeSetting.tscn" id="2_flgte"]
@@ -7,70 +7,100 @@
 [ext_resource type="PackedScene" uid="uid://wxgn1e4u0o1u" path="res://Scenes/CustomButton.tscn" id="4_40bx1"]
 [ext_resource type="FontFile" uid="uid://c6cf4cm2heb2i" path="res://assets/fonts/PixeloidSans-lxa3y.ttf" id="5_flgte"]
 
-[node name="Settings" type="CanvasLayer" node_paths=PackedStringArray("container", "save_button", "volume")]
+[node name="Settings" type="CanvasLayer" unique_id=913058859 node_paths=PackedStringArray("container", "save_button", "volume")]
 script = ExtResource("1_svoao")
 container = NodePath("ScrollContainer/VBoxContainer")
 save_button = NodePath("SaveButton")
 volume = NodePath("ScrollContainer/VBoxContainer/Volume")
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=2040127836]
 offset_left = 199.0
 offset_top = 20.0
 offset_right = 1072.0
 offset_bottom = 574.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=280806856]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Volume" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_flgte")]
+[node name="Volume" parent="ScrollContainer/VBoxContainer" unique_id=555704564 instance=ExtResource("2_flgte")]
 layout_mode = 2
 
-[node name="KB_MOVE_UP" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+[node name="KB_MOVE_UP" parent="ScrollContainer/VBoxContainer" unique_id=1252486105 instance=ExtResource("2_jttlj")]
 layout_mode = 2
 
-[node name="KB_MOVE_DOWN" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+[node name="KB_MOVE_DOWN" parent="ScrollContainer/VBoxContainer" unique_id=2133235324 instance=ExtResource("2_jttlj")]
 layout_mode = 2
 action_name = "MOVE_DOWN"
 action_id = 1
 
-[node name="KB_MOVE_LEFT" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+[node name="KB_MOVE_LEFT" parent="ScrollContainer/VBoxContainer" unique_id=527705754 instance=ExtResource("2_jttlj")]
 layout_mode = 2
 action_name = "MOVE_LEFT"
 action_id = 2
 
-[node name="KB_MOVE_RIGHT" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+[node name="KB_MOVE_RIGHT" parent="ScrollContainer/VBoxContainer" unique_id=168611982 instance=ExtResource("2_jttlj")]
 layout_mode = 2
 action_name = "MOVE_RIGHT"
 action_id = 3
 
-[node name="KB_ROLL" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+[node name="KB_ROLL" parent="ScrollContainer/VBoxContainer" unique_id=1774047026 instance=ExtResource("2_jttlj")]
 layout_mode = 2
 action_name = "ROLL"
 action_id = 4
 
-[node name="KB_ITEM_USE" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_jttlj")]
+[node name="KB_ITEM_USE" parent="ScrollContainer/VBoxContainer" unique_id=229413505 instance=ExtResource("2_jttlj")]
 layout_mode = 2
 action_name = "ITEM_USE"
 action_id = 5
 
-[node name="UITransitionButton" parent="." instance=ExtResource("3_im545")]
+[node name="KB_INVENTORY" parent="ScrollContainer/VBoxContainer" unique_id=1852828105 instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "INVENTORY"
+action_id = 6
+
+[node name="KB_HOTBAR_1" parent="ScrollContainer/VBoxContainer" unique_id=403948035 instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "HOTBAR_1"
+action_id = 7
+
+[node name="KB_HOTBAR_2" parent="ScrollContainer/VBoxContainer" unique_id=946774962 instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "HOTBAR_2"
+action_id = 8
+
+[node name="KB_HOTBAR_3" parent="ScrollContainer/VBoxContainer" unique_id=442344654 instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "HOTBAR_3"
+action_id = 9
+
+[node name="KB_HOTBAR_4" parent="ScrollContainer/VBoxContainer" unique_id=305021423 instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "HOTBAR_4"
+action_id = 10
+
+[node name="KB_HOTBAR_5" parent="ScrollContainer/VBoxContainer" unique_id=1643608145 instance=ExtResource("2_jttlj")]
+layout_mode = 2
+action_name = "HOTBAR_5"
+action_id = 11
+
+[node name="UITransitionButton" parent="." unique_id=329949386 instance=ExtResource("3_im545")]
 offset_left = 230.0
 offset_top = 586.0
 offset_right = 702.0
 offset_bottom = 708.0
 text = "Back"
 
-[node name="SaveButton" parent="." instance=ExtResource("4_40bx1")]
+[node name="SaveButton" parent="." unique_id=395770837 instance=ExtResource("4_40bx1")]
 offset_left = 689.0
 offset_top = 588.0
 offset_right = 1161.0
 offset_bottom = 710.0
 
-[node name="Label2" type="Label" parent="SaveButton"]
+[node name="Label2" type="Label" parent="SaveButton" unique_id=1257476445]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 25.0

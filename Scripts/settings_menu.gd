@@ -1,6 +1,6 @@
 class_name Settings extends UI
 
-static var SETTINGS_SAVE_PATH : String = "res://Resources/SaveData/settings_data.tres"
+static var SETTINGS_SAVE_PATH : String = "user://settings_data.tres"
 @export var container : VBoxContainer
 @export var save_button : TextureButton
 @export var volume : Control
@@ -11,7 +11,13 @@ enum ACTIONS {
 	MOVE_LEFT,
 	MOVE_RIGHT,
 	ROLL,
-	ITEM_USE
+	ITEM_USE,
+	INVENTORY,
+	HOTBAR_1,
+	HOTBAR_2,
+	HOTBAR_3,
+	HOTBAR_4,
+	HOTBAR_5
 }
 
 func _ready() -> void:
