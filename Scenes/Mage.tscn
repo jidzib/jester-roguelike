@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://uox7w36uyvyk" path="res://Scripts/entity_states/idle.gd" id="10_pukvw"]
 [ext_resource type="Resource" uid="uid://c4xxr1vwy752c" path="res://Resources/Items/lightning_spellbook.tres" id="11_tbcp4"]
 [ext_resource type="Script" uid="uid://dxk4sum84idk4" path="res://Scripts/entity_states/spellcasting.gd" id="11_vjf4w"]
+[ext_resource type="PackedScene" uid="uid://dbbfa2bnacuxf" path="res://Scenes/Healthbar.tscn" id="12_6sp4a"]
 [ext_resource type="Script" uid="uid://dd73xassceac2" path="res://Scripts/hurt.gd" id="12_crkg3"]
 [ext_resource type="Script" uid="uid://ceu1ocdusgrht" path="res://Scripts/entity_states/chasing_target.gd" id="13_vjf4w"]
 [ext_resource type="Script" uid="uid://wowagv7qxh6s" path="res://Scripts/entity_states/circling_target.gd" id="14_crkg3"]
@@ -231,3 +232,15 @@ offset_bottom = -5.0
 [node name="HeldItem" parent="." index="9" unique_id=1824840031]
 position = Vector2(0, 5)
 item = ExtResource("11_tbcp4")
+
+[node name="Node2D" type="Node2D" parent="." index="10" unique_id=1702545243]
+position = Vector2(0, 5)
+scale = Vector2(0.125, 0.125)
+
+[node name="Healthbar" parent="Node2D" index="0" unique_id=511719155 node_paths=PackedStringArray("parent") instance=ExtResource("12_6sp4a")]
+offset_left = -64.0
+offset_top = -160.0
+offset_right = 64.0
+offset_bottom = -144.0
+parent = NodePath("../..")
+small_version = true

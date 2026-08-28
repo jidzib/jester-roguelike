@@ -1,12 +1,16 @@
 extends TextureProgressBar
 
-@export var parent : Player
+@export var parent : Entity
+@export var small_version : bool = false
 @export var label : Label
 
 func _ready() -> void:
 	max_value = parent.stats.max_hp
 	value = parent.stats.max_hp
 	parent.stats.update_hp.connect(update_hp)
+	if small_version:
+		label.hide()
+		texture_over = null
 	
 func update_hp(new_amount : float) -> void:
 	if value > new_amount:
