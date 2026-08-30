@@ -66,7 +66,7 @@ func item_power_as_string(item: WeaponItem) -> String:
 	var data : Dictionary = display_data[item.ATTACK_TYPE]
 	data.set("stat_string", CombatManager.COMBAT_STATS.find_key(item.ATTACK_TYPE))
 	data.set("value_string", str(item.power))
-	string = "{icon} {color_open}{stat_string}[/color]\n+{value_string} Damage".format(data)
+	string = "{icon} {color_open}{stat_string}[/color]\n+{value_string} Power".format(data)
 	return string
 
 func get_label_height() -> float:

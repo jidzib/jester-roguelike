@@ -5,6 +5,50 @@
 [ext_resource type="Texture2D" uid="uid://cncpxvsayfxi3" path="res://assets/sprites/ui/background.png" id="2_ghw46"]
 [ext_resource type="PackedScene" uid="uid://cvq61acjpymsk" path="res://Scenes/QuitButton.tscn" id="3_8saeu"]
 [ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="4_df05h"]
+[ext_resource type="Texture2D" uid="uid://ciiff1dqi2ti2" path="res://assets/sprites/tiles/torch_spritesheet.png" id="6_8um5k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xim88"]
+atlas = ExtResource("6_8um5k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koqhg"]
+atlas = ExtResource("6_8um5k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmrfp"]
+atlas = ExtResource("6_8um5k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_loo7a"]
+atlas = ExtResource("6_8um5k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if7li"]
+atlas = ExtResource("6_8um5k")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtrbo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xim88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koqhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmrfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_loo7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if7li")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1908652817]
 script = ExtResource("1_853f1")
@@ -34,3 +78,41 @@ offset_left = 405.0
 offset_top = 422.0
 offset_right = 876.0
 offset_bottom = 544.0
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1626467272]
+
+[node name="Torch1" type="AnimatedSprite2D" parent="Node2D" unique_id=467451317]
+position = Vector2(128, 64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mtrbo")
+autoplay = "default"
+
+[node name="Torch2" type="AnimatedSprite2D" parent="Node2D" unique_id=1341767377]
+position = Vector2(128, 320)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mtrbo")
+autoplay = "default"
+
+[node name="Torch3" type="AnimatedSprite2D" parent="Node2D" unique_id=1873259497]
+position = Vector2(128, 576)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mtrbo")
+autoplay = "default"
+
+[node name="Torch4" type="AnimatedSprite2D" parent="Node2D" unique_id=371824650]
+position = Vector2(1152, 64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mtrbo")
+autoplay = "default"
+
+[node name="Torch5" type="AnimatedSprite2D" parent="Node2D" unique_id=124384282]
+position = Vector2(1152, 320)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mtrbo")
+autoplay = "default"
+
+[node name="Torch6" type="AnimatedSprite2D" parent="Node2D" unique_id=1969723496]
+position = Vector2(1152, 576)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_mtrbo")
+autoplay = "default"

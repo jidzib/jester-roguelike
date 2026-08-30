@@ -189,6 +189,22 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15]
 }
 
+[sub_resource type="Animation" id="Animation_bfbt0"]
+resource_name = "roll"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [52, 53, 54, 55]
+}
+
 [sub_resource type="Animation" id="Animation_c43xd"]
 resource_name = "side_idle"
 length = 0.8
@@ -267,6 +283,7 @@ _data = {
 &"front_scythe_swing": SubResource("Animation_utwlt"),
 &"front_sword_swing": SubResource("Animation_kih0c"),
 &"front_walk": SubResource("Animation_lyrkg"),
+&"roll": SubResource("Animation_bfbt0"),
 &"side_idle": SubResource("Animation_c43xd"),
 &"side_scythe_swing": SubResource("Animation_avx33"),
 &"side_sword_swing": SubResource("Animation_rxg2u"),
@@ -322,7 +339,7 @@ position = Vector2(0, -16)
 use_parent_material = true
 texture = ExtResource("3_5v66d")
 hframes = 4
-vframes = 13
+vframes = 14
 
 [node name="AnimationPlayer" parent="." index="2" unique_id=1851328693]
 libraries/ = SubResource("AnimationLibrary_70hv0")

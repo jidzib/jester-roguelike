@@ -11,7 +11,7 @@ func _ready() -> void:
 	if small_version:
 		label.hide()
 		texture_over = null
-	
+
 func update_hp(new_amount : float) -> void:
 	if value > new_amount:
 		color_flash(Color.RED)

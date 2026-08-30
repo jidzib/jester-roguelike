@@ -1,7 +1,7 @@
 extends Node
 
 func play(animation_player: AnimationPlayer,
-		  _animation_name: String, windup_point: float, _windup_duration: float = 0.0,
+		  _animation_name: String, windup_point: float = 0.0, _windup_duration: float = 0.0,
 		  animation_speed: float = 1.0, animation_finished: Variant = null) -> void:
 	#animation.play(_direction)
 	#animation.animation_finished.connect(despawn)

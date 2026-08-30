@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://tdafaast8cvl" path="res://Scripts/entity_states/attacking.gd" id="8_opy4t"]
 [ext_resource type="Script" uid="uid://cocg7yax0q6v2" path="res://Scripts/combat_stats.gd" id="9_netj3"]
 [ext_resource type="Script" uid="uid://q56ve612ckre" path="res://Scripts/entities/hurtbox.gd" id="10_lbu1w"]
+[ext_resource type="PackedScene" uid="uid://dbbfa2bnacuxf" path="res://Scenes/Healthbar.tscn" id="12_rger0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtr8r"]
 size = Vector2(11, 19)
@@ -277,3 +278,14 @@ position = Vector2(-0.5, -15.5)
 shape = SubResource("RectangleShape2D_mtrbo")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="8" unique_id=1309722372]
+
+[node name="Node2D" type="Node2D" parent="." index="9" unique_id=1799533810]
+scale = Vector2(0.125, 0.125)
+
+[node name="Healthbar" parent="Node2D" index="0" unique_id=511719155 node_paths=PackedStringArray("parent") instance=ExtResource("12_rger0")]
+offset_left = -64.0
+offset_top = -288.0
+offset_right = 64.0
+offset_bottom = -272.0
+parent = NodePath("../..")
+small_version = true
