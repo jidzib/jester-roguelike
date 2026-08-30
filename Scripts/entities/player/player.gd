@@ -71,6 +71,7 @@ func _input(event: InputEvent) -> void:
 				if !velocity.is_zero_approx() and stamina_bar.stamina >= 1.0:
 					stamina_bar.stamina -= 1
 					change_state(state_nodes[States.ROLL])
+
 func die() -> void:
 	set_physics_process(false)
 	set_process(false)

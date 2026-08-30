@@ -6,6 +6,7 @@ class_name SpellbookItem extends WeaponItem
 @export var spawn_hitbox : bool = true
 var cast_duration : float = 0.5
 
+@export var animation_range : float = 16.0
 
 func use(entity: Entity, target_dir: Vector2) -> void:
 	if not entity.stats.has_enough_mana(mana_cost):
@@ -27,7 +28,9 @@ func use(entity: Entity, target_dir: Vector2) -> void:
 	var new_animation : WeaponAnimation = animation.instantiate()
 	spellcasting_state.initialize(new_animation)
 	spellcasting_state.start_timer()
-	spawn_animation(new_animation, entity, target_dir, AnimationData.new())
+	var animation_data : AnimationData = AnimationData.new()
+	animation_data.direction = entity.facing
+	spawn_animation(new_animation, entity, target_dir, animation_data, 1.0, animation_range)
 	
 func has_enough_mana(entity: Entity) -> bool:
 	if entity.current_mana >= mana_cost:
