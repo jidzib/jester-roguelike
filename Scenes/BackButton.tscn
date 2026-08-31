@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dk50bki4k2xak"]
+
+[ext_resource type="PackedScene" uid="uid://wxgn1e4u0o1u" path="res://Scenes/CustomButton.tscn" id="1_slere"]
+[ext_resource type="Script" uid="uid://dnomo0dygey5w" path="res://Scripts/back_button.gd" id="2_23h8s"]
+
+[node name="BackButton" unique_id=368464177 instance=ExtResource("1_slere")]
+script = ExtResource("2_23h8s")

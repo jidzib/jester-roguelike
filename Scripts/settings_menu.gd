@@ -21,9 +21,14 @@ enum ACTIONS {
 }
 
 func _ready() -> void:
+	#UiManager.pause_game()
 	load_settings()
 	initialize_keybinds()
 	save_button.pressed.connect(save_settings)
+
+func close() -> void:
+	#UiManager.resume_game()
+	pass
 	
 func initialize_keybinds() -> void:
 	for child in container.get_children():

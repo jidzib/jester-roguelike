@@ -11,14 +11,16 @@ func _ready() -> void:
 	close_button.pressed.connect(close)
 
 func close() -> void:
-	var items : Array[Item] = []
-	for item_slot in item_slots:
-		items.append(item_slot.item)
-	save_inventory.emit(items)
+	
+	#var items : Array[Item] = []
+	#for item_slot in item_slots:
+		#items.append(item_slot.item)
+	#save_inventory.emit(items)
 	closed.emit()
+	UiManager.remove_ui()
 	if Player.player:
 		Player.player.in_menu = false
-	queue_free()
+	#queue_free()
 
 func initialize(_items: Array[Item]) -> void:
 	for item in _items:

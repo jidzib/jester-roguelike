@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bghc4k808r5h7"]
+
+[ext_resource type="Script" uid="uid://c6rh811s3c7hi" path="res://Scripts/pause_menu.gd" id="1_ey1tb"]
+[ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="2_siy43"]
+[ext_resource type="PackedScene" uid="uid://bj0dudn1h88pk" path="res://Scenes/CloseMenuButton.tscn" id="3_yxrls"]
+[ext_resource type="Script" uid="uid://dnomo0dygey5w" path="res://Scripts/back_button.gd" id="4_gqxqw"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1083747990]
+script = ExtResource("1_ey1tb")
+is_menu = true
+metadata/_custom_type_script = "uid://b7n15j53prl5i"
+
+[node name="SettingsButton" parent="." unique_id=374445847 instance=ExtResource("2_siy43")]
+offset_left = 392.0
+offset_top = 247.0
+offset_right = 863.0
+offset_bottom = 369.0
+offset_transform_position = Vector2(640, 360)
+transition_to = 3
+text = "Settings"
+
+[node name="MainMenuButton" parent="." unique_id=693856402 instance=ExtResource("2_siy43")]
+offset_left = 392.0
+offset_top = 367.0
+offset_right = 863.0
+offset_bottom = 489.0
+offset_transform_position = Vector2(640, 360)
+text = "Main Menu"
+
+[node name="CloseMenuButton" parent="." unique_id=1100963506 instance=ExtResource("3_yxrls")]
+offset_left = 846.0
+offset_top = 220.0
+offset_right = 857.0
+offset_bottom = 231.0
+scale = Vector2(4, 4)
+offset_transform_position = Vector2(640, 360)
+script = ExtResource("4_gqxqw")

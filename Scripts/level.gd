@@ -68,7 +68,7 @@ func spawn_enemies(num_enemies: int, enemy_pool: Dictionary[Enums.Enemies, bool]
 		occupied_positions.set(random_pos, spawn_indicator)
 		add_child(spawn_indicator)
 	
-	await get_tree().create_timer(with_delay).timeout
+	await get_tree().create_timer(with_delay, false).timeout
 	
 	for pos in occupied_positions:
 		var enemy_id : Enums.Enemies = enemy_pool.keys().pick_random()

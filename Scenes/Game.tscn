@@ -21,7 +21,6 @@ state_nodes = {
 }
 
 [node name="Level" parent="." unique_id=2040038663 instance=ExtResource("4_b2bpf")]
-z_index = -2
 position = Vector2(0, -2)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1309292820]

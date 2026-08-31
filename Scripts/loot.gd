@@ -9,6 +9,8 @@ var atlas_regions : Dictionary[String, Rect2] = {
 	"closed" : Rect2(32.0, 0.0, 32.0, 32.0)
 }
 
+var state : String = "closed"
+
 func _ready() -> void:
 	set_region("closed")
 	initialize_loot()
@@ -48,15 +50,17 @@ func pick_from_pool(pool_id: Items.RARITY) -> Item:
 
 func set_region(str: String) -> void:
 	texture_normal.region = atlas_regions[str]
+	state = str
 	
 func _on_pressed() -> void:
-	if not player_in_range():
+	if not player_in_range() or state == "open":
 		return
 	set_region("open")
 	var ui : LootScreen = UiManager.UI_SCENES[UiManager.UIs.LOOT_SCREEN].instantiate()
 	ui.save_inventory.connect(reassign_items)
 	ui.initialize(items)
-	UiManager.switch_ui(ui)
+	#UiManager.switch_ui(ui)
+	UiManager.add_ui(ui)
 	ui.closed.connect(queue_free)
 	pass # OPEN INVENTORY UI FOR LOOT BAG AND PLAYER
 

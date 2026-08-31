@@ -37,6 +37,21 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey or event is InputEventMouseButton and event.pressed:
 		if event.is_action_pressed("INVENTORY"):
 			inventory.visible = !inventory.visible
+		#if event.is_action_pressed("close_menu"):
+			#if not UiManager.ui_stack:
+				#UiManager.add_ui(UiManager.UI_SCENES[UiManager.UIs.PAUSE_MENU].instantiate())
+
+				
+			#if not UiManager.current_ui:
+				##UiManager.set_ui(UiManager.UI_SCENES[UiManager.UIs.PAUSE_MENU].instantiate())
+				#UiManager.add_ui(UiManager.UI_SCENES[UiManager.UIs.PAUSE_MENU].instantiate())
+				#print("Opening pause menu")
+			#else:
+				#print("Closing menu")
+				#UiManager.resume_game()
+				##UiManager.clear_ui()
+				#UiManager.remove_ui()
+			
 	if in_menu:
 		return
 		
@@ -86,7 +101,8 @@ func die() -> void:
 	update_high_score()
 	player_died.emit()
 	var ui : GameOverUI = UiManager.UI_SCENES[UiManager.UIs.GAME_OVER].instantiate()
-	UiManager.switch_ui(ui)
+	#UiManager.switch_ui(ui)
+	UiManager.add_ui(ui)
 
 func update_high_score() -> void:
 	var highscore_data_path : String = "user://highscore_data.tres"

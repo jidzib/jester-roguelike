@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://1qfrflwr5ytv"]
+[gd_scene format=3 uid="uid://1qfrflwr5ytv"]
 
 [ext_resource type="Script" uid="uid://dn0rifikn7610" path="res://Scripts/game_over.gd" id="1_7w0tf"]
 [ext_resource type="PackedScene" uid="uid://7ent28d1ul5n" path="res://Scenes/PlayButton.tscn" id="2_0h5je"]
-[ext_resource type="PackedScene" uid="uid://cvq61acjpymsk" path="res://Scenes/QuitButton.tscn" id="3_c73c7"]
+[ext_resource type="PackedScene" uid="uid://j6k3hfsbcnee" path="res://Scenes/UITransitionButton.tscn" id="3_7w0tf"]
 
-[node name="GameOverUI" type="CanvasLayer"]
+[node name="GameOverUI" type="CanvasLayer" unique_id=1110181956]
 script = ExtResource("1_7w0tf")
 metadata/_custom_type_script = "uid://b7n15j53prl5i"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1836456368]
 offset_left = 415.0
 offset_top = 220.0
 offset_right = 863.0
@@ -16,15 +16,16 @@ offset_bottom = 357.0
 theme_override_font_sizes/font_size = 100
 text = "You died!"
 
-[node name="PlayButton" parent="." instance=ExtResource("2_0h5je")]
+[node name="PlayButton" parent="." unique_id=476521448 instance=ExtResource("2_0h5je")]
 offset_left = 398.0
 offset_top = 344.0
 offset_right = 869.0
 offset_bottom = 466.0
 text = "Play Again"
 
-[node name="QuitButton" parent="." instance=ExtResource("3_c73c7")]
+[node name="UITransitionButton" parent="." unique_id=1736263200 instance=ExtResource("3_7w0tf")]
 offset_left = 398.0
 offset_top = 452.0
 offset_right = 869.0
 offset_bottom = 574.0
+text = "Main Menu"
